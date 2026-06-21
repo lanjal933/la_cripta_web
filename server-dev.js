@@ -31,12 +31,12 @@ const server = http.createServer((req, res) => {
     // Eliminar query string
     const urlPath = req.url.split('?')[0];
     
-    // Servir pages/index.html por defecto en la raíz
-    let filePath = urlPath === '/' ? '/pages/index.html' : urlPath;
+    // Servir index.html por defecto en la raíz
+    let filePath = urlPath === '/' ? '/index.html' : urlPath;
     
     // Si es pages/ pero sin archivo, servir index.html
     if (filePath.endsWith('/pages') || filePath.endsWith('/pages/')) {
-        filePath = '/pages/index.html';
+        filePath = '/index.html';
     }
     
     // Eliminar slash inicial para path.join
@@ -124,7 +124,6 @@ server.listen(PORT, () => {
     console.log('='.repeat(50));
     console.log('📝 Páginas disponibles:');
     console.log(`   - http://localhost:${PORT}/ (Inicio)`);
-    console.log(`   - http://localhost:${PORT}/pages/index.html (Inicio)`);
     console.log(`   - http://localhost:${PORT}/pages/admin-new.html (Admin)`);
     console.log(`   - http://localhost:${PORT}/pages/ciudades-new.html (Ciudades)`);
     console.log('='.repeat(50));

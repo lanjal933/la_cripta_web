@@ -6,8 +6,8 @@
     <title>La Cripta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/admin/admin-access-new.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/admin/admin-access-new.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -44,23 +44,23 @@
     <nav class="fixed top-0 left-0 right-0 bg-violet-deep/30 backdrop-blur-md border-b border-violet-primary/35 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <a href="index.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors tracking-wider">✦ LA CRIPTA</a>
+                <a href="/index.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors tracking-wider">✦ LA CRIPTA</a>
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="mapa.html" class="nav-link text-sm uppercase tracking-wider">Mapa</a>
-                    <a href="facciones.html" class="nav-link text-sm uppercase tracking-wider">Facciones</a>
-                    <a href="ciudades.html" class="nav-link text-sm uppercase tracking-wider">Ciudades</a>
-                    <a href="lore.html" class="nav-link text-sm uppercase tracking-wider">Lore</a>
-                    <a href="aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
-                    <a href="market.html" class="nav-link text-sm uppercase tracking-wider">Market</a>
-                    <a href="guide.html" class="nav-link text-sm uppercase tracking-wider">Guía</a>
-                    <a href="creacion-personaje.html" class="nav-link text-sm uppercase tracking-wider">Creación</a>
+                    <a href="pages/mapa.html" class="nav-link text-sm uppercase tracking-wider">Mapa</a>
+                    <a href="pages/facciones.html" class="nav-link text-sm uppercase tracking-wider">Facciones</a>
+                    <a href="pages/ciudades.html" class="nav-link text-sm uppercase tracking-wider">Ciudades</a>
+                    <a href="pages/lore.html" class="nav-link text-sm uppercase tracking-wider">Lore</a>
+                    <a href="pages/aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
+                    <a href="pages/market.html" class="nav-link text-sm uppercase tracking-wider">Market</a>
+                    <a href="pages/guide.html" class="nav-link text-sm uppercase tracking-wider">Guía</a>
+                    <a href="pages/creacion-personaje.html" class="nav-link text-sm uppercase tracking-wider">Creación</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section pt-24" style="background-image: url('../images/inicio_pc.png'), url('../images/inicio_responsivo.png'), linear-gradient(to bottom, #050408, #0A0812); background-size: cover, cover, cover; background-position: center, center, center; background-repeat: no-repeat, no-repeat, no-repeat; filter: contrast(1.05) saturate(1.05) brightness(0.92);">
+    <section class="hero-section pt-24" style="background-image: url('images/inicio_pc.png'), url('images/inicio_responsivo.png'), linear-gradient(to bottom, #050408, #0A0812); background-size: cover, cover, cover; background-position: center, center, center; background-repeat: no-repeat, no-repeat, no-repeat; filter: contrast(1.05) saturate(1.05) brightness(0.92);">
         <div class="absolute inset-0 bg-gradient-to-b from-bg-deep/90 via-bg-deep/85 to-bg-deep/90"></div>
         <div class="relative z-10">
             <div class="hero-symbol">✦</div>
@@ -77,18 +77,18 @@
             </div>
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <a href="mapa.html" class="card card-elevated p-6 text-center cursor-pointer fade-in">
-                    <img src="../images/mapa-thumb.jpg" alt="Mapa" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
+                <a href="pages/mapa.html" class="card card-elevated p-6 text-center cursor-pointer fade-in">
+                    <img src="images/mapa-thumb.jpg" alt="Mapa" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
                     <h3 id="mapaTitle" class="font-title text-xl text-violet-primary mb-2">❖ EXPLORAR MAPA</h3>
                     <p id="mapaDesc" class="text-sm text-silver-soft">Descubre los Crypt Planes</p>
                 </a>
-                <a href="facciones.html" class="card card-elevated p-6 text-center cursor-pointer fade-in" style="animation-delay: 0.1s;">
-                    <img src="../images/facciones-thumb.jpg" alt="Facciones" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
+                <a href="pages/facciones.html" class="card card-elevated p-6 text-center cursor-pointer fade-in" style="animation-delay: 0.1s;">
+                    <img src="images/facciones-thumb.jpg" alt="Facciones" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
                     <h3 id="faccionesTitle" class="font-title text-xl text-violet-primary mb-2">⚔ FACCIONES</h3>
                     <p id="faccionesDesc" class="text-sm text-silver-soft">Elige tu alianza</p>
                 </a>
-                <a href="lore.html" class="card card-elevated p-6 text-center cursor-pointer fade-in" style="animation-delay: 0.2s;">
-                    <img src="../images/lore-thumb.jpg" alt="Lore" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
+                <a href="pages/lore.html" class="card card-elevated p-6 text-center cursor-pointer fade-in" style="animation-delay: 0.2s;">
+                    <img src="images/lore-thumb.jpg" alt="Lore" class="w-full h-32 object-cover rounded-lg mb-4" onerror="this.style.display='none'">
                     <h3 id="loreTitle" class="font-title text-xl text-violet-primary mb-2">📜 HISTORIA</h3>
                     <p id="loreDesc" class="text-sm text-silver-soft">Eras de Secretos</p>
                 </a>
@@ -109,11 +109,11 @@
                 <p class="copyright">© La Cripta</p>
             </div>
             <div class="footer-links">
-                <a href="index.html" class="footer-link">Inicio</a>
-                <a href="aventuras.html" class="footer-link">Juegos</a>
-                <a href="mapa.html" class="footer-link">Mapa</a>
-                <a href="lore.html" class="footer-link">Lore</a>
-                <a href="guide.html" class="footer-link">Guía</a>
+                <a href="/index.html" class="footer-link">Inicio</a>
+                <a href="pages/aventuras.html" class="footer-link">Juegos</a>
+                <a href="pages/mapa.html" class="footer-link">Mapa</a>
+                <a href="pages/lore.html" class="footer-link">Lore</a>
+                <a href="pages/guide.html" class="footer-link">Guía</a>
             </div>
             <div class="footer-social">
                 <a href="https://discord.gg/la-cripta" target="_blank" class="footer-button discord">
@@ -142,7 +142,7 @@
 
         document.addEventListener('keydown',function(e){
             if(e.ctrlKey&&e.altKey&&e.key==='p'){
-                window.location.href='admin-new.html';
+                window.location.href='pages/admin-new.html';
             }
         });
     </script>
