@@ -1,0 +1,86 @@
+CLASE: Artifice
+Equipo inicial: -2 armas sencillas a tu eleccion
+-Una ballesta ligera y 20 virotes
+-a. Una armadura de cuero tachonado O b. una cota de malla
+-Herramientas de Ladron Y un paquete de mazmorras
+
+CLASE: Barbaro
+Equipo inicial: - a. Una hacha a dos manos O b. cualquier arma cuerpo a cuerpo marcial
+-a. Dos hachas de manos O b. cualquier arma sencilla
+-Un paquete de explorador y 4 jabalinas
+
+CLASE: Bardo
+Equipo inicial: -a. Un estoque O b. una espada larga O cualquier arma sencilla
+-a. Un paquete diplomatico O b. un paquete de artista
+-Un laud O cualquier otro instrumento musical
+-Armadura de cuero Y una daga
+
+CLASE: Brujo
+Equipo inicial: -a. Una ballesta ligera y b. 20 virotes O cualquier otra arma sencilla
+-a. Un saquito de componentes O b. un canalizador arcano
+-a. Un paquete de erudito O b. paquete de explorador de mazmorras
+-Armadura de cuero, cualquier arma sencilla Y dos dagas
+
+CLASE: Clerigo
+Equipo inicial: -a. Una maza O b. un martillo de guerra (si eres competente)
+-a. Una cota de escamas O b. una armadura de cuero O c. una cota de malla (si eres competente)
+-a. Una ballesta ligera y 20 virotes O b. cualquier arma sencilla
+-a. Un paquete de sacerdote O b. un paquete de explorador
+-Un escudo y un simbolo sagrado
+
+CLASE: Druida
+Equipo inicial: -a. Escudo de madera O b. cualquier arma sencilla
+-a. Una cimitarra O b. cualquier arma cuerpo a cuerpo sencilla
+-Armadura de cuero, paquete de explorador Y canalizador druidico
+
+CLASE: Explorador
+Equipo inicial: -a. Una cota de escamas O b. una armadura de cuero
+-a. Dos espadas cortas O b. dos armas cuerpo a cuerpo sencillas
+-a. Un paquete de explorador de mazmorras O b. un paquete de explorador
+-Un arco largo y una aljiba con 20 flechas
+
+CLASE: Guerrero
+Equipo Inicial: A elegir entre: (a) una cota de malla o (b) una armadura de cuero, arco largo y un carcaj con 20 flechas.
+A elegir entre: (a) un arma marcial a tu elección y escudo o (b) dos armas marciales a tu elección.
+A elegir entre: (a) una ballesta ligera y 20 virotes o (b) dos hachas de mano.
+A elegir entre: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.
+Conjuros Iniciales: No tiene
+
+CLASE: Hechicero
+Equipo Inicial: 
+A elegir entre: (a) una ballesta ligera y 20 virotes o (b) un arma sencilla a tu elección.
+A elegir entre: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.
+Dos dagas y un foco arcano (especificar).
+Conjuros Iniciales: No 4 trcuos y 2 conjuros de su lista
+
+CLASE: Mago
+Equipo Inicial:A elegir entre: (a) un bastón o (b) una daga.
+A elegir entre: (a) un paquete de erudito o (b) un paquete de explorador.
+Un libro de conjuros y un foco arcano.
+Conjuros Iniciales: 3 trucos, 6 conjuros conocidos, 1 + inteligencia de conjuros preparados 
+
+CLASE: Monje 
+Equipo Inicial:
+A elegir entre: (a) una espada corta o (b) un arma sencilla a tu elección.
+A elegir entre: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.
+10 dardos.
+Conjuros Iniciales: No tiene
+
+CLASE: Paladin
+Equipo Inicial: A elegir entre: (a) un arma marcial a tu elección y un escudo o (b) dos armas marciales a tu elección.
+A elegir entre: (a) cinco jabalinas o (b) un arma sencilla cuerpo a cuerpo a tu elección.
+A elegir entre: (a) un paquete de sacerdote o (b) un paquete de explorador.
+Cota de mallas y símbolo sagrado (especificar).
+Conjuros Iniciales: No tiene
+
+CLASE: Picaro
+Equipo Inicial: A elegir entre: (a) una espada corta o (b) un estoque.
+A elegir entre: (a) un arco corto y un carcaj con 20 flechas o (b) una espada corta.
+A elegir entre: (a) un paquete de ladrón, (b) un paquete de explorador de mazmorras o (c) un paquete de explorador.
+Armadura de cuero, dos dagas y herramientas de ladrón.
+Conjuros Iniciales: No tiene
+
+CLASE: Pugilista
+Equipo Inicial: (a) Una armadura de cuero O (b) cualquier arma simple.
+a. Un pack de explorador O b. un pack de saqueador de mazmorras.
+a. Un juego de herramientas de artesano, O b. un set de juego (dados/cartas), O c. herramientas de ladrón.

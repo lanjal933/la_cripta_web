@@ -1,0 +1,29 @@
+{
+  "id": "reino-esmeralda",
+  "title": "Reino Esmeralda",
+  "description": "Consejo de Tortogas ancianas; teocracia natural. Producción de hongos, resinas, madera viva y medicina natural. Rezan a Sylvara, Madre del Bosque Eterno.",
+  "category": "ciudades",
+  "order": 4,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "teocracia",
+    "bosque",
+    "sylvara",
+    "tortogas"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "ciudad",
+    "gobierno": "Consejo de Tortogas ancianas; teocracia natural",
+    "economia": "Hongos, resinas, madera viva, medicina natural",
+    "religion": "Sylvara - Madre del Bosque Eterno",
+    "militar": "Defensa del bosque, druidas y criaturas aliadas"
+  }
+}

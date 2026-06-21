@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Caza del Alfa Gris</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>La Caza del Alfa Gris</h1>
+        
+        <div id="start-screen" class="start-screen panel">
+            <h2>El Bosque Nocturno</h2>
+            <p>Te encuentras atrapado en un bosque densamente arbolado bajo el manto de la noche. Una manada de lobos te rodea, liderada por un temible Alfa Gris.</p>
+            <p>Como Paladín de nivel 4, debes usar tus habilidades divinas, tu espada y tu escudo para sobrevivir a este encuentro táctico. Gestiona tus recursos sabiamente y derrota a la manada.</p>
+            <button class="start-btn" onclick="startGame()">Comenzar Combate</button>
+        </div>
+
+        <div id="game-container" class="game-container" style="display: none;">
+            <!-- Panel Izquierdo - Paladín -->
+            <div class="panel character-sheet">
+                <h2>Paladín</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Nivel:</span>
+                    <span class="stat-value">4</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Raza:</span>
+                    <span class="stat-value">Humano</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CA:</span>
+                    <span class="stat-value">18</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Movimiento:</span>
+                    <span class="stat-value">30 pies</span>
+                </div>
+                
+                <h3>Puntos de Vida</h3>
+                <div class="hp-bar">
+                    <div id="player-hp-fill" class="hp-fill" style="width: 100%"></div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">PV:</span>
+                    <span class="stat-value"><span id="player-hp">42</span>/42</span>
+                </div>
+
+                <h3>Recursos</h3>
+                <div id="resources">
+                    <span class="resource-badge" id="spell-slots">Espacios de Hechizo (3)</span>
+                    <span class="resource-badge" id="lay-on-hands">Imposición de Manos (20)</span>
+                    <span class="resource-badge" id="divine-sense">Sentido Divino (1)</span>
+                </div>
+
+                <h3>Estados</h3>
+                <div id="status-effects" class="status-effects">
+                    <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                </div>
+                
+                <h3>Concentración</h3>
+                <div id="concentration-status" style="color: #a855f7; font-style: italic; display: none;"></div>
+            </div>
+
+            <!-- Panel Central - Mapa Táctico -->
+            <div class="panel tactical-map">
+                <h2>Campo de Batalla</h2>
+                <div class="map-container" id="map-container">
+                    <img src="../../../images/tablero_minijuego_lobos.png" alt="Tablero" class="map-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22%3E%3Crect fill=%221%231a1a2e%22 width=%22800%22 height=%22800%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%237b5ce8%22 font-size=%2224%22 text-anchor=%22middle%22%3EBosque Nocturno%3C/text%3E%3C/svg%3E'">
+                    <div class="grid-overlay" id="grid-overlay"></div>
+                    <div id="player-token" class="token player-token" style="left: 50%; top: 80%;">P</div>
+                    <div id="wolf1-token" class="token wolf-token" style="left: 20%; top: 30%;">
+                        <img src="../../../images/lobos_1-2-3.jpg" alt="Lobo 1" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.textContent='L1'">
+                    </div>
+                    <div id="wolf2-token" class="token wolf-token" style="left: 80%; top: 30%;">
+                        <img src="../../../images/lobos_1-2-3.jpg" alt="Lobo 2" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.textContent='L2'">
+                    </div>
+                    <div id="wolf3-token" class="token wolf-token" style="left: 50%; top: 20%;">
+                        <img src="../../../images/lobos_1-2-3.jpg" alt="Lobo 3" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.textContent='L3'">
+                    </div>
+                    <div id="alpha-token" class="token alpha-token" style="left: 50%; top: 50%;">
+                        <img src="../../../images/Lobo_Alfa.jpg" alt="Lobo Alfa" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.textContent='A'">
+                    </div>
+                </div>
+                <div class="map-controls">
+                    <button class="map-btn" id="move-btn" onclick="enableMovement()">Mover</button>
+                    <button class="map-btn" id="end-turn-btn" onclick="endTurn()">Finalizar Turno</button>
+                </div>
+            </div>
+
+            <!-- Panel Derecho - Enemigo Seleccionado -->
+            <div class="panel enemy-panel">
+                <h2 id="enemy-name">Selecciona un Lobo</h2>
+                <div id="enemy-info" style="display: none;">
+                    <div id="enemy-image-container" style="text-align: center; margin-bottom: 15px;">
+                        <img id="enemy-image" src="" alt="" style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 2px solid rgba(123, 92, 232, 0.3); display: none;">
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">CA:</span>
+                        <span class="stat-value" id="enemy-ac">13</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Movimiento:</span>
+                        <span class="stat-value" id="enemy-movement">12 m</span>
+                    </div>
+                    
+                    <h3>Puntos de Vida</h3>
+                    <div class="enemy-hp-bar">
+                        <div id="enemy-hp-fill" class="enemy-hp-fill" style="width: 100%"></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">PV:</span>
+                        <span class="stat-value"><span id="enemy-hp">11</span>/<span id="enemy-max-hp">11</span></span>
+                    </div>
+
+                    <h3>Acciones Conocidas</h3>
+                    <div id="enemy-abilities">
+                        <div class="enemy-ability">
+                            <div class="enemy-ability-name">Mordisco</div>
+                            <div>Ataque cuerpo a cuerpo</div>
+                        </div>
+                    </div>
+
+                    <h3>Estados</h3>
+                    <div id="enemy-status" class="status-effects">
+                        <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                    </div>
+                </div>
+                <div id="no-enemy-selected" style="text-align: center; color: #9ca3af; font-style: italic;">
+                    Haz clic en un lobo en el mapa para ver sus estadísticas
+                </div>
+            </div>
+
+            <!-- Panel Inferior - Registro de Combate -->
+            <div class="panel combat-log">
+                <h2>Registro Narrativo</h2>
+                <div id="combat-log">
+                    <div class="log-entry narrative">El combate comienza...</div>
+                </div>
+            </div>
+
+            <!-- Panel de Acciones -->
+            <div class="panel actions-panel">
+                <h2>Acciones</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="swordAttack()">Ataque con Espada</button>
+                    <button class="action-btn" onclick="throwJavelin()">Lanzar Jabalina</button>
+                    <button class="action-btn" onclick="dodgeAction()">Esquivar</button>
+                    <button class="action-btn" onclick="retreatAction()">Retirada</button>
+                    <button class="action-btn" onclick="dashAction()">Carrera</button>
+                    <button class="action-btn" onclick="cureWounds()">Curar Heridas</button>
+                    <button class="action-btn" onclick="blessSpell()">Bendecir</button>
+                    <button class="action-btn" onclick="layOnHands()">Imposición de Manos</button>
+                </div>
+
+                <h3>Acciones Adicionales</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="shieldPush()">Empujón con Escudo</button>
+                    <button class="action-btn" onclick="shieldOfFaith()">Escudo de la Fe</button>
+                </div>
+
+                <h3>Reacciones</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="opportunity-attack" onclick="opportunityAttack()">Ataque de Oportunidad</button>
+                </div>
+                
+                <h3>Habilidades Especiales</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="divineSense()">Sentido Divino</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="victory-modal" class="modal">
+        <div class="modal-content victory">
+            <h2 class="modal-title">¡Victoria!</h2>
+            <p>Has derrotado a la manada de lobos y sobrevivido al bosque nocturno.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Lobos Derrotados</div>
+                    <div class="value" id="victory-wolves">4</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="victory-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="victory-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Turnos Usados</div>
+                    <div class="value" id="victory-turns">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <!-- Modal de Derrota -->
+    <div id="defeat-modal" class="modal">
+        <div class="modal-content defeat">
+            <h2 class="modal-title">Derrota</h2>
+            <p id="defeat-narrative">La manada te ha superado. Tu viaje termina aquí...</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Lobos Derrotados</div>
+                    <div class="value" id="defeat-wolves">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="defeat-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="defeat-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Turnos Sobrevividos</div>
+                    <div class="value" id="defeat-turns">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Intentar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

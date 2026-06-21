@@ -1,0 +1,128 @@
+{
+  "category": "ciudades",
+  "version": "1.0",
+  "generated": "2026-06-16T21:25:59.809Z",
+  "total": 4,
+  "items": [
+    {
+      "id": "mordicuis",
+      "title": "Mordicuis",
+      "description": "Ciudad con sistema presidencial, refinamiento de productos y gran centro de comercios. Rezan a Bane, el señor Oscuro.",
+      "category": "ciudades",
+      "order": 1,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "presidencialismo",
+        "comercio",
+        "bane",
+        "refinamiento"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "ciudad",
+        "gobierno": "Presidencialismo",
+        "economia": "Refinamiento de Productos y Gran centro de comercios",
+        "religion": "Bane - Señor Oscuro",
+        "militar": "Militarmente subdesarrollados, protección interna"
+      },
+      "path": "./content/ciudades/mordicuis/"
+    },
+    {
+      "id": "fuerte-norte",
+      "title": "Fuerte Norte",
+      "description": "Oligarquía con selección democrática. Producción de mármol, roca y minerales plateados. Rezan a Kord, dios de la fuerza.",
+      "category": "ciudades",
+      "order": 2,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "oligarquia",
+        "marmol",
+        "kord",
+        "minerales"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "ciudad",
+        "gobierno": "Oligarquía; selección democrática",
+        "economia": "Mármol, roca, minerales plateados",
+        "religion": "Kord - Dios de la fuerza",
+        "militar": "Militarmente avanzados, sin conflictos"
+      },
+      "path": "./content/ciudades/fuerte-norte/"
+    },
+    {
+      "id": "avarus",
+      "title": "Avarus",
+      "description": "Plutocracia donde se gana poder comprando acciones de la ciudad. Producción de joyas y minerales preciosos. Rezan a Abbathor, dios de la Codicia.",
+      "category": "ciudades",
+      "order": 3,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "plutocracia",
+        "joyas",
+        "abbathor",
+        "codicia"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "ciudad",
+        "gobierno": "Plutocracia; acciones de la ciudad",
+        "economia": "Producción de Joyas y minerales preciosos",
+        "religion": "Abbathor - Dios de la Codicia",
+        "militar": "Militarmente Avanzados, 6.700 soldados"
+      },
+      "path": "./content/ciudades/avarus/"
+    },
+    {
+      "id": "reino-esmeralda",
+      "title": "Reino Esmeralda",
+      "description": "Consejo de Tortogas ancianas; teocracia natural. Producción de hongos, resinas, madera viva y medicina natural. Rezan a Sylvara, Madre del Bosque Eterno.",
+      "category": "ciudades",
+      "order": 4,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "teocracia",
+        "bosque",
+        "sylvara",
+        "tortogas"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "ciudad",
+        "gobierno": "Consejo de Tortogas ancianas; teocracia natural",
+        "economia": "Hongos, resinas, madera viva, medicina natural",
+        "religion": "Sylvara - Madre del Bosque Eterno",
+        "militar": "Defensa del bosque, druidas y criaturas aliadas"
+      },
+      "path": "./content/ciudades/reino-esmeralda/"
+    }
+  ]
+}

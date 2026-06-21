@@ -1,0 +1,70 @@
+{
+  "category": "aventuras",
+  "version": "1.0",
+  "generated": "2026-06-16T21:25:59.806Z",
+  "total": 2,
+  "items": [
+    {
+      "id": "escape-prision-moorgon",
+      "title": "El Escape de la Prisión Moorgön",
+      "description": "Una aventura cooperativa sin DM inspirada en D&D, RPGs clásicos, novelas interactivas y escape rooms narrativos. Los personajes despiertan en la misteriosa Prisión Moorgön sin recordar cómo llegaron allí.",
+      "category": "aventuras",
+      "type": "group",
+      "order": 1,
+      "created": "2025-06-14T00:00:00Z",
+      "updated": "2025-06-14T00:00:00Z",
+      "published": true,
+      "tags": [
+        "cooperativa",
+        "sin-dm",
+        "misterio",
+        "prision",
+        "escape"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "level": "5",
+        "duration": "3-4 horas",
+        "players": "3-6",
+        "difficulty": "Medio"
+      },
+      "path": "./content/aventuras/escape-prision-moorgon/"
+    },
+    {
+      "id": "cetro-vilmoor",
+      "title": "El Cetro de Vilmoor",
+      "description": "Una dungeon autocontenida de D&D sin DM. Los personajes exploran las ruinas de Vilmoor en busca del legendario cetro, enfrentándose a guardianes arcanos, descubriendo secretos antiguos y tomando decisiones que cambiarán el destino del artefacto.",
+      "category": "aventuras",
+      "type": "group",
+      "order": 2,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "cooperativa",
+        "sin-dm",
+        "dungeon",
+        "misterio",
+        "artefacto"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "level": "7",
+        "duration": "2-4 horas",
+        "players": "3-5",
+        "difficulty": "Medio"
+      },
+      "path": "./content/aventuras/cetro-vilmoor/"
+    }
+  ]
+}

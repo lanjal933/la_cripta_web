@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparación - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 40px 30px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .adventure-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #5a7a5a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .nivel20-link {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 12px 25px;
+            background: linear-gradient(180deg, #2a4a2a 0%, #3a5a3a 100%);
+            border: 1px solid #4a6a4a;
+            border-radius: 6px;
+            color: #9aba9a;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .nivel20-link:hover {
+            background: linear-gradient(180deg, #3a5a3a 0%, #4a7a4a 100%);
+            border-color: #5a8a5a;
+        }
+        
+        .form-group {
+            margin: 20px 0;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #7a9a7a;
+            font-size: 1em;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a2e1a;
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #9aba9a;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #5a7a5a;
+        }
+        
+        .start-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px 40px;
+            background: linear-gradient(180deg, #2a4a2a 0%, #3a5a3a 100%);
+            border: 2px solid #4a6a4a;
+            border-radius: 8px;
+            color: #9aba9a;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .start-button:hover {
+            background: linear-gradient(180deg, #3a5a3a 0%, #4a7a4a 100%);
+            border-color: #5a8a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(90, 138, 90, 0.4);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a8a6a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8aaa8a;
+        }
+        
+        .info-box {
+            background: linear-gradient(180deg, #0a150a 0%, #152515 100%);
+            border-left: 3px solid #4a6a4a;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .character-inputs {
+            display: grid;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="index.html" class="back-link">← Volver a Portada</a>
+        
+        <div class="adventure-header">
+            <h1 class="adventure-title">Preparación de la Aventura</h1>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🎲 Recomendación</h2>
+            <p class="narrative-text">
+                Se recomienda abrir una mesa en <strong>Nivel20</strong> para gestionar fichas, recursos y tiradas de dados.
+                Esto facilitará el seguimiento de los personajes y permitirá realizar tiradas de forma organizada.
+            </p>
+            <a href="https://nivel20.com/" target="_blank" class="nivel20-link">Abrir Nivel20 →</a>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📋 Configuración del Grupo</h2>
+            <p class="narrative-text">
+                Antes de comenzar, configura los detalles de tu grupo de aventureros.
+            </p>
+            
+            <div class="form-group">
+                <label class="form-label">Número de Jugadores</label>
+                <select id="playerCount" class="form-input" onchange="updateCharacterInputs()">
+                    <option value="3">3 Jugadores</option>
+                    <option value="4" selected>4 Jugadores</option>
+                    <option value="5">5 Jugadores</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Nivel del Grupo</label>
+                <select id="groupLevel" class="form-input">
+                    <option value="5">Nivel 5</option>
+                    <option value="6">Nivel 6</option>
+                    <option value="7" selected>Nivel 7 (Recomendado)</option>
+                    <option value="8">Nivel 8</option>
+                    <option value="9">Nivel 9</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Nombres de Personajes (Opcional)</label>
+                <div id="characterInputs" class="character-inputs">
+                    <input type="text" class="form-input" placeholder="Nombre del Personaje 1">
+                    <input type="text" class="form-input" placeholder="Nombre del Personaje 2">
+                    <input type="text" class="form-input" placeholder="Nombre del Personaje 3">
+                    <input type="text" class="form-input" placeholder="Nombre del Personaje 4">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚠️ Importante</h2>
+            <div class="info-box">
+                <p><strong>Los jugadores realizan todas las tiradas manualmente.</strong></p>
+                <p>La IA actúa como narrador y director de escena, pero nunca tira dados ni toma decisiones por los jugadores.</p>
+                <p>Cuando se solicite una tirada, los jugadores deben:</p>
+                <ul>
+                    <li>Realizar la tirada en Nivel20 o con dados físicos</li>
+                    <li>Introducir el resultado del dado</li>
+                    <li>Indicar el modificador correspondiente</li>
+                    <li>Especificar si es ventaja, normal o desventaja</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🎯 Objetivo de la Aventura</h2>
+            <p class="narrative-text">
+                Vuestra misión es explorar las ruinas de Vilmoor, superar los guardianes arcanos, descubrir los secretos del archimago, 
+                y finalmente tomar una decisión sobre el destino del Cetro de Vilmoor.
+            </p>
+            <p class="narrative-text">
+                La aventura contiene 20 escenarios con combates, puzzles, descubrimientos y momentos de roleo. 
+                Vuestras decisiones determinarán el final de la historia.
+            </p>
+        </div>
+        
+        <button class="start-button" onclick="startAdventure()">Comenzar Aventura</button>
+    </div>
+    
+    <script>
+        function updateCharacterInputs() {
+            const count = parseInt(document.getElementById('playerCount').value);
+            const container = document.getElementById('characterInputs');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'form-input';
+                input.placeholder = `Nombre del Personaje ${i}`;
+                container.appendChild(input);
+            }
+        }
+        
+        function startAdventure() {
+            // Store configuration in localStorage
+            const config = {
+                playerCount: document.getElementById('playerCount').value,
+                groupLevel: document.getElementById('groupLevel').value,
+                characters: []
+            };
+            
+            const characterInputs = document.querySelectorAll('#characterInputs input');
+            characterInputs.forEach((input, index) => {
+                if (input.value.trim()) {
+                    config.characters.push(input.value.trim());
+                }
+            });
+            
+            localStorage.setItem('cetroVilmoorConfig', JSON.stringify(config));
+            
+            // Navigate to first scenario
+            window.location.href = 'escenario-01.html';
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCharacterInputs();
+        });
+    </script>
+</body>
+</html>

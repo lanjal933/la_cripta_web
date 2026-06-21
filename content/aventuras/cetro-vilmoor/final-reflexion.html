@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexión Final - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 40px 30px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .ending-title {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .ending-subtitle {
+            font-size: 1.2em;
+            color: #6a8a6a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #5a7a5a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .choice-container {
+            margin: 25px 0;
+        }
+        
+        .choice {
+            margin: 12px 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #8aaa8a;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice:hover:not(.disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .choice.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .choice.selected {
+            background: linear-gradient(180deg, #305030 0%, #3d6a3d 100%);
+            border-color: #4a8a4a;
+            box-shadow: 0 2px 10px rgba(74, 138, 74, 0.5);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a8a6a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8aaa8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="escenario-19.html" class="back-link">← Volver a la Salida</a>
+        
+        <div class="adventure-header">
+            <h1 class="ending-title">Reflexión Final</h1>
+            <p class="ending-subtitle">Un momento para considerar vuestra experiencia</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Vuestra Aventura</h2>
+            <div class="narrative-text">
+                <p>Habéis completado "El Cetro de Vilmoor", una aventura de D&D sin DM diseñada para 3-5 jugadores de nivel 7. Durante 2-4 horas, explorasteis las ruinas de Vilmoor, superasteis guardianes arcanos, descubristeis secretos antiguos, y tomasteis una decisión sobre el destino del Cetro de Vilmoor.</p>
+                
+                <p>Esta aventura priorizó la exploración, el roleo, el descubrimiento, el misterio y la toma de decisiones. La IA actuó como narrador y director de escena, pero nunca tomó decisiones por vosotros. Las tiradas de dados fueron realizadas manualmente, y las consecuencias fueron interpretadas por la IA.</p>
+                
+                <p>¿Qué aprendisteis de esta experiencia? ¿Qué decisión tomasteis sobre el cetro? ¿Cómo os sentís sobre el resultado? ¿Qué haríais diferente la próxima vez?</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💭 Preguntas de Reflexión</h2>
+            <div class="narrative-text">
+                <p><strong>1. ¿Cuál fue vuestro momento favorito de la aventura?</strong></p>
+                <p>Fue la exploración de la Biblioteca Perdida? El combate en el Foso Profundo? El encuentro con Vilmoor? La decisión final?</p>
+                
+                <p><strong>2. ¿Qué decisión tomasteis sobre el cetro?</strong></p>
+                <p>¿Lo conservasteis? ¿Lo destruisteis? ¿Lo entregasteis? ¿Lo usasteis una última vez? ¿Por qué?</p>
+                
+                <p><strong>3. ¿Cómo os sentís sobre el resultado?</strong></p>
+                <p>¿Estáis satisfechos con vuestra decisión? ¿Tenéis dudas? ¿Cambiaríais algo si pudierais?</p>
+                
+                <p><strong>4. ¿Qué haríais diferente la próxima vez?</strong></p>
+                <p>¿Exploraríais diferentes rutas? ¿Tomaríais diferentes decisiones? ¿Intentaríais diferentes estrategias?</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🎲 Sobre el Sistema</h2>
+            <div class="narrative-text">
+                <p>Esta aventura fue diseñada para ser jugada sin DM, utilizando la IA como narrador y director de escena. El sistema está diseñado para:</p>
+                
+                <p>• Proporcionar narración extensa e inmersiva</p>
+                <p>• Presentar opciones naturales (2-4 acciones evidentes)</p>
+                <p>• Permitir tiradas de dados manuales con interpretación de resultados</p>
+                <p>• Desbloquear descubrimientos a través de tiradas exitosas</p>
+                <p>• Integrar combates importantes con las Cámaras de Combate</p>
+                <p>• Ofrecer múltiples finales basados en decisiones</p>
+                
+                <p>El objetivo es crear una experiencia que se sienta como una sesión real de D&D, priorizando la inmersión, el misterio, las descripciones y la sensación de aventura real.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Opciones</h2>
+            <div class="choice-container">
+                <div class="choice" onclick="selectChoice('escenario-20.html')">
+                    <strong>➡️ Continuar al Final</strong>
+                </div>
+                <div class="choice" onclick="selectChoice('index.html')">
+                    <strong>🔄 Jugar de nuevo</strong>
+                </div>
+                <div class="choice" onclick="selectChoice('../../../pages/aventuras.html')">
+                    <strong>📚 Explorar otras aventuras</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectChoice(url) {
+            // Lock all choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(c => {
+                c.classList.add('disabled');
+                if (c.getAttribute('onclick').includes(url)) {
+                    c.classList.add('selected');
+                }
+            });
+            
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

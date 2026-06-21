@@ -1,0 +1,27 @@
+{
+  "id": "el-inicio-de-un-nuevo-mundo",
+  "title": "El Inicio de un Nuevo Mundo",
+  "description": "Vyrreal viajó con una pequeña expedición, enfrentando mareas caóticas, monstruos marinos y corrientes impredecibles. A los 3 meses, vieron tierra y descubrieron lo que hoy es Expencior.",
+  "category": "guias",
+  "order": 5,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "lore",
+    "viaje",
+    "vyrreal",
+    "descubrimiento"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "lore",
+    "periodo": "Hace 12,250+ años",
+    "evento": "El viaje de Vyrreal y el descubrimiento de Expencior"
+  }
+}

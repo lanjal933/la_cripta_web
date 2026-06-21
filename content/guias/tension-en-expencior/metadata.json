@@ -1,0 +1,27 @@
+{
+  "id": "tension-en-expencior",
+  "title": "Tensión en Expencior",
+  "description": "Las tensiones entre las razas de Expencior continúan. Los Orcos se retiraron a las sombras, creyéndose extintos algún tiempo. Su población fue diezmada pero no eliminada.",
+  "category": "guias",
+  "order": 4,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "lore",
+    "tension",
+    "expencior",
+    "orcos"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "lore",
+    "periodo": "Actualidad",
+    "evento": "Tensiones políticas y sociales en Expencior"
+  }
+}

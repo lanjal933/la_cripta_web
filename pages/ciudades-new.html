@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades - La Cripta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/core/content-discovery.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep': '#050408',
+                        'bg-violet': '#0A0812',
+                        'bg-panel': '#0F0D18',
+                        'bg-card': '#151322',
+                        'violet-primary': '#7B5CE8',
+                        'violet-soft': '#9B7FF0',
+                        'silver-soft': '#B8BECB',
+                        'white-warm': '#F0F1F3',
+                    },
+                    fontFamily: {
+                        'title': ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body text-white-warm min-h-screen">
+    <div class="premium-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-violet-deep/30 backdrop-blur-md border-b border-violet-primary/35 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors tracking-wider">✦ LA CRIPTA</a>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mapa.html" class="nav-link text-sm uppercase tracking-wider">Mapa</a>
+                    <a href="facciones.html" class="nav-link text-sm uppercase tracking-wider">Facciones</a>
+                    <a href="ciudades.html" class="nav-link text-sm uppercase tracking-wider text-violet-bright">Ciudades</a>
+                    <a href="lore.html" class="nav-link text-sm uppercase tracking-wider">Lore</a>
+                    <a href="aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
+                    <a href="market.html" class="nav-link text-sm uppercase tracking-wider">Market</a>
+                    <a href="guide.html" class="nav-link text-sm uppercase tracking-wider">Guía</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-24">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <h1 class="font-title text-5xl text-violet-primary mb-4 text-center">🏰 Ciudades</h1>
+            <p class="text-silver-soft text-center text-lg mb-8">Explora los centros urbanos del continente de Expencior</p>
+        </div>
+    </section>
+
+    <!-- Cities Grid -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <div id="citiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="text-center py-20 col-span-full">
+                <div class="animate-pulse text-violet-primary text-4xl mb-4">⏳</div>
+                <p class="text-silver-soft">Cargando ciudades...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Detail Modal -->
+    <div id="cityModal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-bg-card border border-violet-primary/30 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-violet-primary/20">
+                <h2 id="modalTitle" class="font-title text-2xl text-violet-primary">Ciudad</h2>
+                <button onclick="closeCityModal()" class="text-silver-soft hover:text-white text-4xl leading-none">&times;</button>
+            </div>
+            <div id="modalContent" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)] markdown-content">
+                <!-- Content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadCities();
+        });
+
+        async function loadCities() {
+            const grid = document.getElementById('citiesGrid');
+            
+            try {
+                const index = await contentDiscovery.discoverCategory('ciudades');
+                
+                if (!index.items || index.items.length === 0) {
+                    grid.innerHTML = `
+                        <div class="text-center py-20 col-span-full">
+                            <p class="text-silver-soft">No hay ciudades disponibles</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = index.items.map(city => `
+                    <div class="card card-elevated p-6 cursor-pointer hover:scale-105 transition-transform" onclick="openCity('${city.id}')">
+                        ${city.thumbnail ? `<img src="${city.thumbnail}" alt="${city.title}" class="w-full h-48 object-cover rounded-lg mb-4">` : ''}
+                        <h3 class="font-title text-xl text-violet-primary mb-2">${city.title}</h3>
+                        <p class="text-silver-soft text-sm">${city.description}</p>
+                        <div class="mt-4 flex gap-2 flex-wrap">
+                            ${(city.tags || []).map(tag => `<span class="bg-violet-primary/20 text-violet-soft text-xs px-2 py-1 rounded">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading cities:', error);
+                grid.innerHTML = `
+                    <div class="text-center py-20 col-span-full">
+                        <p class="text-red-400">Error cargando ciudades</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function openCity(cityId) {
+            const modal = document.getElementById('cityModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            try {
+                const metadata = await contentDiscovery.loadItemMetadata('ciudades', cityId);
+                const htmlContent = await contentDiscovery.loadItemContent('ciudades', cityId);
+
+                title.textContent = metadata.title;
+                content.innerHTML = htmlContent;
+                modal.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error loading city:', error);
+                alert('Error cargando ciudad');
+            }
+        }
+
+        function closeCityModal() {
+            document.getElementById('cityModal').classList.add('hidden');
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCityModal();
+        });
+    </script>
+</body>
+</html>

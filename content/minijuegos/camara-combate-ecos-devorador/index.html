@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Combate: Ecos del Devorador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cámara de Combate: Ecos del Devorador</h1>
+        
+        <div id="start-screen" class="start-screen panel">
+            <h2>La Cámara Psiónica Abandonada</h2>
+            <p>Una antigua cámara psiónica ha sido tomada por un poderoso Maestro Mental. Como Guerrero Maestro de Batalla, entras voluntariamente para superar este desafío y demostrar tu valía.</p>
+            <p>Prepárate para un combate táctico donde cada decisión cuenta. Usa tus habilidades estratégicamente, gestiona tus recursos y derrota al Maestro Mental Psiónico.</p>
+            <button class="start-btn" onclick="startGame()">Comenzar Combate</button>
+        </div>
+
+        <div id="game-container" class="game-container" style="display: none;">
+            <!-- Panel Izquierdo - Personaje -->
+            <div class="panel character-sheet">
+                <h2>Guerrero Maestro de Batalla</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Nivel:</span>
+                    <span class="stat-value">5</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Raza:</span>
+                    <span class="stat-value">Semielfo</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CA:</span>
+                    <span class="stat-value">18</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Movimiento:</span>
+                    <span class="stat-value">30 pies</span>
+                </div>
+                
+                <h3>Puntos de Vida</h3>
+                <div class="hp-bar">
+                    <div id="player-hp-fill" class="hp-fill" style="width: 100%"></div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">PV:</span>
+                    <span class="stat-value"><span id="player-hp">44</span>/44</span>
+                </div>
+
+                <h3>Atributos</h3>
+                <div class="stat-row">
+                    <span class="stat-label">FUE:</span>
+                    <span class="stat-value">18</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">DES:</span>
+                    <span class="stat-value">14</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CON:</span>
+                    <span class="stat-value">16</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">INT:</span>
+                    <span class="stat-value">10</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">SAB:</span>
+                    <span class="stat-value">12</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CAR:</span>
+                    <span class="stat-value">10</span>
+                </div>
+
+                <h3>Recursos</h3>
+                <div id="resources">
+                    <span class="resource-badge" id="second-wind">Aliento Segundo (1)</span>
+                    <span class="resource-badge" id="sudden-action">Acción Súbita (1)</span>
+                    <span class="resource-badge" id="superiority-dice">Dados de Superioridad (4)</span>
+                </div>
+
+                <h3>Estados</h3>
+                <div id="status-effects" class="status-effects">
+                    <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                </div>
+            </div>
+
+            <!-- Panel Central - Mapa Táctico -->
+            <div class="panel tactical-map">
+                <h2>Mapa Táctico</h2>
+                <div class="map-container" id="map-container">
+                    <img src="../../../images/tablero_devorador_minijuego.jpg" alt="Tablero" class="map-image">
+                    <div class="grid-overlay" id="grid-overlay"></div>
+                    <div id="player-token" class="token player-token" style="left: 10%; top: 80%;">PJ</div>
+                    <div id="enemy-token" class="token enemy-token" style="left: 80%; top: 20%;">AZ</div>
+                </div>
+                <div class="map-controls">
+                    <button class="map-btn" id="move-btn" onclick="enableMovement()">Mover</button>
+                    <button class="map-btn" id="end-turn-btn" onclick="endTurn()">Finalizar Turno</button>
+                </div>
+            </div>
+
+            <!-- Panel Derecho - Enemigo -->
+            <div class="panel enemy-panel">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <img src="../../../images/azotamentes.jpg" alt="Azotamentes" style="width: 100%; max-height: 150px; object-fit: cover; object-position: top; border-radius: 8px; border: 2px solid rgba(123, 92, 232, 0.3); box-shadow: 0 0 20px rgba(123, 92, 232, 0.3);">
+                </div>
+                <h2>Azotamentes</h2>
+                <div class="stat-row">
+                    <span class="stat-label">CA:</span>
+                    <span class="stat-value">15</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Movimiento:</span>
+                    <span class="stat-value">30 pies</span>
+                </div>
+                
+                <h3>Puntos de Vida</h3>
+                <div class="enemy-hp-bar">
+                    <div id="enemy-hp-fill" class="enemy-hp-fill" style="width: 100%"></div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">PV:</span>
+                    <span class="stat-value"><span id="enemy-hp">90</span>/90</span>
+                </div>
+
+                <h3>Habilidades</h3>
+                <div class="enemy-ability">
+                    <div class="enemy-ability-name">Tentáculos</div>
+                    <div>Ataque cuerpo a cuerpo, daño psiónico</div>
+                </div>
+                <div class="enemy-ability">
+                    <div class="enemy-ability-name">Explosión Mental</div>
+                    <div>Daño en área, aturde</div>
+                </div>
+                <div class="enemy-ability">
+                    <div class="enemy-ability-name">Rayo Psiónico</div>
+                    <div>Ataque a distancia</div>
+                </div>
+                <div class="enemy-ability">
+                    <div class="enemy-ability-name">Dominación Mental</div>
+                    <div>Control mental, encanta</div>
+                </div>
+                <div class="enemy-ability">
+                    <div class="enemy-ability-name">Escudo Mental</div>
+                    <div>Protección, bonus CA</div>
+                </div>
+            </div>
+
+            <!-- Panel de Acciones -->
+            <div class="panel actions-panel">
+                <h2>Acciones</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" id="sword-attack" onclick="swordAttack()">
+                        Ataque con Espada
+                        <span class="cost">Acción | Cuerpo a cuerpo | 1d8+4</span>
+                    </button>
+                    <button class="action-btn" id="crossbow-shot" onclick="crossbowShot()">
+                        Disparo de Ballesta
+                        <span class="cost">Acción | Distancia | 1d8+2</span>
+                    </button>
+                    <button class="action-btn" id="push" onclick="pushAttack()">
+                        Empujón
+                        <span class="cost">Acción | Cuerpo a cuerpo | Desplaza 3m</span>
+                    </button>
+                    <button class="action-btn" id="knockdown" onclick="knockdownAttack()">
+                        Derribar
+                        <span class="cost">Acción | Cuerpo a cuerpo | Derriba</span>
+                    </button>
+                    <button class="action-btn" id="precision-attack" onclick="precisionAttack()">
+                        Ataque de Precisión
+                        <span class="cost">Adicional | Dado Superioridad | +1d8 al ataque</span>
+                    </button>
+                    <button class="action-btn" id="sweeping-attack" onclick="sweepingAttack()">
+                        Ataque Barrido
+                        <span class="cost">Adicional | Dado Superioridad | Daño en área</span>
+                    </button>
+                    <button class="action-btn" id="threatening-attack" onclick="threateningAttack()">
+                        Ataque Amenazante
+                        <span class="cost">Adicional | Dado Superioridad | -d10 al enemigo</span>
+                    </button>
+                    <button class="action-btn" id="second-wind-btn" onclick="secondWind()">
+                        Aliento Segundo
+                        <span class="cost">Adicional | Cura 1d10+5 | 1 uso</span>
+                    </button>
+                    <button class="action-btn" id="sudden-action-btn" onclick="suddenAction()">
+                        Acción Súbita
+                        <span class="cost">Adicional | Acción extra | 1 uso</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel Inferior - Registro de Combate -->
+            <div class="panel combat-log">
+                <h2>Registro de Combate</h2>
+                <div id="combat-log">
+                    <div class="log-entry narrative">El combate comienza...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="victory-modal" class="modal">
+        <div class="modal-content victory">
+            <h2 class="modal-title">¡Victoria!</h2>
+            <p>Has derrotado al Maestro Mental Psiónico y demostrado tu valía como Guerrero Maestro de Batalla.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Usados</div>
+                    <div class="value" id="victory-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="victory-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="victory-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Habilidades Usadas</div>
+                    <div class="value" id="victory-abilities">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <!-- Modal de Derrota -->
+    <div id="defeat-modal" class="modal">
+        <div class="modal-content defeat">
+            <h2 class="modal-title">Derrota</h2>
+            <p id="defeat-narrative">El Maestro Mental te ha superado. Tu mente ha sido dominada...</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Sobrevividos</div>
+                    <div class="value" id="defeat-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="defeat-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="defeat-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Habilidades Usadas</div>
+                    <div class="value" id="defeat-abilities">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Intentar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

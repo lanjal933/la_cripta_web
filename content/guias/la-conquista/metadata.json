@@ -1,0 +1,27 @@
+{
+  "id": "la-conquista",
+  "title": "La Conquista",
+  "description": "La expedición de Vyrreal descubrió Expencior hace 12,250 años. Los humanos llegaron a este nuevo continente y encontraron razas como Tortogas, Orcos, Elfos y Draconicos.",
+  "category": "guias",
+  "order": 1,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "lore",
+    "conquista",
+    "expencior",
+    "vyrreal"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "lore",
+    "periodo": "Hace 12,250 años",
+    "evento": "Llegada de la expedición humana a Expencior"
+  }
+}

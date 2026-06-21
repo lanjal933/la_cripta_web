@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escenario 13 - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .scenario-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .scenario-number {
+            font-size: 0.9em;
+            color: #6a8a6a;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #5a7a5a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .scenario-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .image-caption {
+            color: #6a8a6a;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .choice-container {
+            margin: 25px 0;
+        }
+        
+        .choice {
+            margin: 12px 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #8aaa8a;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice:hover:not(.disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .choice.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .choice.selected {
+            background: linear-gradient(180deg, #305030 0%, #3d6a3d 100%);
+            border-color: #4a8a4a;
+            box-shadow: 0 2px 10px rgba(74, 138, 74, 0.5);
+        }
+        
+        .roll-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #0a150a 0%, #152515 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 6px;
+        }
+        
+        .roll-title {
+            color: #7a9a7a;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .roll-input {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .roll-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .roll-label {
+            color: #6a8a6a;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .roll-value {
+            padding: 10px;
+            background: #1a2e1a;
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #9aba9a;
+            font-size: 1em;
+        }
+        
+        .roll-button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(180deg, #2a4a2a 0%, #3a5a3a 100%);
+            border: 1px solid #4a6a4a;
+            border-radius: 6px;
+            color: #9aba9a;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .roll-button:hover {
+            background: linear-gradient(180deg, #3a5a3a 0%, #4a7a4a 100%);
+            border-color: #5a8a5a;
+        }
+        
+        .roll-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border-left: 3px solid #4a6a4a;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .roll-result.success {
+            border-left-color: #3a8a3a;
+        }
+        
+        .roll-result.failure {
+            border-left-color: #8a3a3a;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a8a6a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8aaa8a;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: linear-gradient(180deg, #0a150a 0%, #152515 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6a8a6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="escenario-12.html" class="back-link">← Volver al Almacén Olvidado</a>
+        
+        <div class="status-bar">
+            <span>📍 Ubicación: Foso Profundo</span>
+            <span>🎲 Escenario: 13/20</span>
+        </div>
+        
+        <div class="adventure-header">
+            <div class="scenario-number">Escenario 13</div>
+            <h1 class="scenario-title">Foso Profundo</h1>
+        </div>
+        
+        <div class="image-container">
+            <img src="../../../images/aventuras/vilmoor-foso.jpg" alt="Foso Profundo de Vilmoor" class="scenario-image" onerror="this.style.display='none'">
+            <p class="image-caption">Las profundidades del Foso están llenas de oscuridad</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Narración</h2>
+            <div class="narrative-text">
+                <p>El Foso Profundo es un abismo circular que desciende hacia la oscuridad absoluta. La escalera en espiral que lo bordea está cubierta de moho y resbaladiza, y cada paso resuena con un eco que parece venir de las profundidades mismas.</p>
+                
+                <p>El aire aquí es gélido, y el zumbido que habéis escuchado antes ahora es un grito constante que parece decir palabras en un idioma que no comprendéis. Las paredes del foso están cubiertas de inscripciones que brillan tenuemente con luz roja.</p>
+                
+                <p>A medida que descendéis, notáis que la gravedad parece cambiar. Algunos pasos son más ligeros, otros más pesados, como si las leyes de la física fueran diferentes aquí. Es un efecto del cetro, cuya influencia se hace sentir incluso a esta distancia.</p>
+                
+                <p>En el fondo del foso, hay una plataforma de piedra flotante. Sobre ella, hay un pedestal con la Llave Roja: un cristal tallado en forma de llave que brilla con luz carmesí intensa. Pero la llave no está desprotegida.</p>
+                
+                <p>Un Helmed Horror (CR 4) flota sobre el pedestal, su armadura negra brillando con runas de poder. El constructo no se mueve, pero su presencia es abrumadora. Este es el guardián de la Llave Roja.</p>
+                
+                <p>Las inscripciones en las paredes advierten: "La Llave Roja abre el camino al poder. Pero el poder corrompe. Solo quienes comprenden el precio pueden tomarla sin ser consumidos."</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💬 Espacio de Roleo</h2>
+            <div class="narrative-text">
+                <p>¿Qué hacen los personajes?</p>
+                <p>¿Deberíais combatir al Helmed Horror? ¿Hay alguna forma de evitar el combate? ¿Qué significan las inscripciones sobre el "precio" del poder? ¿Estáis preparados para tomar la Llave Roja?</p>
+                <p>Este es un momento crítico para obtener la segunda llave.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Opciones</h2>
+            <div class="choice-container">
+                <div class="choice" onclick="selectChoice('combate')">
+                    <strong>⚔️ Combatir al Helmed Horror</strong><br>
+                    <small>Tomar la llave por la fuerza</small>
+                </div>
+                <div class="choice" onclick="selectChoice('inscripciones')">
+                    <strong>📜 Leer las inscripciones</strong><br>
+                    <small>Buscar una forma de evitar el combate</small>
+                </div>
+                <div class="choice" onclick="selectChoice('persuasion')">
+                    <strong>🗣️ Intentar comunicarse con el guardián</strong><br>
+                    <small>Usar diplomacia o conocimiento arcano</small>
+                </div>
+                <div class="choice" onclick="selectChoice('robar')">
+                    <strong>🎭 Intentar robar la llave</strong><br>
+                    <small>Usar sigilo y destreza</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="rollSection" style="display: none;">
+            <h2 class="section-title">🎲 Tirada Requerida</h2>
+            <div class="roll-section">
+                <div class="roll-title" id="rollTitle"></div>
+                <div class="roll-input">
+                    <div class="roll-field">
+                        <label class="roll-label">Resultado del Dado</label>
+                        <input type="number" class="roll-value" id="diceResult" min="1" max="20">
+                    </div>
+                    <div class="roll-field">
+                        <label class="roll-label">Modificador</label>
+                        <input type="number" class="roll-value" id="modifier" value="0">
+                    </div>
+                    <div class="roll-field">
+                        <label class="roll-label">Tipo</label>
+                        <select class="roll-value" id="rollType">
+                            <option value="normal">Normal</option>
+                            <option value="ventaja">Ventaja</option>
+                            <option value="desventaja">Desventaja</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="roll-button" onclick="executeRoll()">Realizar Tirada</button>
+                <div class="roll-result" id="rollResult"></div>
+            </div>
+        </div>
+        
+        <div class="section" id="consequenceSection" style="display: none;">
+            <h2 class="section-title">📜 Consecuencia</h2>
+            <div class="narrative-text" id="consequenceText"></div>
+            <div class="choice-container" id="nextChoices"></div>
+        </div>
+    </div>
+    
+    <script>
+        let currentChoice = null;
+        let currentDC = 0;
+        
+        const choices = {
+            combate: {
+                dc: 0,
+                skill: null,
+                success: "",
+                failure: "El Helmed Horror (CR 4) os ataca. Debeis combatir en la Cámara de Combate. Si ganáis, podéis tomar la Llave Roja. El constructo es formidable, pero no invencible.",
+                next: "camara-combate-helmed-horror/index.html"
+            },
+            inscripciones: {
+                dc: 15,
+                skill: "Investigación",
+                success: "Las inscripciones revelan que el Helmed Horror responde al código: 'El poder sin sabiduría es destrucción'. Si pronunciáis estas palabras, el constructo se apartará y permitirá que toméis la llave.",
+                failure: "Las inscripciones son demasiado complejas. No encontráis el código específico para comunicaros con el guardián.",
+                next: "escenario-14.html"
+            },
+            persuasion: {
+                dc: 16,
+                skill: "Persuasión",
+                success: "El Helmed Horror os escucha. Su casco se abre ligeramente y una voz resuena: 'Sois dignos. Tomad la llave, pero recordad: el poder tiene un precio.' El constructo se aparta.",
+                failure: "El Helmed Horror no responde a vuestras palabras. Su casco se cierra y el constructo se prepara para el combate.",
+                next: "escenario-14.html"
+            },
+            robar: {
+                dc: 18,
+                skill: "Sigilo",
+                success: "Con movimientos increíblemente sigilosos, lográis tomar la Llave Roja sin activar al Helmed Horror. El constructo permanece inerte, ignorando vuestra presencia.",
+                failure: "Al intentar tomar la llave, el Helmed Horror detecta vuestra presencia y se activa. Debeis combatir.",
+                next: "escenario-14.html"
+            }
+        };
+        
+        function selectChoice(choice) {
+            currentChoice = choice;
+            const choiceData = choices[choice];
+            
+            // Lock all choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(c => {
+                c.classList.add('disabled');
+                if (c.getAttribute('onclick').includes(choice)) {
+                    c.classList.add('selected');
+                }
+            });
+            
+            if (choiceData.dc > 0) {
+                document.getElementById('rollSection').style.display = 'block';
+                document.getElementById('rollTitle').textContent = `${choiceData.skill} CD ${choiceData.dc}`;
+                document.getElementById('rollResult').style.display = 'none';
+                document.getElementById('consequenceSection').style.display = 'none';
+            } else {
+                showConsequence(choiceData.failure, choiceData.next);
+            }
+        }
+        
+        function executeRoll() {
+            const diceResult = parseInt(document.getElementById('diceResult').value);
+            const modifier = parseInt(document.getElementById('modifier').value);
+            const rollType = document.getElementById('rollType').value;
+            
+            if (!diceResult || diceResult < 1 || diceResult > 20) {
+                alert('Por favor, introduce un resultado válido del dado (1-20)');
+                return;
+            }
+            
+            let finalResult = diceResult + modifier;
+            let resultText = `Resultado: ${diceResult} + ${modifier} = ${finalResult}`;
+            
+            if (rollType === 'ventaja') {
+                resultText += ' (Ventaja)';
+            } else if (rollType === 'desventaja') {
+                resultText += ' (Desventaja)';
+            }
+            
+            const choiceData = choices[currentChoice];
+            const success = finalResult >= choiceData.dc;
+            
+            const resultDiv = document.getElementById('rollResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'roll-result ' + (success ? 'success' : 'failure');
+            resultDiv.innerHTML = `
+                <p><strong>${resultText}</strong></p>
+                <p>${success ? '✅ Éxito' : '❌ Fallo'}</p>
+            `;
+            
+            setTimeout(() => {
+                let consequenceText = success ? choiceData.success : choiceData.failure;
+                if (success && (choice === 'inscripciones' || choice === 'persuasion' || choice === 'robar')) {
+                    consequenceText += '<div class="item-unlocked">¡Llave Roja obtenida!</div>';
+                }
+                showConsequence(consequenceText, choiceData.next);
+            }, 1500);
+        }
+        
+        function showConsequence(text, nextPage) {
+            document.getElementById('consequenceSection').style.display = 'block';
+            document.getElementById('consequenceText').innerHTML = `<p>${text}</p>`;
+            
+            document.getElementById('nextChoices').innerHTML = `
+                <div class="choice" onclick="window.location.href='${nextPage}'">
+                    <strong>➡️ Continuar al Santuario Central</strong>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

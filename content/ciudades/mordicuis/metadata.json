@@ -1,0 +1,29 @@
+{
+  "id": "mordicuis",
+  "title": "Mordicuis",
+  "description": "Ciudad con sistema presidencial, refinamiento de productos y gran centro de comercios. Rezan a Bane, el señor Oscuro.",
+  "category": "ciudades",
+  "order": 1,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "presidencialismo",
+    "comercio",
+    "bane",
+    "refinamiento"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "ciudad",
+    "gobierno": "Presidencialismo",
+    "economia": "Refinamiento de Productos y Gran centro de comercios",
+    "religion": "Bane - Señor Oscuro",
+    "militar": "Militarmente subdesarrollados, protección interna"
+  }
+}

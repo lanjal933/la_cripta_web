@@ -1,0 +1,27 @@
+{
+  "id": "el-declive",
+  "title": "El Declive",
+  "description": "Tras la llegada de los humanos, surgieron conflictos entre las razas originales. Los Orcos intentaron eliminar la expedición, pero los Antiguos se negaron rotundamente.",
+  "category": "guias",
+  "order": 2,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "lore",
+    "declive",
+    "guerra",
+    "conflicto"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "lore",
+    "periodo": "Post-Conquista",
+    "evento": "Guerras entre razas originales y humanos"
+  }
+}

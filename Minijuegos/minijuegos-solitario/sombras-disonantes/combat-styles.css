@@ -1,0 +1,669 @@
+/**
+ * SOMBRAS DISONANTES - Dark Fantasy Theme Styles
+ * 
+ * Estilos específicos para la cámara de combate con tema oscuro,
+ * elegante y sombrío de fantasía oscura.
+ */
+
+/* ============================================
+   BASE STYLES & OVERRIDES
+   ============================================ */
+
+:root {
+    --bg-deep: #050408;
+    --bg-violet: #0A0812;
+    --bg-panel: #0F0D18;
+    --bg-card: #151322;
+    --bg-hover: #1C1928;
+    --violet-primary: #7B5CE8;
+    --violet-soft: #9B7FF0;
+    --violet-bright: #B89DFF;
+    --violet-deep: #5B3CD8;
+    --violet-glow: #8B6CF0;
+    --arcane-blue: #4A7DE8;
+    --silver-soft: #B8BECB;
+    --silver-muted: #989EAB;
+    --white-warm: #F0F1F3;
+    --shadow-dark: #1a1a2e;
+    --shadow-darker: #0f0f1a;
+    --blood-red: #8B0000;
+    --blood-dim: #4a0000;
+    --blood-bright: #a52a2a;
+}
+
+body {
+    background: var(--bg-deep);
+    color: var(--white-warm);
+    font-family: 'Inter', 'Manrope', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--shadow-darker);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--violet-deep);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--violet-primary);
+}
+
+/* ============================================
+   FOG & ATMOSPHERE EFFECTS
+   ============================================ */
+
+.fog-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(123, 92, 232, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(74, 125, 232, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(139, 0, 0, 0.04) 0%, transparent 70%);
+    animation: fogDrift 20s ease-in-out infinite;
+}
+
+@keyframes fogDrift {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(10px) translateY(-10px);
+    }
+}
+
+/* ============================================
+   SHADOW PULSE ANIMATION
+   ============================================ */
+
+.shadow-pulse {
+    animation: shadowPulse 3s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(123, 92, 232, 0.3), 0 0 40px rgba(139, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(123, 92, 232, 0.5), 0 0 60px rgba(139, 0, 0, 0.3);
+    }
+}
+
+/* ============================================
+   HP BAR ANIMATIONS
+   ============================================ */
+
+.hp-bar-animated {
+    transition: width 0.5s ease-out, background 0.3s ease;
+}
+
+.hp-bar-critical {
+    background: linear-gradient(to right, var(--blood-bright), var(--blood-red)) !important;
+    animation: hpPulse 1s ease-in-out infinite;
+}
+
+@keyframes hpPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   COMBAT LOG STYLES
+   ============================================ */
+
+.log-entry {
+    animation: logEntry 0.3s ease-out;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.log-entry.damage {
+    background: rgba(139, 0, 0, 0.15);
+    border-left: 3px solid var(--blood-red);
+}
+
+.log-entry.heal {
+    background: rgba(123, 92, 232, 0.15);
+    border-left: 3px solid var(--violet-primary);
+}
+
+.log-entry.enemy {
+    background: rgba(139, 0, 0, 0.1);
+    border-left: 3px solid var(--blood-dim);
+}
+
+.log-entry.player {
+    background: rgba(123, 92, 232, 0.1);
+    border-left: 3px solid var(--violet-deep);
+}
+
+.log-entry.system {
+    background: rgba(184, 190, 203, 0.1);
+    border-left: 3px solid var(--silver-muted);
+    font-style: italic;
+}
+
+.log-entry.critical {
+    background: rgba(255, 215, 0, 0.15);
+    border-left: 3px solid #ffd700;
+    font-weight: 600;
+}
+
+@keyframes logEntry {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.combat-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid;
+    background: rgba(15, 13, 24, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.combat-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(123, 92, 232, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.combat-btn:hover::before {
+    left: 100%;
+}
+
+.combat-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(123, 92, 232, 0.4);
+}
+
+.combat-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.combat-btn:disabled::before {
+    display: none;
+}
+
+/* Action buttons */
+.combat-btn.action-melee {
+    border-color: var(--violet-primary);
+    color: var(--white-warm);
+}
+
+.combat-btn.action-melee:hover:not(:disabled) {
+    background: rgba(123, 92, 232, 0.3);
+}
+
+.combat-btn.action-spell {
+    border-color: var(--arcane-blue);
+    color: var(--white-warm);
+}
+
+.combat-btn.action-spell:hover:not(:disabled) {
+    background: rgba(74, 125, 232, 0.3);
+}
+
+.combat-btn.action-resource {
+    border-color: var(--blood-red);
+    color: var(--white-warm);
+}
+
+.combat-btn.action-resource:hover:not(:disabled) {
+    background: rgba(139, 0, 0, 0.3);
+}
+
+/* ============================================
+   DICE ROLL ANIMATION
+   ============================================ */
+
+.dice-rolling {
+    animation: diceRoll 0.5s ease-out;
+}
+
+@keyframes diceRoll {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(90deg) scale(1.1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1);
+    }
+    75% {
+        transform: rotate(270deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.dice-result {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--violet-bright);
+    animation: diceResult 0.3s ease-out;
+}
+
+@keyframes diceResult {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.dice-critical {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.dice-failure {
+    color: var(--blood-red);
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+/* ============================================
+   PHASE TRANSITION EFFECT
+   ============================================ */
+
+.phase-transition {
+    animation: phaseTransition 1s ease-out;
+}
+
+@keyframes phaseTransition {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.phase-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.phase-badge.phase-1 {
+    background: rgba(123, 92, 232, 0.2);
+    border: 1px solid var(--violet-primary);
+    color: var(--violet-bright);
+}
+
+.phase-badge.phase-2 {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid var(--blood-red);
+    color: var(--blood-bright);
+}
+
+.phase-badge.phase-3 {
+    background: rgba(255, 215, 0, 0.2);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    animation: phasePulse 1s ease-in-out infinite;
+}
+
+@keyframes phasePulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+}
+
+/* ============================================
+   ECHO SUMMON ANIMATION
+   ============================================ */
+
+.echo-summon {
+    animation: echoSummon 0.5s ease-out;
+}
+
+@keyframes echoSummon {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.echo-card {
+    background: rgba(139, 0, 0, 0.1);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    animation: echoSummon 0.5s ease-out;
+}
+
+.echo-card.fade-out {
+    animation: echoFade 0.5s ease-out forwards;
+}
+
+@keyframes echoFade {
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* ============================================
+   CONDITION BADGES
+   ============================================ */
+
+.condition-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 2px;
+}
+
+.condition-badge.shielded {
+    background: rgba(123, 92, 232, 0.2);
+    border: 1px solid var(--violet-primary);
+    color: var(--violet-bright);
+}
+
+.condition-badge.dodging {
+    background: rgba(74, 125, 232, 0.2);
+    border: 1px solid var(--arcane-blue);
+    color: var(--arcane-blue);
+}
+
+.condition-badge.slowed {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid var(--blood-red);
+    color: var(--blood-bright);
+}
+
+.condition-badge.burning {
+    background: rgba(255, 140, 0, 0.2);
+    border: 1px solid #ff8c00;
+    color: #ff8c00;
+    animation: burnPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes burnPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.condition-badge.weakened {
+    background: rgba(184, 190, 203, 0.2);
+    border: 1px solid var(--silver-muted);
+    color: var(--silver-soft);
+}
+
+/* ============================================
+   TURN INDICATOR
+   ============================================ */
+
+.turn-indicator {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.turn-indicator.player-turn {
+    background: rgba(123, 92, 232, 0.2);
+    border: 1px solid var(--violet-primary);
+    color: var(--violet-bright);
+    box-shadow: 0 0 15px rgba(123, 92, 232, 0.3);
+}
+
+.turn-indicator.enemy-turn {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid var(--blood-red);
+    color: var(--blood-bright);
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+    animation: enemyTurnPulse 1s ease-in-out infinite;
+}
+
+@keyframes enemyTurnPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(139, 0, 0, 0.5);
+    }
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.combat-card {
+    background: rgba(21, 19, 34, 0.85);
+    border: 1px solid rgba(123, 92, 232, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.combat-card:hover {
+    border-color: rgba(123, 92, 232, 0.4);
+    box-shadow: 0 4px 20px rgba(123, 92, 232, 0.2);
+}
+
+.combat-card.enemy-card {
+    border-color: rgba(139, 0, 0, 0.3);
+}
+
+.combat-card.enemy-card:hover {
+    border-color: rgba(139, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+}
+
+/* ============================================
+   RESOURCE COUNTERS
+   ============================================ */
+
+.resource-counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(15, 13, 24, 0.5);
+    border: 1px solid rgba(123, 92, 232, 0.1);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.resource-counter.depleted {
+    opacity: 0.5;
+    border-color: rgba(139, 0, 0, 0.3);
+}
+
+.resource-counter:not(.depleted):hover {
+    border-color: rgba(123, 92, 232, 0.3);
+    background: rgba(123, 92, 232, 0.1);
+}
+
+/* ============================================
+   SPELL SLOT DISPLAY
+   ============================================ */
+
+.spell-slot {
+    flex: 1;
+    padding: 8px;
+    background: rgba(15, 13, 24, 0.5);
+    border: 1px solid rgba(123, 92, 232, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.spell-slot:hover {
+    border-color: rgba(123, 92, 232, 0.3);
+    background: rgba(123, 92, 232, 0.1);
+}
+
+.spell-slot.empty {
+    opacity: 0.4;
+    border-color: rgba(139, 0, 0, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .combat-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .fog-effect {
+        opacity: 0.5;
+    }
+    
+    .combat-card {
+        padding: 12px;
+    }
+    
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .combat-btn {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+    
+    .log-entry {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .spell-slot {
+        padding: 6px;
+    }
+    
+    .resource-counter {
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.combat-btn:focus,
+.dice-btn:focus {
+    outline: 2px solid var(--violet-bright);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .combat-card {
+        border-width: 2px;
+    }
+    
+    .combat-btn {
+        border-width: 2px;
+    }
+    
+    .log-entry {
+        border-width: 2px;
+    }
+}

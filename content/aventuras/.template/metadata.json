@@ -1,0 +1,23 @@
+{
+  "id": "aventura-ejemplo",
+  "title": "Nombre de la Aventura",
+  "description": "Descripción breve de la aventura",
+  "category": "aventuras",
+  "order": 0,
+  "created": "2025-01-01T00:00:00Z",
+  "updated": "2025-01-01T00:00:00Z",
+  "published": true,
+  "tags": [],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "level": "1-20",
+    "duration": "4 horas",
+    "players": "3-5",
+    "difficulty": "Medio"
+  }
+}

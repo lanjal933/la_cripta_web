@@ -1,0 +1,29 @@
+{
+  "id": "fuerte-norte",
+  "title": "Fuerte Norte",
+  "description": "Oligarquía con selección democrática. Producción de mármol, roca y minerales plateados. Rezan a Kord, dios de la fuerza.",
+  "category": "ciudades",
+  "order": 2,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "oligarquia",
+    "marmol",
+    "kord",
+    "minerales"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "ciudad",
+    "gobierno": "Oligarquía; selección democrática",
+    "economia": "Mármol, roca, minerales plateados",
+    "religion": "Kord - Dios de la fuerza",
+    "militar": "Militarmente avanzados, sin conflictos"
+  }
+}

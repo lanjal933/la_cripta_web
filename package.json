@@ -1,0 +1,14 @@
+{
+  "name": "la-cripta",
+  "version": "2.0.0",
+  "description": "Sistema de contenido basado en carpetas con descubrimiento automático",
+  "scripts": {
+    "dev": "node server-dev.js",
+    "generate-index": "node scripts/index-generator.js",
+    "migrate": "node scripts/migrate-content.js",
+    "init": "node scripts/index-generator.js --init"
+  },
+  "keywords": ["dnd", "content-management", "folder-based"],
+  "author": "Admin",
+  "license": "MIT"
+}

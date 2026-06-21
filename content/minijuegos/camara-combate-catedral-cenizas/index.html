@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Combate: La Catedral de las Cenizas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fallback styles in case CSS doesn't load */
+        body {
+            background: #1a1512;
+            color: #d4c4b4;
+            font-family: sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #c9a227;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .panel {
+            background: rgba(20, 15, 12, 0.95);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        #start-screen {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+        }
+        #start-screen h2 {
+            color: #c9a227;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #start-screen p {
+            color: #d0c0b0;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .start-btn {
+            padding: 20px 50px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #a0522d;
+        }
+        #game-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cámara de Combate: La Catedral de las Cenizas</h1>
+        
+        <div id="start-screen" class="start-screen panel">
+            <h2>La Catedral de las Cenizas</h2>
+            <p>Una antigua catedral dedicada a una divinidad olvidada fue consumida por una llama sobrenatural. Entre las ruinas permanece el Obispo de Ceniza, un sacerdote corrompido que fusionó su alma con el fuego sagrado.</p>
+            <p>Como Clérigo Enano del Dominio de la Vida nivel 7, debes atravesar la nave principal y derrotarlo antes de ser consumido por las llamas eternas. Utiliza tus hechizos de curación, tu dominio divino y tu fe inquebrantable para purificar este lugar sagrado.</p>
+            <button class="start-btn" onclick="startGame()">Comenzar Combate</button>
+        </div>
+
+        <div id="game-container" class="game-container" style="display: none;">
+            <!-- Panel Izquierdo - Personaje -->
+            <div class="panel character-sheet">
+                <h2>Clérigo Enano</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Nivel:</span>
+                    <span class="stat-value">7</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Raza:</span>
+                    <span class="stat-value">Enano de las Colinas</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Clase:</span>
+                    <span class="stat-value">Clérigo - Dominio de la Vida</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CA:</span>
+                    <span class="stat-value">18</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Movimiento:</span>
+                    <span class="stat-value">25 pies</span>
+                </div>
+                
+                <h3>Puntos de Vida</h3>
+                <div class="hp-bar">
+                    <div id="player-hp-fill" class="hp-fill" style="width: 100%"></div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">PV:</span>
+                    <span class="stat-value"><span id="player-hp">61</span>/61</span>
+                </div>
+
+                <h3>Espacios de Conjuro</h3>
+                <div id="spell-slots">
+                    <span class="resource-badge" id="spell-slots-1">Nivel 1: 4/4</span>
+                    <span class="resource-badge" id="spell-slots-2">Nivel 2: 3/3</span>
+                    <span class="resource-badge" id="spell-slots-3">Nivel 3: 3/3</span>
+                </div>
+
+                <h3>Canalizar Divinidad</h3>
+                <div id="divinity">
+                    <span class="resource-badge" id="channel-divinity">Usos: 2/2</span>
+                </div>
+
+                <h3>Estados</h3>
+                <div id="status-effects" class="status-effects">
+                    <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                </div>
+            </div>
+
+            <!-- Panel Central - Mapa Táctico -->
+            <div class="panel tactical-map">
+                <h2>La Catedral de las Cenizas</h2>
+                <div class="map-container" id="map-container">
+                    <img src="../../../images/battlmap_catedral.jpg" alt="Catedral de las Cenizas" class="map-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22%3E%3Crect fill=%221%231a1512%22 width=%22800%22 height=%22800%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23c9a227%22 font-size=%2224%22 text-anchor=%22middle%22%3ELa Catedral de las Cenizas%3C/text%3E%3C/svg%3E'">
+                    <div class="grid-overlay" id="grid-overlay"></div>
+                    <div id="player-token" class="token player-token" style="left: 50%; top: 80%;">C</div>
+                    <div id="boss-token" class="token boss-token" style="left: 50%; top: 20%;" onclick="selectTarget('boss')">O</div>
+                </div>
+                <div class="map-controls">
+                    <button class="map-btn" id="move-btn" onclick="enableMovement()">Mover</button>
+                    <button class="map-btn" id="end-turn-btn" onclick="endTurn()">Finalizar Turno</button>
+                </div>
+            </div>
+
+            <!-- Panel Derecho - Jefe -->
+            <div class="panel enemy-panel">
+                <h2 id="enemy-name">El Obispo de Ceniza</h2>
+                <div class="enemy-portrait">
+                    <img src="../../../images/obispo_minijuego.jpg" alt="El Obispo de Ceniza" class="enemy-image" style="object-position: center 0%;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%221%231a1512%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23c9a227%22 font-size=%2216%22 text-anchor=%22middle%22%3EObispo%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div id="enemy-info">
+                    <div class="stat-row">
+                        <span class="stat-label">CA:</span>
+                        <span class="stat-value" id="enemy-ac">17</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Movimiento:</span>
+                        <span class="stat-value" id="enemy-movement">30 pies</span>
+                    </div>
+                    
+                    <h3>Fase Actual</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Fase:</span>
+                        <span class="stat-value" id="boss-phase" style="color: #c9a227;">Fase 1</span>
+                    </div>
+                    
+                    <h3>Puntos de Vida</h3>
+                    <div class="enemy-hp-bar">
+                        <div id="enemy-hp-fill" class="enemy-hp-fill" style="width: 100%"></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">PV:</span>
+                        <span class="stat-value"><span id="enemy-hp">145</span>/<span id="enemy-max-hp">145</span></span>
+                    </div>
+
+                    <h3>Habilidades</h3>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Maza de Brasas</div>
+                        <div>Ataque cuerpo a cuerpo con fuego</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Llama Purificadora</div>
+                        <div>Daño de fuego a distancia</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Explosión de Ceniza</div>
+                        <div>Daño en área</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Cadena de Penitencia</div>
+                        <div>Aplica estados negativos</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Juicio del Hereje</div>
+                        <div>Ataque poderoso con reutilización</div>
+                    </div>
+                    <div class="enemy-ability phase2" style="display: none;">
+                        <div class="enemy-ability-name">Tormenta de Brasas</div>
+                        <div>Habilidad de fase 2</div>
+                    </div>
+                    <div class="enemy-ability phase2" style="display: none;">
+                        <div class="enemy-ability-name">Columnas Sagradas</div>
+                        <div>Habilidad de fase 2</div>
+                    </div>
+                    <div class="enemy-ability phase2" style="display: none;">
+                        <div class="enemy-ability-name">Aliento de Ceniza</div>
+                        <div>Habilidad de fase 2</div>
+                    </div>
+                    <div class="enemy-ability phase2" style="display: none;">
+                        <div class="enemy-ability-name">Cólera del Mártir</div>
+                        <div>Habilidad de fase 2</div>
+                    </div>
+
+                    <h3>Objetivo Seleccionado</h3>
+                    <div id="selected-target" class="selected-target">
+                        <span style="color: #c9a227;">El Obispo de Ceniza</span>
+                    </div>
+
+                    <h3>Estados</h3>
+                    <div id="enemy-status" class="status-effects">
+                        <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Inferior - Registro de Combate -->
+            <div class="panel combat-log">
+                <h2>Registro Narrativo</h2>
+                <div id="combat-log">
+                    <div class="log-entry narrative">El combate comienza...</div>
+                </div>
+            </div>
+
+            <!-- Panel de Acciones -->
+            <div class="panel actions-panel">
+                <h2>Acciones</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" id="mace-attack" onclick="maceAttack()">
+                        Ataque con Maza
+                        <span class="cost">Acción | Cuerpo a cuerpo | 1d8+4</span>
+                    </button>
+                    <button class="action-btn" id="symbol-throw" onclick="symbolThrow()">
+                        Lanzar Símbolo Consagrado
+                        <span class="cost">Acción | Distancia | 1d6+3</span>
+                    </button>
+                    <button class="action-btn" id="dodge-action" onclick="dodgeAction()">
+                        Esquivar
+                        <span class="cost">Acción | Desventaja enemigos</span>
+                    </button>
+                    <button class="action-btn" id="dash-action" onclick="dashAction()">
+                        Carrera
+                        <span class="cost">Acción | Movimiento duplicado</span>
+                    </button>
+                    <button class="action-btn" id="disengage-action" onclick="disengageAction()">
+                        Retirada
+                        <span class="cost">Acción | Sin ataques de oportunidad</span>
+                    </button>
+                </div>
+
+                <h3>Hechizos</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="cure-wounds" onclick="cureWounds()">
+                        Curar Heridas (Nivel 1)
+                        <span class="cost">Acción | Curación | 1d8+4</span>
+                    </button>
+                    <button class="action-btn" id="bless" onclick="blessSpell()">
+                        Bendecir (Nivel 1)
+                        <span class="cost">Acción | Concentración | Bonificación ataques</span>
+                    </button>
+                    <button class="action-btn" id="spiritual-weapon" onclick="spiritualWeapon()">
+                        Arma Espiritual (Nivel 2)
+                        <span class="cost">Adicional | Daño recurrente | 1d8+3</span>
+                    </button>
+                    <button class="action-btn" id="lesser-restoration" onclick="lesserRestoration()">
+                        Restablecimiento Menor (Nivel 2)
+                        <span class="cost">Acción | Elimina estados</span>
+                    </button>
+                    <button class="action-btn" id="spirit-guardians" onclick="spiritGuardians()">
+                        Espíritus Guardianes (Nivel 3)
+                        <span class="cost">Acción | Concentración | Aura de daño</span>
+                    </button>
+                    <button class="action-btn" id="beacon-of-hope" onclick="beaconOfHope()">
+                        Faro de Esperanza (Nivel 3)
+                        <span class="cost">Acción | Concentración | Potencia curaciones</span>
+                    </button>
+                </div>
+
+                <h3>Acciones Adicionales</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="healing-word" onclick="healingWord()">
+                        Palabra Sanadora (Nivel 1)
+                        <span class="cost">Adicional | Curación rápida | 1d4+4</span>
+                    </button>
+                    <button class="action-btn" id="defensive-prayer" onclick="defensivePrayer()">
+                        Oración Defensiva
+                        <span class="cost">Adicional | Aumenta defensas</span>
+                    </button>
+                </div>
+
+                <h3>Canalizar Divinidad</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="preserve-life" onclick="preserveLife()">
+                        Preservar la Vida
+                        <span class="cost">Divinidad | Curación masiva</span>
+                    </button>
+                    <button class="action-btn" id="sacred-flame" onclick="sacredFlame()">
+                        Destello Sagrado
+                        <span class="cost">Divinidad | Daño radiante en área</span>
+                    </button>
+                </div>
+
+                <h3>Reacciones</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="opportunity-attack" onclick="opportunityAttack()">
+                        Ataque de Oportunidad
+                        <span class="cost">Reacción | Cuando enemigo se aleja</span>
+                    </button>
+                    <button class="action-btn" id="divine-intervention" onclick="divineIntervention()">
+                        Intervención Divina Menor
+                        <span class="cost">Reacción | Reduce daño recibido</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="victory-modal" class="modal">
+        <div class="modal-content victory">
+            <h2 class="modal-title">¡Victoria!</h2>
+            <p>Has derrotado al Obispo de Ceniza y purificado la Catedral de las Cenizas. Las llamas eternas se apagan y la paz retorna a este lugar sagrado.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Usados</div>
+                    <div class="value" id="victory-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="victory-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="victory-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Hechizos Lanzados</div>
+                    <div class="value" id="victory-spells">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <!-- Modal de Derrota -->
+    <div id="defeat-modal" class="modal">
+        <div class="modal-content defeat">
+            <h2 class="modal-title">Derrota</h2>
+            <p id="defeat-narrative">Las llamas eternas te consumen. Tu fe no fue suficiente para purificar la Catedral de las Cenizas...</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Sobrevividos</div>
+                    <div class="value" id="defeat-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="defeat-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="defeat-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Hechizos Lanzados</div>
+                    <div class="value" id="defeat-spells">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Intentar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

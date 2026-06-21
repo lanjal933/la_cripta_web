@@ -1,0 +1,29 @@
+{
+  "id": "avarus",
+  "title": "Avarus",
+  "description": "Plutocracia donde se gana poder comprando acciones de la ciudad. Producción de joyas y minerales preciosos. Rezan a Abbathor, dios de la Codicia.",
+  "category": "ciudades",
+  "order": 3,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "plutocracia",
+    "joyas",
+    "abbathor",
+    "codicia"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "ciudad",
+    "gobierno": "Plutocracia; acciones de la ciudad",
+    "economia": "Producción de Joyas y minerales preciosos",
+    "religion": "Abbathor - Dios de la Codicia",
+    "militar": "Militarmente Avanzados, 6.700 soldados"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raza-ejemplo",
+  "title": "Nombre de la Raza",
+  "description": "Descripción breve de la raza",
+  "category": "razas",
+  "order": 0,
+  "created": "2025-01-01T00:00:00Z",
+  "updated": "2025-01-01T00:00:00Z",
+  "published": true,
+  "tags": [],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "Humanoide",
+    "size": "Mediano",
+    "speed": "30 pies",
+    "languages": ["Común"]
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Contenido Actual</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #09070f;
+            color: #f8fafc;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            background: #13101c;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #8b5cf6;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #8b5cf6;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #8b5cf6;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .content-item {
+            background: #1a1a2e;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #8b5cf6/30;
+        }
+        .content-name {
+            color: #8b5cf6;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .content-value {
+            background: #0f0f1a;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contenido Actual de LocalStorage</h1>
+        <button onclick="loadContent()">Cargar Contenido</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function dec(d) {
+            try {
+                return decodeURIComponent(escape(atob(d)));
+            } catch (e) {
+                return d;
+            }
+        }
+
+        function loadContent() {
+            const resultDiv = document.getElementById('result');
+            let html = '';
+
+            // Cargar ciudades
+            html += '<h2>Ciudades</h2>';
+            const cityCounter = parseInt(localStorage.getItem('admin_city_counter')) || 4;
+            for (let i = 0; i < cityCounter; i++) {
+                const name = localStorage.getItem(`admin_city${i}_name`) || `Ciudad ${i + 1}`;
+                const content = localStorage.getItem(`admin_city${i}`);
+                html += `
+                    <div class="content-item">
+                        <div class="content-name">${name}</div>
+                        <div class="content-value">${content ? dec(content) : '[Sin contenido]'}</div>
+                    </div>
+                `;
+            }
+
+            // Cargar lore
+            html += '<h2>Lore</h2>';
+            const loreCounter = parseInt(localStorage.getItem('admin_lore_counter')) || 3;
+            for (let i = 0; i < loreCounter; i++) {
+                const name = localStorage.getItem(`admin_lore${i}_name`) || `Era ${i + 1}`;
+                const content = localStorage.getItem(`admin_lore${i}`);
+                html += `
+                    <div class="content-item">
+                        <div class="content-name">${name}</div>
+                        <div class="content-value">${content ? dec(content) : '[Sin contenido]'}</div>
+                    </div>
+                `;
+            }
+
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

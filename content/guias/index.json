@@ -1,0 +1,148 @@
+{
+  "category": "guias",
+  "version": "1.0",
+  "generated": "2026-06-16T21:25:59.815Z",
+  "total": 5,
+  "items": [
+    {
+      "id": "la-conquista",
+      "title": "La Conquista",
+      "description": "La expedición de Vyrreal descubrió Expencior hace 12,250 años. Los humanos llegaron a este nuevo continente y encontraron razas como Tortogas, Orcos, Elfos y Draconicos.",
+      "category": "guias",
+      "order": 1,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "lore",
+        "conquista",
+        "expencior",
+        "vyrreal"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "lore",
+        "periodo": "Hace 12,250 años",
+        "evento": "Llegada de la expedición humana a Expencior"
+      },
+      "path": "./content/guias/la-conquista/"
+    },
+    {
+      "id": "el-declive",
+      "title": "El Declive",
+      "description": "Tras la llegada de los humanos, surgieron conflictos entre las razas originales. Los Orcos intentaron eliminar la expedición, pero los Antiguos se negaron rotundamente.",
+      "category": "guias",
+      "order": 2,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "lore",
+        "declive",
+        "guerra",
+        "conflicto"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "lore",
+        "periodo": "Post-Conquista",
+        "evento": "Guerras entre razas originales y humanos"
+      },
+      "path": "./content/guias/el-declive/"
+    },
+    {
+      "id": "la-amenaza-sombría",
+      "title": "La Amenaza Sombría",
+      "description": "Una amenaza misteriosa acecha Expencior. Los Antiguos cayeron defendiendo a los humanos durante las guerras subsiguientes. Hoy se consideran extintos, aunque su legado permanece.",
+      "category": "guias",
+      "order": 3,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "lore",
+        "amenaza",
+        "antiguos",
+        "sombras"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "lore",
+        "periodo": "Post-Guerra",
+        "evento": "Caída de los Antiguos y amenaza misteriosa"
+      },
+      "path": "./content/guias/la-amenaza-sombría/"
+    },
+    {
+      "id": "tension-en-expencior",
+      "title": "Tensión en Expencior",
+      "description": "Las tensiones entre las razas de Expencior continúan. Los Orcos se retiraron a las sombras, creyéndose extintos algún tiempo. Su población fue diezmada pero no eliminada.",
+      "category": "guias",
+      "order": 4,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "lore",
+        "tension",
+        "expencior",
+        "orcos"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "lore",
+        "periodo": "Actualidad",
+        "evento": "Tensiones políticas y sociales en Expencior"
+      },
+      "path": "./content/guias/tension-en-expencior/"
+    },
+    {
+      "id": "el-inicio-de-un-nuevo-mundo",
+      "title": "El Inicio de un Nuevo Mundo",
+      "description": "Vyrreal viajó con una pequeña expedición, enfrentando mareas caóticas, monstruos marinos y corrientes impredecibles. A los 3 meses, vieron tierra y descubrieron lo que hoy es Expencior.",
+      "category": "guias",
+      "order": 5,
+      "created": "2026-06-16T00:00:00Z",
+      "updated": "2026-06-16T00:00:00Z",
+      "published": true,
+      "tags": [
+        "lore",
+        "viaje",
+        "vyrreal",
+        "descubrimiento"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "lore",
+        "periodo": "Hace 12,250+ años",
+        "evento": "El viaje de Vyrreal y el descubrimiento de Expencior"
+      },
+      "path": "./content/guias/el-inicio-de-un-nuevo-mundo/"
+    }
+  ]
+}

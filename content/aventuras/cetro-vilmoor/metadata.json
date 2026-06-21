@@ -1,0 +1,24 @@
+{
+  "id": "cetro-vilmoor",
+  "title": "El Cetro de Vilmoor",
+  "description": "Una aventura dungeon autocontenida de D&D sin DM. Los personajes exploran las ruinas de Vilmoor en busca del legendario cetro, enfrentándose a guardianes arcanos, descubriendo secretos antiguos y tomando decisiones que cambiarán el destino del artefacto.",
+  "category": "aventuras",
+  "type": "group",
+  "order": 2,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": ["cooperativa", "sin-dm", "dungeon", "misterio", "artefacto"],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "level": "7",
+    "duration": "2-4 horas",
+    "players": "3-5",
+    "difficulty": "Medio"
+  }
+}

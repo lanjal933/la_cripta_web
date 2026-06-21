@@ -1,0 +1,24 @@
+{
+  "id": "camara-combate-ecos-devorador",
+  "title": "Cámara de Combate: Ecos del Devorador",
+  "description": "Un minijuego de combate táctico inspirado en D&D 5e donde enfrentas a un Maestro Mental Psiónico en una antigua cámara psiónica abandonada.",
+  "category": "minijuegos",
+  "order": 1,
+  "created": "2026-06-13T21:49:00Z",
+  "updated": "2026-06-13T21:49:00Z",
+  "published": true,
+  "tags": ["combate", "tactico", "dnd", "psionico", "fantasia"],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "juego",
+    "difficulty": "Difícil",
+    "genre": "Combate Táctico",
+    "players": "1",
+    "duration": "15-30 minutos"
+  }
+}

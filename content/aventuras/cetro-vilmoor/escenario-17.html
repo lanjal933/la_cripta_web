@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escenario 17 - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .scenario-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .scenario-number {
+            font-size: 0.9em;
+            color: #6a8a6a;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #5a7a5a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .scenario-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .image-caption {
+            color: #6a8a6a;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .choice-container {
+            margin: 25px 0;
+        }
+        
+        .choice {
+            margin: 12px 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #8aaa8a;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice:hover:not(.disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .choice.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .choice.selected {
+            background: linear-gradient(180deg, #305030 0%, #3d6a3d 100%);
+            border-color: #4a8a4a;
+            box-shadow: 0 2px 10px rgba(74, 138, 74, 0.5);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a6a8a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8a8aaa;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: linear-gradient(180deg, #0a0a15 0%, #151525 100%);
+            border: 1px solid #2d2d44;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6a6a8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="escenario-16.html" class="back-link">← Volver a la Cámara del Cetro</a>
+        
+        <div class="status-bar">
+            <span>📍 Ubicación: Sala del Ritual</span>
+            <span>🎲 Escenario: 17/20</span>
+        </div>
+        
+        <div class="adventure-header">
+            <div class="scenario-number">Escenario 17</div>
+            <h1 class="scenario-title">Sala del Ritual</h1>
+        </div>
+        
+        <div class="image-container">
+            <img src="../../../images/aventuras/vilmoor-ritual.jpg" alt="Sala del Ritual de Vilmoor" class="scenario-image" onerror="this.style.display='none'">
+            <p class="image-caption">El lugar donde Vilmoor realizó su ritual final</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Narración</h2>
+            <div class="narrative-text">
+                <p>La Sala del Ritual es una cámara octogonal con un altar central de obsidiana negra. Las paredes están cubiertas de runas que pulsan con luz roja, y el aire huele a ozono y sangre seca.</p>
+                
+                <p>Este es el lugar donde Vilmoor realizó su ritual final: el intento de resucitar a su familia usando el cetro. Las runas en las paredes cuentan la historia en detalle: el ritual, el éxito parcial, el horrible coste, la traición de sus discípulos.</p>
+                
+                <p>En el altar, hay restos del ritual: cenizas, huesos calcinados, y fragmentos del cetro que parecen haber sido rotos intencionalmente. Vilmoor no solo falló, fue destruido por su propio poder.</p>
+                
+                <p>Pero hay algo más. En una esquina de la sala, hay un Specter (CR 1) que flota inerte. Es el eco de uno de los discípulos de Vilmoor, atrapado en este lugar por el ritual fallido. El espectro parece consciente, pero incapaz de comunicarse.</p>
+                
+                <p>Las inscripciones en el altar revelan el método para destruir el cetro: debe ser roto en tres lugares específicos mientras se recita un contraconjuro. Los lugares son: el Santuario Central, el Foso Profundo, y la Cámara del Eco.</p>
+                
+                <p>Si queréis destruir el cetro, necesitáis esta información. Si queréis usarlo, el Specter podría tener información sobre cómo hacerlo sin el coste terrible.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💬 Espacio de Roleo</h2>
+            <div class="narrative-text">
+                <p>¿Qué hacen los personajes?</p>
+                <p>¿Deberíais intentar comunicaros con el Specter? ¿Investigar el altar más a fondo? ¿Copiar las inscripciones sobre el método de destrucción? ¿O ignorar esta sala y volver a la Cámara del Cetro?</p>
+                <p>Esta sala contiene información crucial para vuestra decisión final.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Opciones</h2>
+            <div class="choice-container">
+                <div class="choice" onclick="selectChoice('specter')">
+                    <strong>👻 Intentar comunicarse con el Specter</strong><br>
+                    <small>Obtener información del discípulo atrapado</small>
+                </div>
+                <div class="choice" onclick="selectChoice('altar')">
+                    <strong>📜 Investigar el altar</strong><br>
+                    <small>Copiar el método de destrucción</small>
+                </div>
+                <div class="choice" onclick="selectChoice('ignorar')">
+                    <strong>🚪 Ignorar la sala y volver</strong><br>
+                    <small>Tomar vuestra decisión sin esta información</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="rollSection" style="display: none;">
+            <h2 class="section-title">🎲 Tirada Requerida</h2>
+            <div class="roll-section">
+                <div class="roll-title" id="rollTitle"></div>
+                <div class="roll-input">
+                    <div class="roll-field">
+                        <label class="roll-label">Resultado del Dado</label>
+                        <input type="number" class="roll-value" id="diceResult" min="1" max="20">
+                    </div>
+                    <div class="roll-field">
+                        <label class="roll-label">Modificador</label>
+                        <input type="number" class="roll-value" id="modifier" value="0">
+                    </div>
+                    <div class="roll-field">
+                        <label class="roll-label">Tipo</label>
+                        <select class="roll-value" id="rollType">
+                            <option value="normal">Normal</option>
+                            <option value="ventaja">Ventaja</option>
+                            <option value="desventaja">Desventaja</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="roll-button" onclick="executeRoll()">Realizar Tirada</button>
+                <div class="roll-result" id="rollResult"></div>
+            </div>
+        </div>
+        
+        <div class="section" id="consequenceSection" style="display: none;">
+            <h2 class="section-title">📜 Consecuencia</h2>
+            <div class="narrative-text" id="consequenceText"></div>
+            <div class="choice-container" id="nextChoices"></div>
+        </div>
+    </div>
+    
+    <script>
+        let currentChoice = null;
+        let currentDC = 0;
+        
+        const choices = {
+            specter: {
+                dc: 14,
+                skill: "Arcana",
+                success: "El Specter responde a vuestra magia. La voz del discípulo resuena: 'El cetro puede usarse sin coste... pero solo una vez. Y solo para un deseo altruista. Vilmoor intentó usarlo para sí mismo, y por eso falló. Si usáis el cetro para ayudar a otros, quizás... quizás funcionará.'",
+                failure: "El Specter no responde. Su forma se disipa y reaparece en otro lugar, como si os estuviera evitando. No obtenéis información.",
+                next: "escenario-16.html"
+            },
+            altar: {
+                dc: 12,
+                skill: "Investigación",
+                success: "Copiáis las inscripciones del método de destrucción. Para destruir el cetro, debéis romperlo en el Santuario Central mientras recitáis: 'Poder sin propósito es destrucción. Conocimiento sin sabiduría es caos. Retornad al vacío de donde viniste.' Esta información será vital si decidís destruir el cetro.",
+                failure: "Las inscripciones son demasiado complejas para copiar completamente. Solo entendéis fragmentos del método, no suficiente para destruir el cetro con seguridad.",
+                next: "escenario-16.html"
+            },
+            ignorar: {
+                dc: 0,
+                skill: null,
+                success: "",
+                failure: "Decidís ignorar la información de esta sala y volver a la Cámara del Cetro. Tomaréis vuestra decisión final sin el conocimiento adicional que esta sala podría haber proporcionado.",
+                next: "escenario-16.html"
+            }
+        };
+        
+        function selectChoice(choice) {
+            currentChoice = choice;
+            const choiceData = choices[choice];
+            
+            // Lock all choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(c => {
+                c.classList.add('disabled');
+                if (c.getAttribute('onclick').includes(choice)) {
+                    c.classList.add('selected');
+                }
+            });
+            
+            if (choiceData.dc > 0) {
+                document.getElementById('rollSection').style.display = 'block';
+                document.getElementById('rollTitle').textContent = `${choiceData.skill} CD ${choiceData.dc}`;
+                document.getElementById('rollResult').style.display = 'none';
+                document.getElementById('consequenceSection').style.display = 'none';
+            } else {
+                showConsequence(choiceData.failure, choiceData.next);
+            }
+        }
+        
+        function executeRoll() {
+            const diceResult = parseInt(document.getElementById('diceResult').value);
+            const modifier = parseInt(document.getElementById('modifier').value);
+            const rollType = document.getElementById('rollType').value;
+            
+            if (!diceResult || diceResult < 1 || diceResult > 20) {
+                alert('Por favor, introduce un resultado válido del dado (1-20)');
+                return;
+            }
+            
+            let finalResult = diceResult + modifier;
+            let resultText = `Resultado: ${diceResult} + ${modifier} = ${finalResult}`;
+            
+            if (rollType === 'ventaja') {
+                resultText += ' (Ventaja)';
+            } else if (rollType === 'desventaja') {
+                resultText += ' (Desventaja)';
+            }
+            
+            const choiceData = choices[currentChoice];
+            const success = finalResult >= choiceData.dc;
+            
+            const resultDiv = document.getElementById('rollResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'roll-result ' + (success ? 'success' : 'failure');
+            resultDiv.innerHTML = `
+                <p><strong>${resultText}</strong></p>
+                <p>${success ? '✅ Éxito' : '❌ Fallo'}</p>
+            `;
+            
+            setTimeout(() => {
+                showConsequence(success ? choiceData.success : choiceData.failure, choiceData.next);
+            }, 1500);
+        }
+        
+        function showConsequence(text, nextPage) {
+            document.getElementById('consequenceSection').style.display = 'block';
+            document.getElementById('consequenceText').innerHTML = `<p>${text}</p>`;
+            
+            document.getElementById('nextChoices').innerHTML = `
+                <div class="choice" onclick="window.location.href='${nextPage}'">
+                    <strong>➡️ Volver a la Cámara del Cetro</strong>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

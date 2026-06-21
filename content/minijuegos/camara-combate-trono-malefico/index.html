@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Combate: El Trono Malefico</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fallback styles in case CSS doesn't load */
+        body {
+            background: #1a0a0a;
+            color: #d4c4c4;
+            font-family: sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #8b1a1a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .panel {
+            background: rgba(20, 10, 10, 0.95);
+            border: 1px solid rgba(139, 26, 26, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        #start-screen {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+        }
+        #start-screen h2 {
+            color: #a83232;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #start-screen p {
+            color: #d0c0c0;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .start-btn {
+            padding: 20px 50px;
+            background: #6a0a0a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #8b1a1a;
+        }
+        #game-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cámara de Combate: El Trono Malefico</h1>
+        
+        <div id="start-screen" class="start-screen panel">
+            <h2>El Salón del Trono Carmesí</h2>
+            <p>En las profundidades de una fortaleza abandonada se encuentra Thir la Vampira, una antigua noble maldita que ha sobrevivido siglos alimentándose de la sangre de aventureros.</p>
+            <p>Como Cazador de Sangre Tortoga nivel 7, has sido desafiado a un duelo mortal. Thir no lucha sola: puede invocar criaturas de la noche para protegerla. Gestiona tus Maldiciones de Sangre y Amplificaciones estratégicamente para sobrevivir.</p>
+            <button class="start-btn" onclick="startGame()">Comenzar Combate</button>
+        </div>
+
+        <div id="game-container" class="game-container" style="display: none;">
+            <!-- Panel Izquierdo - Personaje -->
+            <div class="panel character-sheet">
+                <h2>Cazador de Sangre</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Nivel:</span>
+                    <span class="stat-value">7</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Raza:</span>
+                    <span class="stat-value">Tortoga</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Clase:</span>
+                    <span class="stat-value">Cazador de Sangre</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">CA:</span>
+                    <span class="stat-value">17</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Movimiento:</span>
+                    <span class="stat-value">30 pies</span>
+                </div>
+                
+                <h3>Puntos de Vida</h3>
+                <div class="hp-bar">
+                    <div id="player-hp-fill" class="hp-fill" style="width: 100%"></div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">PV:</span>
+                    <span class="stat-value"><span id="player-hp">62</span>/62</span>
+                </div>
+
+                <h3>Recursos</h3>
+                <div id="resources">
+                    <span class="resource-badge" id="blood-curses">Maldiciones de Sangre (3)</span>
+                    <span class="resource-badge" id="blood-amplifications">Amplificaciones (2)</span>
+                </div>
+
+                <h3>Estados</h3>
+                <div id="status-effects" class="status-effects">
+                    <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                </div>
+            </div>
+
+            <!-- Panel Central - Mapa Táctico -->
+            <div class="panel tactical-map">
+                <h2>Salón del Trono Carmesí</h2>
+                <div class="map-container" id="map-container">
+                    <img src="../../../images/battlmap_trono_carmesi.jfif" alt="Salón del Trono" class="map-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22%3E%3Crect fill=%221%231a0a0a%22 width=%22800%22 height=%22800%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%238b0000%22 font-size=%2224%22 text-anchor=%22middle%22%3ESalón del Trono Carmesí%3C/text%3E%3C/svg%3E'">
+                    <div class="grid-overlay" id="grid-overlay"></div>
+                    <div id="player-token" class="token player-token" style="left: 50%; top: 80%;">C</div>
+                    <div id="thir-token" class="token thir-token" style="left: 50%; top: 20%;" onclick="selectTarget('thir')">T</div>
+                    <div id="summon1-token" class="token summon-token" style="left: 30%; top: 30%; display: none;" onclick="selectTarget('summon1')">S1</div>
+                    <div id="summon2-token" class="token summon-token" style="left: 70%; top: 30%; display: none;" onclick="selectTarget('summon2')">S2</div>
+                </div>
+                <div class="map-controls">
+                    <button class="map-btn" id="move-btn" onclick="enableMovement()">Mover</button>
+                    <button class="map-btn" id="end-turn-btn" onclick="endTurn()">Finalizar Turno</button>
+                </div>
+            </div>
+
+            <!-- Panel Derecho - Enemigo -->
+            <div class="panel enemy-panel">
+                <h2 id="enemy-name">Thir la Vampira</h2>
+                <div class="enemy-portrait">
+                    <img src="../../../images/thira_la_vampira.jpg" alt="Thir la Vampira" class="enemy-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%221%231a0a0a%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%238b1a1a%22 font-size=%2216%22 text-anchor=%22middle%22%3EThir%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div id="enemy-info">
+                    <div class="stat-row">
+                        <span class="stat-label">CA:</span>
+                        <span class="stat-value" id="enemy-ac">16</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Movimiento:</span>
+                        <span class="stat-value" id="enemy-movement">30 pies</span>
+                    </div>
+                    
+                    <h3>Puntos de Vida</h3>
+                    <div class="enemy-hp-bar">
+                        <div id="enemy-hp-fill" class="enemy-hp-fill" style="width: 100%"></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">PV:</span>
+                        <span class="stat-value"><span id="enemy-hp">120</span>/<span id="enemy-max-hp">120</span></span>
+                    </div>
+
+                    <h3>Habilidades</h3>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Mordida Vampírica</div>
+                        <div>Ataque cuerpo a cuerpo, recupera HP</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Garras Sangrientas</div>
+                        <div>Ataque rápido</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Niebla Escarlata</div>
+                        <div>Reduce visibilidad</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Encanto Vampírico</div>
+                        <div>Estado mental</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Paso Sombrío</div>
+                        <div>Teletransporte corto</div>
+                    </div>
+                    <div class="enemy-ability">
+                        <div class="enemy-ability-name">Lluvia Carmesí</div>
+                        <div>Habilidad poderosa con reutilización</div>
+                    </div>
+
+                    <h3>Invocaciones Activas</h3>
+                    <div id="summons-list" class="summons-list">
+                        <span style="color: #9ca3af; font-style: italic;">Ninguna invocación activa</span>
+                    </div>
+
+                    <h3>Objetivo Seleccionado</h3>
+                    <div id="selected-target" class="selected-target">
+                        <span style="color: #a83232;">Thir la Vampira</span>
+                    </div>
+
+                    <h3>Estados</h3>
+                    <div id="enemy-status" class="status-effects">
+                        <span style="color: #9ca3af; font-style: italic;">Ningún estado activo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Inferior - Registro de Combate -->
+            <div class="panel combat-log">
+                <h2>Registro Narrativo</h2>
+                <div id="combat-log">
+                    <div class="log-entry narrative">El combate comienza...</div>
+                </div>
+            </div>
+
+            <!-- Panel de Acciones -->
+            <div class="panel actions-panel">
+                <h2>Acciones</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" id="sword-attack" onclick="swordAttack()">
+                        Ataque con Espada Bastarda
+                        <span class="cost">Acción | Cuerpo a cuerpo | 1d10+5</span>
+                    </button>
+                    <button class="action-btn" id="crossbow-shot" onclick="crossbowShot()">
+                        Disparo de Ballesta
+                        <span class="cost">Acción | Distancia | 1d6+3</span>
+                    </button>
+                    <button class="action-btn" id="blood-curse" onclick="bloodCurse()">
+                        Maldición de Sangre
+                        <span class="cost">Acción | Maldición | Daño + efecto</span>
+                    </button>
+                    <button class="action-btn" id="dodge-action" onclick="dodgeAction()">
+                        Esquivar
+                        <span class="cost">Acción | Desventaja enemigos</span>
+                    </button>
+                    <button class="action-btn" id="retreat-action" onclick="retreatAction()">
+                        Retirada
+                        <span class="cost">Acción | Sin ataques de oportunidad</span>
+                    </button>
+                    <button class="action-btn" id="dash-action" onclick="dashAction()">
+                        Carrera
+                        <span class="cost">Acción | Movimiento duplicado</span>
+                    </button>
+                </div>
+
+                <h3>Acciones Adicionales</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="amplification" onclick="bloodAmplification()">
+                        Amplificación Carmesí
+                        <span class="cost">Adicional | Amplificación | Bonificación ataque</span>
+                    </button>
+                    <button class="action-btn" id="change-target" onclick="changeTarget()">
+                        Cambio de Objetivo
+                        <span class="cost">Adicional | Cambia objetivo maldición</span>
+                    </button>
+                    <button class="action-btn" id="hunter-prep" onclick="hunterPreparation()">
+                        Preparación de Cazador
+                        <span class="cost">Adicional | Bonificación siguiente ataque</span>
+                    </button>
+                </div>
+
+                <h3>Reacciones</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="opportunity-attack" onclick="opportunityAttack()">
+                        Ataque de Oportunidad
+                        <span class="cost">Reacción | Cuando enemigo se aleja</span>
+                    </button>
+                    <button class="action-btn" id="instinctive-counter" onclick="instinctiveCounter()">
+                        Contraataque Instintivo
+                        <span class="cost">Reacción | Cuando eres atacado</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="victory-modal" class="modal">
+        <div class="modal-content victory">
+            <h2 class="modal-title">¡Victoria!</h2>
+            <p>Has derrotado a Thir la Vampira y purgado el Salón del Trono Carmesí de su maldición.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Usados</div>
+                    <div class="value" id="victory-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="victory-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="victory-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Invocaciones Eliminadas</div>
+                    <div class="value" id="victory-summons">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <!-- Modal de Derrota -->
+    <div id="defeat-modal" class="modal">
+        <div class="modal-content defeat">
+            <h2 class="modal-title">Derrota</h2>
+            <p id="defeat-narrative">Thir la Vampira reclama tu sangre como suya. Tu viaje termina aquí...</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="label">Turnos Sobrevividos</div>
+                    <div class="value" id="defeat-turns">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Infligido</div>
+                    <div class="value" id="defeat-damage-dealt">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Daño Recibido</div>
+                    <div class="value" id="defeat-damage-taken">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">Invocaciones Eliminadas</div>
+                    <div class="value" id="defeat-summons">0</div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="restartGame()">Intentar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

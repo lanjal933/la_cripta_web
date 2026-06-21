@@ -1,0 +1,23 @@
+{
+  "id": "faccion-ejemplo",
+  "title": "Nombre de la Facción",
+  "description": "Descripción breve de la facción",
+  "category": "facciones",
+  "order": 0,
+  "created": "2025-01-01T00:00:00Z",
+  "updated": "2025-01-01T00:00:00Z",
+  "published": true,
+  "tags": [],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "alignment": "Neutral",
+    "headquarters": "",
+    "members": "1000+",
+    "ideology": ""
+  }
+}

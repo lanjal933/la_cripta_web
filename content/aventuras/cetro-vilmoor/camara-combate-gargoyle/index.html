@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Combate: Gargoyle</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .combat-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .combat-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .combat-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #5a7a5a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .enemy-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .enemy-image-container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .enemy-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            border: 2px solid #3d5c3d;
+        }
+        
+        .enemy-description {
+            color: #9aba9a;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .enemy-phrase {
+            color: #8a6a6a;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(180deg, #1a1a0d 0%, #2a2e1a 100%);
+            border: 1px solid #4d4c3d;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .hp-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .hp-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .hp-input-group label {
+            color: #6a8a6a;
+            font-weight: bold;
+        }
+        
+        .hp-input {
+            width: 80px;
+            padding: 8px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #8aaa8a;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        
+        .hp-input:focus {
+            outline: none;
+            border-color: #5a7a5a;
+        }
+        
+        .hp-input:disabled {
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            color: #5a6a5a;
+        }
+        
+        .defeated-players {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .player-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8aaa8a;
+        }
+        
+        .player-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .combat-btn {
+            padding: 15px 30px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #8aaa8a;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 250px;
+        }
+        
+        .combat-btn:hover:not(:disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .combat-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        
+        .damage-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .damage-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .damage-input {
+            width: 100px;
+            padding: 8px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #8aaa8a;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        
+        .damage-input:focus {
+            outline: none;
+            border-color: #5a7a5a;
+        }
+        
+        .action-result {
+            padding: 20px;
+            background: linear-gradient(180deg, #1a1a0d 0%, #2a2e1a 100%);
+            border: 1px solid #4d4c3d;
+            border-radius: 4px;
+            color: #9aba9a;
+            text-align: center;
+            margin: 15px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-result.hidden {
+            display: none;
+        }
+        
+        .continue-btn {
+            padding: 20px 40px;
+            background: linear-gradient(180deg, #2a4a2a 0%, #3d6a3d 100%);
+            border: 2px solid #4a8a4a;
+            border-radius: 6px;
+            color: #aadaaa;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .continue-btn:hover {
+            background: linear-gradient(180deg, #3d6a3d 0%, #4a8a4a 100%);
+            border-color: #5a9a5a;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(74, 138, 74, 0.5);
+        }
+        
+        .continue-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .narrative-text {
+            color: #9aba9a;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a6a8a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8a8aaa;
+        }
+        
+        .target-display {
+            padding: 15px;
+            background: linear-gradient(180deg, #1a1a0d 0%, #2a2e1a 100%);
+            border: 1px solid #4d4c3d;
+            border-radius: 4px;
+            color: #9aba9a;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .target-display.hidden {
+            display: none;
+        }
+        
+        .stats-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+            color: #8aaa8a;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #6a8a6a;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #7a9a7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="combat-container">
+        <a href="../escenario-13.html" class="back-link">← Volver al Escenario 13</a>
+        
+        <div class="combat-header">
+            <h1 class="combat-title">Cámara de Combate: Gargoyle</h1>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Narración</h2>
+            <div class="narrative-text">
+                <p>La estatua de piedra en la esquina de la sala comienza a temblar. Sus ojos, antes vacíos, se iluminan con un rojo siniestro mientras la criatura se desprende de su pedestal.</p>
+                <p>Este Gargoyle es un guardián mágico creado por Vilmoor para proteger el Foso Profundo. Aunque parece de piedra, es una criatura viva con garras afiladas y la capacidad de volar.</p>
+                <p>Los gárgolas son depredadores tácticos que prefieren atacar desde el aire, usando su movilidad para confundir y abrumar a sus presas. Los jugadores deben estar preparados para ataques desde cualquier dirección.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚔️ Enemigo</h2>
+            <div class="enemy-display">
+                <div class="enemy-image-container">
+                    <img src="../../../images/aventuras/gargoyle.jpg" alt="Gargoyle" class="enemy-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%221%231a1a1a%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%234a6a4a%22 font-size=%2224%22 text-anchor=%22middle%22%3EGargoyle%3C/text%3E%3C/svg%3E'">
+                    <p class="enemy-description">Criatura de piedra con alas y garras</p>
+                </div>
+                
+                <div class="enemy-phrase" id="enemyPhrase">
+                    "La estatua abre lentamente los ojos."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">❤️ HP Enemigo</h2>
+            <div class="hp-section">
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <div class="stat-value">80</div>
+                        <div class="stat-label">HP Máximo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">CA</div>
+                    </div>
+                </div>
+                <div class="hp-input-group">
+                    <label>HP Actual:</label>
+                    <input type="number" class="hp-input" id="currentHP" value="80" min="0" max="80">
+                    <label>HP Inicial:</label>
+                    <input type="number" class="hp-input" id="initialHP" value="80" disabled>
+                </div>
+                
+                <div class="defeated-players">
+                    <label style="color: #6a8a6a; font-weight: bold; margin-bottom: 10px;">Jugadores Derrotados:</label>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player1">
+                        <label for="player1">Jugador 1 derrotado</label>
+                    </div>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player2">
+                        <label for="player2">Jugador 2 derrotado</label>
+                    </div>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player3">
+                        <label for="player3">Jugador 3 derrotado</label>
+                    </div>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player4">
+                        <label for="player4">Jugador 4 derrotado</label>
+                    </div>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player5">
+                        <label for="player5">Jugador 5 derrotado</label>
+                    </div>
+                    <div class="player-checkbox">
+                        <input type="checkbox" id="player6">
+                        <label for="player6">Jugador 6 derrotado</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Acciones</h2>
+            <div class="action-buttons">
+                <button class="combat-btn" onclick="selectTarget()">
+                    <strong>🎯 Elegir Objetivo</strong><br>
+                    <small>Seleccionar objetivo del enemigo</small>
+                </button>
+                
+                <div class="target-display hidden" id="targetDisplay"></div>
+                
+                <button class="combat-btn" onclick="generateEnemyAction()">
+                    <strong>🎲 Acción del Enemigo</strong><br>
+                    <small>Generar acción aleatoria</small>
+                </button>
+                
+                <div class="action-result hidden" id="actionResult"></div>
+                
+                <div class="damage-section">
+                    <div class="damage-input-group">
+                        <label style="color: #6a8a6a; font-weight: bold;">Daño Realizado:</label>
+                        <input type="number" class="damage-input" id="damageInput" placeholder="0" min="0">
+                        <button class="combat-btn" onclick="applyDamage()" style="min-width: 150px;">
+                            <strong>➖ Reducir HP</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🏁 Continuar</h2>
+            <div style="text-align: center;">
+                <button class="continue-btn" id="continueBtn" onclick="continueAdventure()" disabled>
+                    Continuar Aventura
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const enemyData = {
+            name: "Gargoyle",
+            maxHP: 80,
+            ca: 15,
+            entryPhrase: "La estatua abre lentamente los ojos.",
+            defeatPhrase: "La criatura vuelve a convertirse en piedra.",
+            defeatReward: "El gárgola se derrumba y deja caer 75 piezas de oro y una gema pequeña.",
+            movement: "Si no está adyacente, vuela hacia el objetivo.",
+            actions: [
+                {
+                    name: "Mordisco",
+                    attack: "+4",
+                    damage: "1d6+2 perforante",
+                    description: "El gárgola muerde con fuerza.",
+                    effect: "Impacta si d20+4 ≥ CA objetivo"
+                },
+                {
+                    name: "Garras",
+                    attack: "+4",
+                    damage: "1d6+2 cortante",
+                    description: "El gárgola rasga con sus garras.",
+                    effect: "Impacta si d20+4 ≥ CA objetivo"
+                },
+                {
+                    name: "Mordisco + Garras",
+                    attack: "+4",
+                    damage: "2 × (1d6+2)",
+                    description: "El gárgola ataca con boca y garras.",
+                    effect: "Dos ataques separados"
+                },
+                {
+                    name: "Picado",
+                    attack: "+4",
+                    damage: "2d6+2",
+                    description: "El gárgola se lanza en picado.",
+                    effect: "Impacta si d20+4 ≥ CA"
+                },
+                {
+                    name: "Vuelo Defensivo",
+                    attack: "-",
+                    damage: "-",
+                    description: "El gárgola se reposiciona.",
+                    effect: "No ataca, se mueve a posición elevada"
+                },
+                {
+                    name: "Ataque Completo",
+                    attack: "+4",
+                    damage: "3 × (1d6+2)",
+                    description: "El gárgola ataca con todo.",
+                    effect: "Mordisco + 2 Garras"
+                }
+            ],
+            combatPhrases: [
+                "Sus alas crean un viento helado al moverse.",
+                "La piedra de su cuerpo parece absorber la luz.",
+                "Sus ojos rojos siguen cada movimiento.",
+                "El sonido de sus garras resuena en la sala."
+            ],
+            damageReactions: [
+                "La piedra se agrieta pero la criatura sigue firme.",
+                "El gárgola aúlla de dolor y se retira momentáneamente.",
+                "Sus alas se desestabilizan por el impacto.",
+                "La criatura se tambalea en el aire."
+            ],
+            halfHPReaction: "El gárgola muestra grietas visibles en su cuerpo de piedra y su vuelo se vuelve más errático y agresivo."
+        };
+        
+        let currentHP = enemyData.maxHP;
+        let initialHP = enemyData.maxHP;
+        let actionCount = 0;
+        let currentTarget = null;
+        let lastAttacker = null;
+        let halfHPTriggered = false;
+        
+        function selectTarget() {
+            const roll = Math.floor(Math.random() * 6) + 1;
+            let target = "";
+            let targetDescription = "";
+            
+            switch(roll) {
+                case 1:
+                case 2:
+                case 3:
+                    const randomPlayer = Math.floor(Math.random() * 6) + 1;
+                    target = `Jugador ${randomPlayer}`;
+                    targetDescription = "Jugador aleatorio";
+                    break;
+                case 4:
+                    target = lastAttacker || "Jugador 1";
+                    targetDescription = "Último atacante";
+                    break;
+                case 5:
+                    target = "Jugador con menos HP";
+                    targetDescription = "Jugador con menos HP";
+                    break;
+                case 6:
+                    target = "Jugador más cercano";
+                    targetDescription = "Jugador más cercano";
+                    break;
+            }
+            
+            currentTarget = target;
+            lastAttacker = target;
+            
+            const targetDiv = document.getElementById('targetDisplay');
+            targetDiv.classList.remove('hidden');
+            targetDiv.innerHTML = `
+                <div>
+                    <strong>🎯 Tirada: ${roll}/6</strong><br><br>
+                    <strong>Objetivo seleccionado:</strong> ${target}<br>
+                    <small>${targetDescription}</small>
+                </div>
+            `;
+        }
+        
+        function generateEnemyAction() {
+            if (!currentTarget) {
+                alert('Primero debes seleccionar un objetivo usando el botón "Elegir Objetivo".');
+                return;
+            }
+            
+            const roll = Math.floor(Math.random() * 6) + 1;
+            const action = enemyData.actions[roll - 1];
+            const combatPhrase = enemyData.combatPhrases[Math.floor(Math.random() * enemyData.combatPhrases.length)];
+            
+            const resultDiv = document.getElementById('actionResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = `
+                <div>
+                    <strong>🎲 Tirada: ${roll}/6</strong><br><br>
+                    <strong>Objetivo:</strong> ${currentTarget}<br><br>
+                    <strong>Movimiento:</strong> ${enemyData.movement}<br><br>
+                    <strong>Acción:</strong> ${action.name}<br>
+                    <strong>Ataque:</strong> ${action.attack}<br>
+                    <strong>Daño:</strong> ${action.damage}<br><br>
+                    <em>${action.description}</em><br><br>
+                    <small>${action.effect}</small><br><br>
+                    <em>"${combatPhrase}"</em>
+                </div>
+            `;
+            
+            actionCount++;
+            
+            if (actionCount % 3 === 0) {
+                document.getElementById('enemyPhrase').textContent = `"${combatPhrase}"`;
+            }
+        }
+        
+        function applyDamage() {
+            const damageInput = document.getElementById('damageInput');
+            const damage = parseInt(damageInput.value) || 0;
+            
+            if (damage <= 0) {
+                alert('Por favor, introduce un daño válido mayor que 0.');
+                return;
+            }
+            
+            currentHP = Math.max(0, currentHP - damage);
+            document.getElementById('currentHP').value = currentHP;
+            
+            const reaction = enemyData.damageReactions[Math.floor(Math.random() * enemyData.damageReactions.length)];
+            const resultDiv = document.getElementById('actionResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = `
+                <div>
+                    <strong>💥 Daño aplicado: -${damage} HP</strong><br><br>
+                    <em>"${reaction}"</em>
+                </div>
+            `;
+            
+            if (currentHP <= enemyData.maxHP / 2 && currentHP > 0 && !halfHPTriggered) {
+                halfHPTriggered = true;
+                setTimeout(() => {
+                    resultDiv.innerHTML += `<br><br><strong>⚠️ ${enemyData.halfHPReaction}</strong>`;
+                }, 1500);
+            }
+            
+            if (currentHP <= 0) {
+                setTimeout(() => {
+                    resultDiv.innerHTML = `
+                        <div>
+                            <strong>💀 ¡Enemigo Derrotado!</strong><br><br>
+                            <em>"${enemyData.defeatPhrase}"</em><br><br>
+                            <strong>🎁 Recompensa:</strong> ${enemyData.defeatReward}
+                        </div>
+                    `;
+                    document.getElementById('enemyPhrase').textContent = `"${enemyData.defeatPhrase}"`;
+                    document.getElementById('continueBtn').disabled = false;
+                }, 2000);
+            }
+            
+            damageInput.value = '';
+        }
+        
+        function continueAdventure() {
+            window.location.href = '../escenario-14.html';
+        }
+        
+        document.getElementById('currentHP').addEventListener('change', function() {
+            currentHP = parseInt(this.value) || 0;
+            if (currentHP <= 0) {
+                document.getElementById('continueBtn').disabled = false;
+                document.getElementById('enemyPhrase').textContent = `"${enemyData.defeatPhrase}"`;
+            }
+        });
+    </script>
+</body>
+</html>

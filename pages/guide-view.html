@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Guía - La Cripta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/admin/admin-access-new.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep': '#080710',
+                        'bg-violet': '#0D0B14',
+                        'bg-panel': '#12101A',
+                        'bg-card': '#181622',
+                        'bg-hover': '#1F1D2B',
+                        'violet-primary': '#8B6CFF',
+                        'violet-soft': '#A78BFF',
+                        'violet-bright': '#C4A8FF',
+                        'violet-deep': '#6B4CE8',
+                        'violet-glow': '#9B7FFF',
+                        'arcane-blue': '#5C8DFF',
+                        'silver-soft': '#BFC5D2',
+                        'white-warm': '#F4F5F7',
+                        'lavender-subtle': '#E8E0FF',
+                    },
+                    fontFamily: {
+                        'title': ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+                        'body': ['"Inter"', '"Manrope"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Manrope', sans-serif;
+            background: #080710;
+            color: #F4F5F7;
+            min-height: 100vh;
+        }
+
+        .premium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 108, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(107, 76, 232, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 80% 60%, rgba(155, 127, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, #080710 0%, #0D0B14 50%, #080710 100%);
+        }
+
+        .flash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #8B6CFF;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .guide-view-container {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+
+        .guide-back-button {
+            background: #181722;
+            color: #BFC5D2;
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-back-button:hover {
+            background: #1F1D2B;
+            border-color: rgba(124, 92, 255, 0.4);
+            color: #F4F5F7;
+        }
+
+        .guide-title {
+            color: #7C5CFF;
+            font-size: 48px;
+            font-family: 'Cinzel', 'Cormorant Garamond', serif;
+            margin-bottom: 16px;
+        }
+
+        .guide-description {
+            color: #BFC5D2;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* Embed Styles */
+        .embed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .embed {
+            background: linear-gradient(135deg, #2A2835 0%, #1F1D2B 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            border-left: 4px solid;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .embed-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .embed-title {
+            color: #F4F5F7;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-family: 'Cinzel', 'Cormorant Garamond', serif;
+        }
+
+        .embed-subtitle {
+            color: #BFC5D2;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .embed-content {
+            padding: 24px;
+            color: #E5E7EB;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .embed-content p {
+            margin-bottom: 16px;
+        }
+
+        .embed-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .embed-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .embed-content li {
+            margin-bottom: 8px;
+        }
+
+        .embed-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .embed-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 24px 0;
+        }
+
+        .embed-content strong {
+            color: #F4F5F7;
+            font-weight: 600;
+        }
+
+        .embed-content em {
+            color: #BFC5D2;
+            font-style: italic;
+        }
+
+        .embed-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .embed-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .embed-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .no-guide {
+            text-align: center;
+            padding: 60px;
+            color: #6B7280;
+        }
+
+        .no-guide-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .no-guide h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #BFC5D2;
+        }
+
+        @media (max-width: 768px) {
+            .guide-view-container {
+                padding: 20px;
+                padding-top: 100px;
+            }
+
+            .guide-title {
+                font-size: 32px;
+            }
+
+            .embed-header {
+                padding: 16px 20px;
+            }
+
+            .embed-content {
+                padding: 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="flashOverlay" class="flash-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-bg-violet/90 backdrop-blur-sm border-b border-violet-primary/20 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors">LA CRIPTA</a>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mapa.html" class="nav-link text-sm uppercase tracking-wider">Mapa</a>
+                    <a href="facciones.html" class="nav-link text-sm uppercase tracking-wider">Facciones</a>
+                    <a href="ciudades.html" class="nav-link text-sm uppercase tracking-wider">Ciudades</a>
+                    <a href="lore.html" class="nav-link text-sm uppercase tracking-wider">Lore</a>
+                    <a href="aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
+                    <a href="destino.html" class="nav-link text-sm uppercase tracking-wider">Destino</a>
+                    <a href="market.html" class="nav-link text-sm uppercase tracking-wider">Market</a>
+                    <a href="guide.html" class="nav-link text-sm uppercase tracking-wider">Guía</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="guide-view-container">
+        <button class="guide-back-button" onclick="goBack()">
+            ← Volver a Guías
+        </button>
+
+        <div id="guideContent">
+            <!-- Guide content loaded dynamically -->
+        </div>
+    </div>
+
+    <script src="../js/core/api-config.js"></script>
+    <script src="../js/guide/guide-data.js"></script>
+    <script src="../js/guide/guide-ui.js"></script>
+</body>
+</html>

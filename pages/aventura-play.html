@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar Aventura - La Cripta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep': '#080710',
+                        'bg-violet': '#0D0B14',
+                        'bg-panel': '#12101A',
+                        'bg-card': '#181622',
+                        'bg-hover': '#1F1D2B',
+                        'violet-primary': '#8B6CFF',
+                        'violet-soft': '#A78BFF',
+                        'violet-bright': '#C4A8FF',
+                        'violet-deep': '#6B4CE8',
+                        'violet-glow': '#9B7FFF',
+                        'arcane-blue': '#5C8DFF',
+                        'silver-soft': '#BFC5D2',
+                        'white-warm': '#F4F5F7',
+                        'lavender-subtle': '#E8E0FF',
+                    },
+                    fontFamily: {
+                        'title': ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+                        'body': ['"Inter"', '"Manrope"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .markdown-content h1 { font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #8B6CFF; }
+        .markdown-content h2 { font-size: 1.5rem; font-weight: bold; margin: 0.75rem 0; color: #A78BFF; }
+        .markdown-content h3 { font-size: 1.25rem; font-weight: bold; margin: 0.5rem 0; color: #C4A8FF; }
+        .markdown-content p { margin: 0.75rem 0; }
+        .markdown-content ul { margin: 0.75rem 0 0.75rem 1.25rem; list-style: disc; }
+        .markdown-content li { margin: 0.25rem 0; }
+        .markdown-content blockquote { margin: 0.75rem 0; padding-left: 1rem; border-left: 2px solid rgba(139, 108, 255, 0.4); color: #BFC5D2; }
+        .markdown-content hr { margin: 1rem 0; border: 0; border-top: 1px solid rgba(139, 108, 255, 0.2); }
+        .markdown-content strong { color: #8B6CFF; }
+        .markdown-content em { color: #C4A8FF; }
+        .choice-btn {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .choice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(124, 92, 255, 0.2);
+        }
+        .dice-roll {
+            animation: roll 0.5s ease-out;
+        }
+        @keyframes roll {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Minigame header and long rules styling */
+        #minigameHeader img { max-height: 14rem; object-fit: cover; }
+        .markdown-content.minigame { max-height: 60vh; overflow-y: auto; padding-right: 0.75rem; }
+    </style>
+</head>
+<body class="font-body text-white-warm min-h-screen bg-bg-deep">
+    <div class="premium-bg"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-8 left-0 right-0 bg-bg-violet/90 backdrop-blur-sm border-b border-violet-primary/20 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="aventuras.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors">LA CRIPTA</a>
+                <div class="flex gap-4">
+                    <a href="aventuras.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">← Volver</a>
+                    <button id="restartBtn" class="text-sm uppercase tracking-wider text-violet-primary hover:text-violet-soft hidden">🔄 Reiniciar</button>
+                    <button id="saveBtn" class="text-sm uppercase tracking-wider text-violet-primary hover:text-violet-soft">💾 Guardar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-28 pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-primary mx-auto"></div>
+                <p class="text-silver-soft mt-4">Cargando juego...</p>
+            </div>
+
+            <!-- Character Assignment Modal -->
+            <div id="characterAssignmentModal" class="hidden">
+                <div class="bg-bg-card/90 border border-violet-primary/20 rounded-lg p-8 card text-center">
+                    <div class="text-6xl mb-4">🎭</div>
+                    <h2 class="font-title text-3xl text-violet-primary mb-4">Asignación de Personajes</h2>
+                    <p class="text-silver-soft text-lg mb-6">Deben repartirse un personaje con sus stats por participante</p>
+                    <div id="partyAssignmentList" class="space-y-4 mb-6">
+                        <!-- Party members will be loaded here -->
+                    </div>
+                    <button id="startAdventureBtn" class="btn-primary font-bold py-3 px-8 rounded-lg">
+                        Comenzar Juego
+                    </button>
+                </div>
+            </div>
+
+            <!-- Adventure Content -->
+            <div id="adventureContent" class="hidden">
+                <!-- Party Panel -->
+                <div id="partyPanel" class="bg-bg-card/90 border border-violet-primary/20 rounded-lg p-4 mb-6 card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-title text-lg text-violet-primary">🎭 Party</h3>
+                        <button id="togglePartyPanel" class="text-silver-soft hover:text-white-warm text-sm">▼</button>
+                    </div>
+                    <div id="partyList" class="space-y-3">
+                        <!-- Party members will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Active Character Panel -->
+                <div id="characterPanel" class="bg-bg-card/90 border border-violet-primary/20 rounded-lg p-4 mb-6 card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-title text-lg text-violet-primary">Personaje Activo</h3>
+                        <button id="toggleCharacterPanel" class="text-silver-soft hover:text-white-warm text-sm">▼</button>
+                    </div>
+                    <div id="activeCharacterInfo" class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span id="activeCharacterName" class="font-title text-xl text-violet-primary">-</span>
+                            <span id="activeCharacterClass" class="bg-bg-panel text-silver-soft text-sm px-2 py-1 rounded">-</span>
+                        </div>
+                    </div>
+                    <div id="characterStats" class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">HP</span>
+                            <span id="statHp" class="text-white-warm font-bold ml-2">100/100</span>
+                        </div>
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">FUE</span>
+                            <span id="statStr" class="text-white-warm font-bold ml-2">10</span>
+                        </div>
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">DES</span>
+                            <span id="statDex" class="text-white-warm font-bold ml-2">10</span>
+                        </div>
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">INT</span>
+                            <span id="statInt" class="text-white-warm font-bold ml-2">10</span>
+                        </div>
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">SAB</span>
+                            <span id="statWis" class="text-white-warm font-bold ml-2">10</span>
+                        </div>
+                        <div class="bg-bg-panel/50 p-3 rounded">
+                            <span class="text-silver-soft">CAR</span>
+                            <span id="statCha" class="text-white-warm font-bold ml-2">10</span>
+                        </div>
+                    </div>
+                    <div id="inventoryPanel" class="mt-4 hidden">
+                        <h4 class="text-silver-soft text-sm mb-2">Inventario</h4>
+                        <div id="inventoryList" class="flex flex-wrap gap-2">
+                            <!-- Items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dice Panel -->
+                <div id="dicePanel" class="bg-bg-card/90 border border-violet-primary/20 rounded-lg p-4 mb-6 card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-title text-lg text-violet-primary">🎲 Dados</h3>
+                        <button id="toggleDicePanel" class="text-silver-soft hover:text-white-warm text-sm">▼</button>
+                    </div>
+                    <div id="diceButtons" class="flex flex-wrap gap-2">
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d20">d20</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d12">d12</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d10">d10</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d8">d8</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d6">d6</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d4">d4</button>
+                        <button class="dice-btn bg-bg-panel hover:bg-bg-hover text-white px-4 py-2 rounded transition-colors" data-dice="d100">d100</button>
+                    </div>
+                    <div id="rollHistory" class="mt-4 max-h-32 overflow-y-auto text-sm">
+                        <!-- Roll history will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Minigame Header (hidden by default) -->
+                <div id="minigameHeader" class="hidden mb-6">
+                    <div class="bg-bg-card/90 border border-violet-primary/20 rounded-lg overflow-hidden">
+                        <img id="minigameCover" src="" alt="Cover" class="w-full h-56 object-cover">
+                        <div class="p-4">
+                            <h2 id="minigameTitle" class="font-title text-2xl text-violet-primary mb-2"></h2>
+                            <p id="minigameDesc" class="text-silver-soft"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter Content -->
+                <div id="chapterContent" class="bg-bg-card/90 border border-violet-primary/20 rounded-lg p-6 mb-6 card fade-in">
+                    <h2 id="chapterTitle" class="font-title text-3xl text-violet-primary mb-4"></h2>
+                    
+                    <div id="chapterNarrative" class="markdown-content text-silver-soft text-lg leading-relaxed mb-6"></div>
+                    
+                    <!-- Dice Results -->
+                    <div id="diceResults" class="hidden mb-6 p-4 bg-bg-panel/50 rounded-lg border border-violet-primary/20">
+                        <h4 class="font-title text-lg text-violet-primary mb-2">🎲 Resultado de Dados</h4>
+                        <div id="diceResultContent"></div>
+                    </div>
+                    
+                    <!-- Check Results -->
+                    <div id="checkResults" class="hidden mb-6 p-4 bg-bg-panel/50 rounded-lg border border-violet-primary/20">
+                        <h4 class="font-title text-lg text-violet-primary mb-2">🔍 Verificación</h4>
+                        <div id="checkResultContent"></div>
+                    </div>
+                    
+                    <!-- Choices -->
+                    <div id="choicesContainer" class="space-y-3"></div>
+                </div>
+
+                <!-- Progress -->
+                <div class="bg-bg-card/90 border border-violet-primary/10 rounded-lg p-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-silver-soft">Progreso</span>
+                        <span id="progressText" class="text-silver-soft">Nodo actual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dice Roll Modal -->
+    <div id="diceRollModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-bg-card border border-violet-primary/20 rounded-lg max-w-md w-full p-6 card">
+            <h3 class="font-title text-2xl text-violet-primary mb-4">🎲 Tirar Dados</h3>
+            <div class="mb-4">
+                <label class="block text-sm text-silver-soft mb-2">Fórmula (ej: 2d6+3)</label>
+                <input type="text" id="diceFormula" class="w-full bg-bg-panel border border-violet-primary/20 text-white p-3 rounded focus:border-violet-primary focus:outline-none" placeholder="2d6+3">
+            </div>
+            <div class="flex gap-4">
+                <button id="rollDiceBtn" class="flex-1 btn-primary font-bold py-3 px-6 rounded-lg">
+                    Tirar
+                </button>
+                <button id="closeDiceModal" class="flex-1 bg-bg-hover hover:bg-bg-card text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">
+                    Cancelar
+                </button>
+            </div>
+            <div id="diceRollResult" class="mt-4 text-center hidden">
+                <div class="text-4xl font-bold text-violet-primary dice-roll"></div>
+                <div class="text-silver-soft mt-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/core/adventure-engine.js"></script>
+    <script src="../js/adventure/adventure-play-ui.js"></script>
+</body>
+</html>

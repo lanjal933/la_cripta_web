@@ -1,0 +1,24 @@
+{
+  "id": "caza-alfa-gris",
+  "title": "La Caza del Alfa Gris",
+  "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Paladín nivel 4 enfrenta a una manada de lobos liderada por un Alfa en un bosque nocturno.",
+  "category": "minijuegos",
+  "order": 2,
+  "created": "2026-06-14T00:00:00Z",
+  "updated": "2026-06-14T00:00:00Z",
+  "published": true,
+  "tags": ["combate", "tactico", "dnd", "paladin", "lobos", "fantasia"],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "juego",
+    "difficulty": "Medio",
+    "genre": "Combate Táctico",
+    "players": "1",
+    "duration": "20-40 minutos"
+  }
+}

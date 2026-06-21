@@ -1,0 +1,484 @@
+{
+  "version": "1.0",
+  "generated": "2026-06-16T21:25:59.815Z",
+  "categories": [
+    "aventuras",
+    "ciudades",
+    "minijuegos",
+    "facciones",
+    "razas",
+    "guias"
+  ],
+  "indices": {
+    "aventuras": {
+      "category": "aventuras",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.806Z",
+      "total": 1,
+      "items": [
+        {
+          "id": "escape-prision-moorgon",
+          "title": "El Escape de la Prisión Moorgön",
+          "description": "Una aventura cooperativa sin DM inspirada en D&D, RPGs clásicos, novelas interactivas y escape rooms narrativos. Los personajes despiertan en la misteriosa Prisión Moorgön sin recordar cómo llegaron allí.",
+          "category": "aventuras",
+          "type": "group",
+          "order": 1,
+          "created": "2025-06-14T00:00:00Z",
+          "updated": "2025-06-14T00:00:00Z",
+          "published": true,
+          "tags": [
+            "cooperativa",
+            "sin-dm",
+            "misterio",
+            "prision",
+            "escape"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "level": "5",
+            "duration": "3-4 horas",
+            "players": "3-6",
+            "difficulty": "Medio"
+          },
+          "path": "./content/aventuras/escape-prision-moorgon/"
+        }
+      ]
+    },
+    "ciudades": {
+      "category": "ciudades",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.809Z",
+      "total": 4,
+      "items": [
+        {
+          "id": "mordicuis",
+          "title": "Mordicuis",
+          "description": "Ciudad con sistema presidencial, refinamiento de productos y gran centro de comercios. Rezan a Bane, el señor Oscuro.",
+          "category": "ciudades",
+          "order": 1,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "presidencialismo",
+            "comercio",
+            "bane",
+            "refinamiento"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "ciudad",
+            "gobierno": "Presidencialismo",
+            "economia": "Refinamiento de Productos y Gran centro de comercios",
+            "religion": "Bane - Señor Oscuro",
+            "militar": "Militarmente subdesarrollados, protección interna"
+          },
+          "path": "./content/ciudades/mordicuis/"
+        },
+        {
+          "id": "fuerte-norte",
+          "title": "Fuerte Norte",
+          "description": "Oligarquía con selección democrática. Producción de mármol, roca y minerales plateados. Rezan a Kord, dios de la fuerza.",
+          "category": "ciudades",
+          "order": 2,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "oligarquia",
+            "marmol",
+            "kord",
+            "minerales"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "ciudad",
+            "gobierno": "Oligarquía; selección democrática",
+            "economia": "Mármol, roca, minerales plateados",
+            "religion": "Kord - Dios de la fuerza",
+            "militar": "Militarmente avanzados, sin conflictos"
+          },
+          "path": "./content/ciudades/fuerte-norte/"
+        },
+        {
+          "id": "avarus",
+          "title": "Avarus",
+          "description": "Plutocracia donde se gana poder comprando acciones de la ciudad. Producción de joyas y minerales preciosos. Rezan a Abbathor, dios de la Codicia.",
+          "category": "ciudades",
+          "order": 3,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "plutocracia",
+            "joyas",
+            "abbathor",
+            "codicia"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "ciudad",
+            "gobierno": "Plutocracia; acciones de la ciudad",
+            "economia": "Producción de Joyas y minerales preciosos",
+            "religion": "Abbathor - Dios de la Codicia",
+            "militar": "Militarmente Avanzados, 6.700 soldados"
+          },
+          "path": "./content/ciudades/avarus/"
+        },
+        {
+          "id": "reino-esmeralda",
+          "title": "Reino Esmeralda",
+          "description": "Consejo de Tortogas ancianas; teocracia natural. Producción de hongos, resinas, madera viva y medicina natural. Rezan a Sylvara, Madre del Bosque Eterno.",
+          "category": "ciudades",
+          "order": 4,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "teocracia",
+            "bosque",
+            "sylvara",
+            "tortogas"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "ciudad",
+            "gobierno": "Consejo de Tortogas ancianas; teocracia natural",
+            "economia": "Hongos, resinas, madera viva, medicina natural",
+            "religion": "Sylvara - Madre del Bosque Eterno",
+            "militar": "Defensa del bosque, druidas y criaturas aliadas"
+          },
+          "path": "./content/ciudades/reino-esmeralda/"
+        }
+      ]
+    },
+    "minijuegos": {
+      "category": "minijuegos",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.811Z",
+      "total": 4,
+      "items": [
+        {
+          "id": "camara-combate-ecos-devorador",
+          "title": "Cámara de Combate: Ecos del Devorador",
+          "description": "Un minijuego de combate táctico inspirado en D&D 5e donde enfrentas a un Maestro Mental Psiónico en una antigua cámara psiónica abandonada.",
+          "category": "minijuegos",
+          "order": 1,
+          "created": "2026-06-13T21:49:00Z",
+          "updated": "2026-06-13T21:49:00Z",
+          "published": true,
+          "tags": [
+            "combate",
+            "tactico",
+            "dnd",
+            "psionico",
+            "fantasia"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "juego",
+            "difficulty": "Difícil",
+            "genre": "Combate Táctico",
+            "players": "1",
+            "duration": "15-30 minutos"
+          },
+          "path": "./content/minijuegos/camara-combate-ecos-devorador/"
+        },
+        {
+          "id": "caza-alfa-gris",
+          "title": "La Caza del Alfa Gris",
+          "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Paladín nivel 4 enfrenta a una manada de lobos liderada por un Alfa en un bosque nocturno.",
+          "category": "minijuegos",
+          "order": 2,
+          "created": "2026-06-14T00:00:00Z",
+          "updated": "2026-06-14T00:00:00Z",
+          "published": true,
+          "tags": [
+            "combate",
+            "tactico",
+            "dnd",
+            "paladin",
+            "lobos",
+            "fantasia"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "juego",
+            "difficulty": "Medio",
+            "genre": "Combate Táctico",
+            "players": "1",
+            "duration": "20-40 minutos"
+          },
+          "path": "./content/minijuegos/caza-alfa-gris/"
+        },
+        {
+          "id": "camara-combate-trono-malefico",
+          "title": "Cámara de Combate: El Trono Malefico",
+          "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Cazador de Sangre Tortoga nivel 7 enfrenta a Thir la Vampira en su trono gótico, con invocaciones de criaturas de la noche.",
+          "category": "minijuegos",
+          "order": 3,
+          "created": "2026-06-14T00:00:00Z",
+          "updated": "2026-06-14T00:00:00Z",
+          "published": true,
+          "tags": [
+            "combate",
+            "tactico",
+            "dnd",
+            "vampiro",
+            "gothic",
+            "fantasia",
+            "invocaciones"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "juego",
+            "difficulty": "Difícil",
+            "genre": "Combate Táctico",
+            "players": "1",
+            "duration": "25-45 minutos"
+          },
+          "path": "./content/minijuegos/camara-combate-trono-malefico/"
+        },
+        {
+          "id": "camara-combate-catedral-cenizas",
+          "title": "Cámara de Combate: La Catedral de las Cenizas",
+          "description": "Un minijuego de combate táctico narrativo contra jefe inspirado en D&D 5e donde un Clérigo Enano del Dominio de la Vida nivel 7 enfrenta al Obispo de Ceniza en una catedral en llamas, con dos fases de combate y sistema de hechizos completo.",
+          "category": "minijuegos",
+          "order": 4,
+          "created": "2026-06-14T00:00:00Z",
+          "updated": "2026-06-14T00:00:00Z",
+          "published": true,
+          "tags": [
+            "combate",
+            "tactico",
+            "dnd",
+            "jefe",
+            "fantasia",
+            "clerigo",
+            "dos-fases",
+            "narrativo"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "juego",
+            "difficulty": "Difícil",
+            "genre": "Combate Táctico contra Jefe",
+            "players": "1",
+            "duration": "30-50 minutos",
+            "characterLevel": 7,
+            "bossLevel": 9,
+            "phases": 2
+          },
+          "path": "./content/minijuegos/camara-combate-catedral-cenizas/"
+        }
+      ]
+    },
+    "facciones": {
+      "category": "facciones",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.812Z",
+      "total": 0,
+      "items": []
+    },
+    "razas": {
+      "category": "razas",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.813Z",
+      "total": 0,
+      "items": []
+    },
+    "guias": {
+      "category": "guias",
+      "version": "1.0",
+      "generated": "2026-06-16T21:25:59.815Z",
+      "total": 5,
+      "items": [
+        {
+          "id": "la-conquista",
+          "title": "La Conquista",
+          "description": "La expedición de Vyrreal descubrió Expencior hace 12,250 años. Los humanos llegaron a este nuevo continente y encontraron razas como Tortogas, Orcos, Elfos y Draconicos.",
+          "category": "guias",
+          "order": 1,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "lore",
+            "conquista",
+            "expencior",
+            "vyrreal"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "lore",
+            "periodo": "Hace 12,250 años",
+            "evento": "Llegada de la expedición humana a Expencior"
+          },
+          "path": "./content/guias/la-conquista/"
+        },
+        {
+          "id": "el-declive",
+          "title": "El Declive",
+          "description": "Tras la llegada de los humanos, surgieron conflictos entre las razas originales. Los Orcos intentaron eliminar la expedición, pero los Antiguos se negaron rotundamente.",
+          "category": "guias",
+          "order": 2,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "lore",
+            "declive",
+            "guerra",
+            "conflicto"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "lore",
+            "periodo": "Post-Conquista",
+            "evento": "Guerras entre razas originales y humanos"
+          },
+          "path": "./content/guias/el-declive/"
+        },
+        {
+          "id": "la-amenaza-sombría",
+          "title": "La Amenaza Sombría",
+          "description": "Una amenaza misteriosa acecha Expencior. Los Antiguos cayeron defendiendo a los humanos durante las guerras subsiguientes. Hoy se consideran extintos, aunque su legado permanece.",
+          "category": "guias",
+          "order": 3,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "lore",
+            "amenaza",
+            "antiguos",
+            "sombras"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "lore",
+            "periodo": "Post-Guerra",
+            "evento": "Caída de los Antiguos y amenaza misteriosa"
+          },
+          "path": "./content/guias/la-amenaza-sombría/"
+        },
+        {
+          "id": "tension-en-expencior",
+          "title": "Tensión en Expencior",
+          "description": "Las tensiones entre las razas de Expencior continúan. Los Orcos se retiraron a las sombras, creyéndose extintos algún tiempo. Su población fue diezmada pero no eliminada.",
+          "category": "guias",
+          "order": 4,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "lore",
+            "tension",
+            "expencior",
+            "orcos"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "lore",
+            "periodo": "Actualidad",
+            "evento": "Tensiones políticas y sociales en Expencior"
+          },
+          "path": "./content/guias/tension-en-expencior/"
+        },
+        {
+          "id": "el-inicio-de-un-nuevo-mundo",
+          "title": "El Inicio de un Nuevo Mundo",
+          "description": "Vyrreal viajó con una pequeña expedición, enfrentando mareas caóticas, monstruos marinos y corrientes impredecibles. A los 3 meses, vieron tierra y descubrieron lo que hoy es Expencior.",
+          "category": "guias",
+          "order": 5,
+          "created": "2026-06-16T00:00:00Z",
+          "updated": "2026-06-16T00:00:00Z",
+          "published": true,
+          "tags": [
+            "lore",
+            "viaje",
+            "vyrreal",
+            "descubrimiento"
+          ],
+          "thumbnail": "",
+          "author": "Admin",
+          "content": {
+            "type": "html",
+            "file": "index.html"
+          },
+          "metadata": {
+            "type": "lore",
+            "periodo": "Hace 12,250+ años",
+            "evento": "El viaje de Vyrreal y el descubrimiento de Expencior"
+          },
+          "path": "./content/guias/el-inicio-de-un-nuevo-mundo/"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escenario 9 - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .scenario-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .scenario-number {
+            font-size: 0.9em;
+            color: #6a8a6a;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #5a7a5a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .scenario-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .image-caption {
+            color: #6a8a6a;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .choice-container {
+            margin: 25px 0;
+        }
+        
+        .choice {
+            margin: 12px 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #8aaa8a;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice:hover:not(.disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .choice.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .choice.selected {
+            background: linear-gradient(180deg, #305030 0%, #3d6a3d 100%);
+            border-color: #4a8a4a;
+            box-shadow: 0 2px 10px rgba(74, 138, 74, 0.5);
+        }
+        
+        .roll-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #0a150a 0%, #152515 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 6px;
+        }
+        
+        .roll-title {
+            color: #7a9a7a;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .roll-input {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .roll-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .roll-label {
+            color: #6a8a6a;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .roll-value {
+            padding: 10px;
+            background: #1a2e1a;
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            color: #9aba9a;
+            font-size: 1em;
+        }
+        
+        .roll-button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(180deg, #2a4a2a 0%, #3a5a3a 100%);
+            border: 1px solid #4a6a4a;
+            border-radius: 6px;
+            color: #9aba9a;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .roll-button:hover {
+            background: linear-gradient(180deg, #3a5a3a 0%, #4a7a4a 100%);
+            border-color: #5a8a5a;
+        }
+        
+        .roll-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border-left: 3px solid #4a6a4a;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .roll-result.success {
+            border-left-color: #3a8a3a;
+        }
+        
+        .roll-result.failure {
+            border-left-color: #8a3a3a;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a8a6a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8aaa8a;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: linear-gradient(180deg, #0a150a 0%, #152515 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6a8a6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="escenario-08.html" class="back-link">← Volver al Archivo Sellado</a>
+        
+        <div class="status-bar">
+            <span>📍 Ubicación: Vigilante Arcano</span>
+            <span>🎲 Escenario: 9/20</span>
+        </div>
+        
+        <div class="adventure-header">
+            <div class="scenario-number">Escenario 9</div>
+            <h1 class="scenario-title">Vigilante Arcano</h1>
+        </div>
+        
+        <div class="image-container">
+            <img src="../../../images/aventuras/vilmoor-vigilante.jpg" alt="Vigilante Arcano de Vilmoor" class="scenario-image" onerror="this.style.display='none'">
+            <p class="image-caption">El Vigilante Arcano flota sobre el pedestal</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Narración</h2>
+            <div class="narrative-text">
+                <p>El Vigilante Arcano es un Shield Guardian modificado, una esfera de metal flotante con un único ojo que brilla con luz azul. Su cuerpo está cubierto de runas de protección que pulsan con energía, y sus movimientos son fluidos, casi como si fuera una criatura viva en lugar de un constructo.</p>
+                
+                <p>El Vigilante no es un simple guardián automático. Tiene inteligencia, memoria, y un propósito: proteger el conocimiento peligroso de quienes no están preparados para él. Su ojo os observa, calculando vuestras intenciones, vuestras capacidades, y vuestro valor.</p>
+                
+                <p>Si lograsteis obtener la Llave Azul sin combate, el Vigilante os permite pasar. Si tuvisteis que luchar, el constructo yace inerte en el suelo, su ojo apagado. En cualquier caso, tenéis la llave y podéis continuar.</p>
+                
+                <p>Pero hay algo más. El Vigilante, incluso derrotado o complaciente, os transmite un último mensaje: "El guardián final no es lo que parece. No es un constructo, ni un monstruo. Es... algo más. Cuidado con el Santuario Central."</p>
+                
+                <p>Con la Llave Azul en vuestras manos, podéis abrir el camino hacia el Santuario Central. Pero primero necesitáis la Llave Roja, que se encuentra en el Foso Profundo.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💬 Espacio de Roleo</h2>
+            <div class="narrative-text">
+                <p>¿Qué hacen los personajes?</p>
+                <p>¿Deberíais volver al Cruce Principal para planificar el siguiente paso? ¿Hay alguna información más que podéis obtener del Vigilante? ¿Qué significa "el guardián final no es lo que parece"?</p>
+                <p>Este es un momento para reflexionar sobre lo que habéis aprendido y planificar el camino hacia la Llave Roja.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Opciones</h2>
+            <div class="choice-container">
+                <div class="choice" onclick="selectChoice('cruce')">
+                    <strong>🔄 Volver al Cruce Principal</strong><br>
+                    <small>Planificar el siguiente movimiento</small>
+                </div>
+                <div class="choice" onclick="selectChoice('fosos')">
+                    <strong>⬇️ Ir directamente al Foso Profundo</strong><br>
+                    <small>Buscar la Llave Roja</small>
+                </div>
+                <div class="choice" onclick="selectChoice('cuarteles')">
+                    <strong>⚔️ Explorar los Cuarteles Abandonados</strong><br>
+                    <small>Buscar el atajo mencionado</small>
+                </div>
+                <div class="choice" onclick="selectChoice('descanso')">
+                    <strong>🛑 Tomar un descanso breve</strong><br>
+                    <small>Recuperar fuerzas y planificar</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="consequenceSection" style="display: none;">
+            <h2 class="section-title">📜 Consecuencia</h2>
+            <div class="narrative-text" id="consequenceText"></div>
+            <div class="choice-container" id="nextChoices"></div>
+        </div>
+    </div>
+    
+    <script>
+        let currentChoice = null;
+        
+        const choices = {
+            cruce: {
+                next: "escenario-06.html",
+                text: "Volvéis al Cruce Principal. Desde aquí, podéis decidir vuestro próximo movimiento. La Llave Azul está en vuestras manos, pero aún necesitáis la Llave Roja para acceder al Santuario Central."
+            },
+            fosos: {
+                next: "escenario-13.html",
+                text: "Descendéis directamente hacia el Foso Profundo. El pasillo se vuelve más oscuro y el aire más frío. El zumbido se transforma en un grito distante que parece venir de las profundidades."
+            },
+            cuarteles: {
+                next: "escenario-11.html",
+                text: "Decidís explorar los Cuarteles Abandonados. Quizás el atajo mencionado en las notas de la biblioteca os permita llegar al Foso Profundo más rápidamente o encontrar algo útil."
+            },
+            descanso: {
+                next: "escenario-10.html",
+                text: "Tomáis un descanso breve en el Archivo Sellado. Las runas de protección os proporcionan un refugio temporal. Podéis recuperar recursos y planificar vuestra estrategia."
+            }
+        };
+        
+        function selectChoice(choice) {
+            currentChoice = choice;
+            const choiceData = choices[choice];
+            
+            // Lock all choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(c => {
+                c.classList.add('disabled');
+                if (c.getAttribute('onclick').includes(choice)) {
+                    c.classList.add('selected');
+                }
+            });
+            
+            showConsequence(choiceData.text, choiceData.next);
+        }
+        
+        function showConsequence(text, nextPage) {
+            document.getElementById('consequenceSection').style.display = 'block';
+            document.getElementById('consequenceText').innerHTML = `<p>${text}</p>`;
+            
+            document.getElementById('nextChoices').innerHTML = `
+                <div class="choice" onclick="window.location.href='${nextPage}'">
+                    <strong>➡️ Continuar</strong>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

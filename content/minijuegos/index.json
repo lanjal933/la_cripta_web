@@ -1,0 +1,141 @@
+{
+  "category": "minijuegos",
+  "version": "1.0",
+  "generated": "2026-06-16T21:25:59.811Z",
+  "total": 4,
+  "items": [
+    {
+      "id": "camara-combate-ecos-devorador",
+      "title": "Cámara de Combate: Ecos del Devorador",
+      "description": "Un minijuego de combate táctico inspirado en D&D 5e donde enfrentas a un Maestro Mental Psiónico en una antigua cámara psiónica abandonada.",
+      "category": "minijuegos",
+      "order": 1,
+      "created": "2026-06-13T21:49:00Z",
+      "updated": "2026-06-13T21:49:00Z",
+      "published": true,
+      "tags": [
+        "combate",
+        "tactico",
+        "dnd",
+        "psionico",
+        "fantasia"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "juego",
+        "difficulty": "Difícil",
+        "genre": "Combate Táctico",
+        "players": "1",
+        "duration": "15-30 minutos"
+      },
+      "path": "./content/minijuegos/camara-combate-ecos-devorador/"
+    },
+    {
+      "id": "caza-alfa-gris",
+      "title": "La Caza del Alfa Gris",
+      "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Paladín nivel 4 enfrenta a una manada de lobos liderada por un Alfa en un bosque nocturno.",
+      "category": "minijuegos",
+      "order": 2,
+      "created": "2026-06-14T00:00:00Z",
+      "updated": "2026-06-14T00:00:00Z",
+      "published": true,
+      "tags": [
+        "combate",
+        "tactico",
+        "dnd",
+        "paladin",
+        "lobos",
+        "fantasia"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "juego",
+        "difficulty": "Medio",
+        "genre": "Combate Táctico",
+        "players": "1",
+        "duration": "20-40 minutos"
+      },
+      "path": "./content/minijuegos/caza-alfa-gris/"
+    },
+    {
+      "id": "camara-combate-trono-malefico",
+      "title": "Cámara de Combate: El Trono Malefico",
+      "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Cazador de Sangre Tortoga nivel 7 enfrenta a Thir la Vampira en su trono gótico, con invocaciones de criaturas de la noche.",
+      "category": "minijuegos",
+      "order": 3,
+      "created": "2026-06-14T00:00:00Z",
+      "updated": "2026-06-14T00:00:00Z",
+      "published": true,
+      "tags": [
+        "combate",
+        "tactico",
+        "dnd",
+        "vampiro",
+        "gothic",
+        "fantasia",
+        "invocaciones"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "juego",
+        "difficulty": "Difícil",
+        "genre": "Combate Táctico",
+        "players": "1",
+        "duration": "25-45 minutos"
+      },
+      "path": "./content/minijuegos/camara-combate-trono-malefico/"
+    },
+    {
+      "id": "camara-combate-catedral-cenizas",
+      "title": "Cámara de Combate: La Catedral de las Cenizas",
+      "description": "Un minijuego de combate táctico narrativo contra jefe inspirado en D&D 5e donde un Clérigo Enano del Dominio de la Vida nivel 7 enfrenta al Obispo de Ceniza en una catedral en llamas, con dos fases de combate y sistema de hechizos completo.",
+      "category": "minijuegos",
+      "order": 4,
+      "created": "2026-06-14T00:00:00Z",
+      "updated": "2026-06-14T00:00:00Z",
+      "published": true,
+      "tags": [
+        "combate",
+        "tactico",
+        "dnd",
+        "jefe",
+        "fantasia",
+        "clerigo",
+        "dos-fases",
+        "narrativo"
+      ],
+      "thumbnail": "",
+      "author": "Admin",
+      "content": {
+        "type": "html",
+        "file": "index.html"
+      },
+      "metadata": {
+        "type": "juego",
+        "difficulty": "Difícil",
+        "genre": "Combate Táctico contra Jefe",
+        "players": "1",
+        "duration": "30-50 minutos",
+        "characterLevel": 7,
+        "bossLevel": 9,
+        "phases": 2
+      },
+      "path": "./content/minijuegos/camara-combate-catedral-cenizas/"
+    }
+  ]
+}

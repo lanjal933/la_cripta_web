@@ -1,0 +1,580 @@
+# CONTRÂHECHIZÖ
+
+### El deporte mágico de reacción, precisión y caos arcano
+
+*"Dos equipos. Una esfera de magia. Cero piedad."*
+
+---
+
+# ¿Qué es CONTRÂHECHIZÖ?
+
+Tipo: Minijuego Repetible (juego de mesa)
+Requiere: de 4 o 6 jugadores recomendados. No requiere DM
+Precio: Gratis
+
+Contrâhechizö es un deporte mágico jugado entre dos equipos utilizando Varitas de Contrahechizo.
+
+No es necesario ser lanzador de conjuros para participar. Las varitas están encantadas específicamente para interactuar con una esfera mágica utilizada como pelota de juego.
+
+El objetivo es simple:
+
+**Lograr que el hechizo toque el suelo dentro del campo enemigo... aunque aveces choque al oponente**
+
+---
+
+# Equipos
+
+* 2 equipos.
+* Recomendado: entre 2 y 4 jugadores por equipo.
+* Cada jugador posee:
+
+  * 1 Varita de Contrahechizo.
+  * 3 vidas.
+
+Cuando un jugador pierde sus 3 vidas:
+
+* Queda eliminado.
+* No puede volver a entrar hasta finalizar el partido.
+
+---
+
+# Campo de Juego
+
+Cada casilla representa:
+
+* 5 pies.
+
+La cancha está dividida por una barrera mágica central.
+
+Tamaño recomendado:
+
+* 9 casillas de ancho.
+* 12 casillas de largo por lado.
+
+La pelota siempre ocupa:
+
+* 1 casilla horizontal.
+* Una altura determinada sobre el suelo.
+(te deje un campo de juego mas abajo para que uses en olwbear rodeo)
+---
+
+# La "Pelota"
+
+La pelota es un hechizo estabilizado.
+
+Puede adoptar cualquier apariencia:
+
+* Bola de fuego.
+* Esfera de agua.
+* Cráneo espectral.
+* Relámpago comprimido.
+* Orbe sombrío.
+
+La apariencia no modifica las reglas.
+
+---
+
+# Sistema de Turnos
+
+No existen iniciativas.
+
+El control del turno depende de qué lado de la cancha valla a ocupar la pelota.
+
+## Funcionamiento
+
+1. Un equipo tiene el control porque la pelota está en su campo.
+2. Los jugadores de ese equipo actúan.
+3. Si una acción hace que la pelota cruce la red y entre en el campo rival:
+
+   * El turno termina inmediatamente.
+   * El equipo rival obtiene el control.
+4. Los jugadores del nuevo equipo pueden actuar.
+
+Todos los integrantes de un mismo equipo comparten el turno.
+
+Pueden actuar en cualquier orden.
+
+Incluso pueden realizar acciones de forma coordinada durante el mismo turno.
+
+Ejemplo:
+
+Turno 1.
+La pelota se dirige el campo enemigo (lo sabemos por las tiradas y la posición final).
+* Un jugador usa una acción para acercarse.
+* Otro jugador utiliza un Contrahechizo.
+* Un tercero utiliza Reinvocar.
+* La pelota se acerca 5 pies a su dirección
+
+Turno 2.
+La pelota se dirige el campo enemigo (lo sabemos por las tiradas y la posición final).
+* Un jugador usa una acción para acercarse.
+* Otro jugador utiliza un Contrahechizo.
+* Un jugador usa una acción para acercarse.
+* La pelota se acerca 5 pies a su dirección
+Se envia la pelota al otro lado
+
+Se reinicia turno para el otro equipo
+Turno 1...
+
+Todo ocurre dentro del mismo turno de equipo.
+
+---
+
+# Movimiento
+
+Cada jugador dispone de:
+
+**1 casilla de movimiento (5 pies) por turno.**
+
+Puede utilizarla:
+
+* Antes de actuar.
+* Después de actuar.
+* Entre acciones.
+
+---
+
+# Economía de Acciones
+
+Cada jugador dispone de:
+
+**4 acciones por turno.**
+
+Las acciones disponibles son:
+
+* Contrahechizo.
+* Golpe de Varita.
+* Preparar.
+* Reinvocar.
+
+---
+
+# Altura de la Pelota
+
+La pelota mantiene su altura durante toda su trayectoria.
+
+Cuando faltan exactamente 10 pies para llegar a su destino:
+
+**Desciende automáticamente 5 pies.**
+
+Ejemplo:
+
+* La pelota es enviada a 15 pies de altura.
+* Recorre casi toda la trayectoria a 15 pies.
+* Al entrar en los últimos 10 pies de recorrido:
+
+  * Baja a 10 pies.
+* Finaliza su movimiento.
+
+---
+
+# ACCIÓN: CONTRAHECHIZO
+
+Uso ilimitado.
+
+La varita dispara energía para empujar la pelota.
+
+## Alcance
+
+Puede utilizarse desde cualquier lugar de la cancha.
+
+Sin embargo:
+
+Por cada 15 pies de distancia entre el jugador y la pelota:
+
+-2 al resultado de la tirada.
+
+Ejemplo:
+
+* 25 pies → -2.
+* 35 pies → -4.
+* 45 pies → -6.
+
+Si se esta a 5 pies de la pelota es un penalizador de -3
+(Solo si estas a 10 pies ósea 2 casillas de distancia de la pelota esta no te da penalizador
+ ## Bloqueo por otro jugaor
+
+.No puede utilizarse si otro jugador está exactamente entre el lanzador y la pelota.
+
+Los aliados también bloquean.
+
+## Tirada
+
+### Modo Simple
+
+1d20
+
+### Modo Profesional
+
+1d20 + modificador de Sabiduría
+
+## Resultado
+
+### 1-5
+
+Fallo.
+
+La pelota continúa su trayectoria sin alteraciones.
+
+### 6-10
+
+Impacto débil.
+
+La pelota avanza 15 pies.
+
+Luego se tira 1d6 para definir curvatura:
+
+* 1-2 → una casilla a la izquierda.
+* 3-4 → recto.
+* 5-6 → una casilla a la derecha.
+
+### 11-19
+
+Impacto normal.
+
+La pelota avanza 20 pies.
+
+Luego se tira 1d6:
+
+* 1-2 → una casilla a la izquierda.
+* 3-4 → recto.
+* 5-6 → una casilla a la derecha.
+
+### 20
+
+Impacto perfecto.
+
+La pelota avanza 25 pies.
+
+El jugador decide:
+
+* Izquierda.
+* Derecha.
+* Recto.
+
+## Contrahechizos Encadenados
+
+Varios jugadores pueden intentar afectar la misma pelota durante un mismo turno.
+
+Cada intento adicional recibe:
+
+-1 acumulativo.
+
+Ejemplo:
+
+* Primer intento: sin penalizador.
+* Segundo intento: -1.
+* Tercer intento: -2.
+* Cuarto intento: -3.
+
+---
+
+# ACCIÓN: GOLPE DE VARITA
+
+El jugador rodea la varita con un campo de fuerza temporal y golpea directamente la pelota.
+
+## Requisito
+
+Estar a 5 pies o menos de la pelota.
+
+## Tirada
+
+### Modo Simple
+
+1d20
+
+### Modo Profesional
+
+1d20 + modificador de Destreza
+
+## Resultado
+
+### 1-3
+
+Fallo.
+
+La pelota cae.
+
+Punto para el equipo rival.
+
+### 4-10
+
+Golpe débil.
+
+La pelota avanza 10 pies.
+
+### 11-15
+
+Golpe normal.
+
+La pelota avanza 15 pies.
+
+### 16-19
+
+Golpe fuerte.
+
+La pelota avanza 20 pies.
+
+### 20
+
+Golpe muy fuerte.
+
+La pelota avanza 20 pies.
+
+Además el jugador elige:
+
+* Izquierda.
+* Derecha.
+* Recto.
+
+---
+
+# ACCIÓN: PREPARAR
+
+El jugador pronuncia:
+
+**"Levitar"**
+
+y fuerza a la pelota a ganar altura. Te podes encontrar máximo a 10 pies de la pelota
+
+## Tirada
+
+### Modo Simple
+
+1d20
+
+### Modo Profesional
+
+1d20 + modificador de Inteligencia
+
+## Resultado
+
+### 1-5
+
+Fallo.
+
+La pelota cae inmediatamente.
+
+### 6-19
+
+Éxito.
+
+La pelota gana 10 pies de altura.
+
+### 20
+
+Éxito crítico.
+
+La pelota gana 15 pies de altura.
+
+---
+
+# ACCIÓN: REINVOCAR
+
+El jugador reorganiza la estructura mágica de la pelota.
+
+## Usos
+
+1 uso.
+
+Recupera el uso tras 2 rondas completas.
+
+## Requisito
+
+Estar a 10 pies o menos de la pelota.
+
+## Procedimiento
+
+El jugador declara:
+
+* Casilla objetivo.
+* Altura objetivo.
+
+La altura mínima es de 10 pies.
+
+## Tirada
+
+1d100
+
+### 1
+
+Fallo.
+
+La acción se pierde.
+
+### 2-49
+
+Interferencia mágica.
+
+La pelota aparece en la posición opuesta del campo respecto al lugar indicado.
+
+### 50-99
+
+Éxito.
+
+La pelota aparece exactamente donde fue declarada.
+
+### 100
+
+Éxito crítico.
+
+La pelota aparece:
+
+* En el lugar indicado.
+* 5 pies más baja de lo declarado.
+
+# Acciones Especiales 
+cuentan como acciones comunes:
+* Tirarse: Puedes tirate al suelo gastando de 5 a 10 pies, esto hará que puedas golpear una pelota que esta a 5 pies del suelo. Levantarte cuesta una accion de un turno (5 pies de movimiento). Estar derribado hace que todas tus acciones somaticas peguen con desventaja (todas menos reinvocar).
+* Escudo Humano: Puedes usar tu cuerpo como escudo para evitar que una pelota toque tu área. Salvas con ventaja. Podes convinarlo con tirarse pero salvas normal la constitución
+
+
+---
+
+# Impactos Contra Jugadores
+
+Si la pelota atraviesa una casilla ocupada por un jugador y este no logra detenerla:
+
+Debe realizar una tirada de resistencia.
+
+## Modo Simple
+
+1d20
+
+## Modo Profesional
+
+1d20 + modificador de Constitución
+
+## Resultado
+
+### 1-10
+
+Pierde 1 vida.
+
+### 11-20
+
+Resiste el impacto.
+
+---
+
+# Puntuación
+
+Un equipo obtiene 1 punto cuando:
+
+* La pelota toca el suelo en el campo enemigo.
+* La pelota sale fuera de los límites por una acción rival.
+* Un rival falla una acción y provoca que la pelota caiga.
+
+---
+
+# Victoria
+
+Formatos recomendados:
+
+## Partido Rápido
+
+5 puntos.
+
+## Partido Estándar
+
+10 puntos.
+
+## Partido de Campeonato
+
+15 puntos.
+
+---
+
+# Posiciones Oficiales (Variante opcional)
+
+Cada jugador puede elegir una especialización.
+
+---
+
+## INTERCEPTOR
+
+*"Si la ves venir, ya es tarde."*
+
+Especialista en cobertura y defensa.
+
+### Pasiva: Paso Relámpago
+
+Una vez por turno puede moverse 5 pies hacia la pelota.
+
+No consume movimiento.
+
+### Habilidad: Intercepción Imposible
+
+1 vez cada 2 rondas.
+
+Puede realizar Golpe de Varita a una distancia de hasta 10 pies.
+
+---
+
+## DISTORSIONADOR
+
+*"Nadie sabe dónde caerá."*
+
+Especialista en trayectorias impredecibles.
+
+### Pasiva: Efecto Curvo
+
+Cuando modifica la dirección de la pelota puede volver a tirar el dado de dirección.
+
+Debe aceptar el nuevo resultado.
+
+### Habilidad: Giro Arcano
+
+1 vez por ronda.
+
+Después de impactar la pelota puede desplazar su destino una casilla adicional hacia la izquierda o derecha.
+
+---
+
+## INVOCADOR
+
+*"El caos también es una estrategia."*
+
+Especialista en Reinvocar.
+
+### Pasiva: Memoria Arcana
+
+Al utilizar Reinvocar:
+
+Los resultados entre 2 y 19 pasan a contar como éxito normal.
+
+### Habilidad: Reinvocación Forzada
+
+1 vez por partido.
+
+Puede ignorar completamente la tirada de Reinvocar.
+
+La pelota aparece exactamente donde declaró.
+
+---
+
+# Modos de Juego
+
+## Modo Simple
+
+No requiere personajes de D&D.
+
+Todas las tiradas se realizan sin modificadores.
+
+---
+
+## Modo Profesional
+
+Se juega utilizando personajes de D&D.
+
+Se añaden modificadores de característica:
+
+* Contrahechizo → Sabiduría.
+* Golpe de Varita → Destreza.
+* Preparar → Inteligencia.
+* Reinvocar → Inteligencia.
+* Resistir Impactos → Constitución.
+
+# Cancha:
+[Poner imagen imágenes/contrahechizo_cancha]
+Esta es una canhca que pueden usar para su juego de contrahechizo, obvio pueden usar las sullas personalizadas. La red mide 5 pies, en caso que por algún motivo la pelota valla recta hacia la red es punto para el equipo contrario al que tiro la pelota

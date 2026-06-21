@@ -1,0 +1,24 @@
+{
+  "id": "ciudad-ejemplo",
+  "title": "Nombre de la Ciudad",
+  "description": "Descripción breve de la ciudad",
+  "category": "ciudades",
+  "order": 0,
+  "created": "2025-01-01T00:00:00Z",
+  "updated": "2025-01-01T00:00:00Z",
+  "published": true,
+  "tags": [],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "region": "",
+    "population": "",
+    "government": "",
+    "economy": "",
+    "notable_locations": []
+  }
+}

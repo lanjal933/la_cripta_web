@@ -1,0 +1,913 @@
+=== RAZAS ===
+
+RAZA: Aarakocra
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Rafaga de viento Niv-3 int/car/sab
+Extras: Garras
+
+RAZA: Aasimar
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Luz Niv-1 car
+
+RAZA: Acompañante
+Bonificadores de Características: No permitido
+Idiomas: No permitido
+Competencias Habilidades: No permitido
+Competencia Herramientas: No permitido
+Conjuros : No permitido
+Extras: No permitido
+
+RAZA: Alto Elfo
+Bonificadores de Características:  +2Des/+1Int
+Idiomas: Común/Élfico
+Competencias Habilidades: Percepción
+Conjuros : Truco de mago a elección
+
+RAZA: Anómalo
+Bonificadores de Características:  +2/+1/+1
+Idiomas: Común/+2
+Competencias Habilidades: Intimidar 
+
+RAZA: Arakne Carmina
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infra Común
+Conjuros : Truco de mago a elección car/sab/int
+Fuego Feérico Niv-3 car/sab/int
+Telaraña Niv-3 car/sab/int
+
+RAZA: Arakne Manus
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infra Común
+Conjuros : Telaraña Niv-3 car/sab/int
+
+RAZA: Arakne Morsus
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infra Común
+Conjuros : Telaraña Niv-3 car/sab/int
+
+RAZA: Arakne Vultus
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infra Común
+Competencias Habilidades: Percepción
+Conjuros : Telaraña Niv-3 car/sab/int
+
+RAZA: Autognomo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencia Herramientas:  +2 Competencias con herramientas a eleccion
+
+RAZA: Aven (Cabeza de Búho)
+Bonificadores de Características:  +2/
+Idiomas: Común/+1
+Competencias Habilidades: Sigilo
+
+RAZA: Aven (Cabeza de Halcón)
+Bonificadores de Características:  +2/
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+
+RAZA: Aven (Cabeza de Serpentario)
+Bonificadores de Características:  +2/
+Idiomas: Común/+1
+
+RAZA: Cambiante
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Escoger: Acro/Atle/Inti/Super
+
+RAZA: Canido Juguete
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+Extras: Dientes afilados
+
+RAZA: Canido Pastor
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+Extras: Dientes afilados
+
+RAZA: Cazador Cerúleo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Silvano
+Conjuros : Shillelagh int/car/sab
+Enmarañar Niv-3 int/car/sab
+Piel Robliza Niv-5 int/car/sab
+
+RAZA: Centauro 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Escoger: Med/Nat/Super/TratA
+Extras: Cascos
+
+RAZA: Decapitado 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+
+RAZA: Dhampiro
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +2 a escojer 
+Extras: Mordisco Vampírico
+
+RAZA: Dracónido
+Bonificadores de Características:  +2Fue/+1Car
+Idiomas: Común/Dracónido
+Extras: Aliento de Dragón
+
+RAZA: Dracónido Cromático
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Ataque de Aliento
+
+RAZA: Dracónido Gema
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Ataque de Aliento
+
+RAZA: Dracónido Metálico
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Ataque de Aliento
+Ataque de Aliento Metálico Niv-5
+
+RAZA: Duergar
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Agrandar/Reducir Niv-3 car/sab/int
+Invisibilidad Niv-5 car/sab int
+
+RAZA: Eladrin
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+
+RAZA: Elfo Astral
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+Conjuros : Luces danzantes, luz o llama sagrada
+car/int/sab
+
+RAZA: Elfo de los bosques
+Bonificadores de Características:  +2Des/+1Sab
+Idiomas: Común/Élfico
+Competencias Habilidades: Percepción
+
+RAZA: Elfo Drow (oscuro)
+Bonificadores de Características:  +2Des/+1Car
+Idiomas: Común/Élfico
+Competencias Habilidades: Percepción
+Conjuros : Luces danzantes car/int/sab
+Fuego Feérico Niv-3 car/int/sab
+
+RAZA: Elfo Marino
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+
+RAZA: Enano de las colinas
+Bonificadores de Características:  +2Con/+1Sab
+Idiomas: Común/Enano
+Competencia Herramientas: Escoger: H. Armero/H. Cervecero/H. Albañil
+
+RAZA: Enano de las Montañas
+Bonificadores de Características:  +2Con/+2Fue
+Idiomas: Común/Enano
+Competencia Herramientas: Escoger: H. Armero/H. Cervecero/H. Albañil
+
+RAZA: Enanos grises (Duergar)
+Bonificadores de Características:  +2Con/+1Fue
+Idiomas: Común/Enano/infra común
+Competencia Herramientas: Escoger: H. Armero/H. Cervecero/H. Albañil
+
+RAZA: Firbolg
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Detectar Magia int/car/sab
+Disfrazarse int/char/int
+
+RAZA: Genasi de agua
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Salpicadura ácida int/car/sab
+Crear o Destruir agua Niv-3 Int/car/sab
+Caminar sobre el agua Niv-5 int/car/sab
+
+RAZA: Genasi de aire
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Agarre electrizante int/car/sab
+Caída de Pluma agua Niv-3 Int/car/sab
+Levitar Niv-5 int/car/sab
+
+RAZA: Genasi de fuego
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Crear llamas int/car/sab
+Manos ardientes Niv-3 Int/car/sab
+Hoja de fuego Niv-5 int/car/sab
+
+RAZA: Genasi de tierra
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Guardia de Cuchillas int/car/sab
+Pasar sin rastro Niv-5 int/car/sab
+
+RAZA: Giff
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Atletismo
+
+RAZA: Githyanki
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Mano de mago int/car/sab
+Salto Niv-3 Int/car/sab
+Paso brumoso Niv-5 int/car/sab
+
+RAZA: Githzerai
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Mano de mag int/car/sab
+Escudo Niv-3 Int/car/sab
+Detectar Pensamientos Niv-5 int/car/sab
+
+RAZA: Gnomo de las Profundidades( Svirfneblins)
+Bonificadores de Características:  +2Int/+1Des
+Idiomas: Común/Gnomo/Infra Común
+
+RAZA: Gnomo de las Profundidades
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Disfrazarse Niv-3 int/car/sab
+Indetectable Niv-5 int/car/sab
+
+RAZA: Gnomo de las Rocas
+Bonificadores de Características:  +2Int/+1Con
+Idiomas: Común/Gnomo
+Competencia Herramientas: H. Artesano
+
+RAZA: Gnomo de los Bosques
+Bonificadores de Características:  +2Int/+1Des
+Idiomas: Común/Gnomo
+Conjuros : Ilusion menor int
+
+RAZA: Goblin
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+
+RAZA: Goliat
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Atletismo
+
+RAZA: Hada
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Saber Druidico int/car/sab
+Fuego Feerico Niv-3 Int/car/sab
+Agradar/Reducir Niv-5 int/car/sab
+
+RAZA: Hadozee
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+
+RAZA: Hobgoblin
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Don Feerico Niv-3
+
+RAZA: Hombre lagarto
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: CA 13+Des sin armadura
+
+RAZA: Humano
+Bonificadores de Características:  +1 en todo
+Idiomas: Común/+1
+
+RAZA: Humano (Alternativo)
+Bonificadores de Características:  +1 en dos caracteristicas
+Idiomas: Común/+1
+Competencias Habilidades:  +1 Escojer: Entre todos 
+Extras: Dote adicional
+
+RAZA: Kenku
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +2 Escojer: Entre todos 
+
+RAZA: Kitsune Ártico o Blanco
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Escoger: Eng/Inter/Inti/Pers/Pers/Pers
+Conjuros : Congelar int/car/sab
+Fuego Feérico Niv-3 Int/car/sab
+Hielo inmovilizador Niv-5 int/car/sab
+
+RAZA: Kitsune Común o Rojo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Escoger: Eng/Inter/Inti/Perce/Pers/Persu
+Conjuros : Luces danzantes int/car/sab
+Hechizar persona Niv-3 Int/car/sab
+Sugestión Niv-5 int/car/sab
+
+RAZA: Kitsune Fennec o Amarillo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Escoger: Eng/Inter/Inti/Perce/Pers/Persu
+Conjuros : Prestidigitación int/car/sab
+Retirada Expeditiva Niv-3 Int/car/sab
+Pasar sin rastro Niv-5 int/car/sab
+
+RAZA: Kobold
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Dote adicional Niv-1
+
+RAZA: Liebren
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+
+RAZA: Mediano Fornido
+Bonificadores de Características:  +2Dez/+1Car
+Idiomas: Común/Mediano
+
+RAZA: Mediano Pies Ligeros
+Bonificadores de Características:  +2Dez/+1Con
+Idiomas: Común/Mediano
+
+RAZA: Medianos Fantasagaces
+Bonificadores de Características:  +2Dez/+1Sab
+Idiomas: Común/Mediano
+
+RAZA: Minotauro
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Cuernos
+
+RAZA: Orco
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+
+RAZA: Osgo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Sigilo
+
+RAZA: Plasmoide 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+
+RAZA: Pseudo-Salamander Herencia de mar de llamas
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Atletismo +1 escoger
+Competencia Herramientas: H. Herrero
+Extras: Cola de Obsidiana
+
+RAZA: Pseudo-Salamander Herencia de Rafaga
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencia Herramientas: H. Herrero/S. Pintor
+Extras: Cola de Obsidiana
+
+RAZA: Pseudo-Salamander Herencia de Robustez
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencia Herramientas: H. Herrero/H. Joyero
+Extras: Cola de Obsidiana
+
+RAZA: Pseudo-Salamander Herencia de Torrente
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencia Herramientas: H. Herrero
+Conjuros : Modear Agua
+Extras: Cola de Obsidiana
+
+RAZA: Rakkun
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Juego de manos
+Competencia Herramientas: Escoger: entre todos
+
+RAZA: Renacido 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +2 a escojer
+
+RAZA: Replicante
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +2 a escojer: Eng/Inter/Inti/Perspi/Persua
+
+RAZA: Sangre Maléfica
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +2 a escojer
+Conjuros : Disfrazarse int/sab/car
+Maleficio int/sab/car
+
+RAZA: Sátiro 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Interpretación/Percusión
+Extras: Embestir
+
+RAZA: Semielfo
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+Competencias Habilidades:  +2 a escoger 
+
+RAZA: Semielfo (zafa)
+Bonificadores de Características:  +2/+1/+1
+Idiomas: Común/elfico/+1
+Competencias Habilidades:  +2 a escoger 
+
+RAZA: Semi Elfo de bosque (Máscara de la naturaleza)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semi Elfo del bosque (entrenamiento de armas élficas)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semi Elfo del bosque (Pies veloces)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo del bosque (zafa)
+Bonificadores de Características:  +2/+1/+1
+Idiomas: Común/elfico/+1
+Extras: Dote adicional
+
+RAZA: Semi Elfo Drow (costa de la espada)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+Conjuros : Luces Danzantes int/car/sab
+Fuego Feérico Niv-3 Int/car/sab
+Oscuridad Niv-5 int/car/sab
+
+RAZA: Semi Elfo Drow (zafa)
+Bonificadores de Características:  +2/+1/+1
+Idiomas: Común/elfico/+1
+Conjuros : Luces Danzantes int/car/sab
+Fuego Feérico Niv-3 Int/car/sab
+Oscuridad Niv-5 int/car/sab
+
+RAZA: Semielfo Lunar (zafa)
+Bonificadores de Características:  +2/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo Marino (costa de la espada)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo Marino (zafa)
+Bonificadores de Características:  +2/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo Solar (zafa)
+Bonificadores de Características:  +2/+1/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo Solar/Lunar (Entrenamiento con armas élficas)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+
+RAZA: Semielfo Solar/Lunar (Truco)
+Bonificadores de Características:  +2Car/+1
+Idiomas: Común/elfico/+1
+Conjuros : Truco de mago a elección int
+
+RAZA: Semiorco
+Bonificadores de Características:  +2Fue/+1Con
+Idiomas: Común/Orco
+Competencias Habilidades: intimidar
+
+RAZA: Shadar-Kai
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción
+
+RAZA: Tabaxi
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades: Percepción/ Sigilo
+Extras: Garras de gato
+
+RAZA: Thyn'kora
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: Dote adicional Niv-1
+Dote adicional Niv-2
+Dote adicional Niv-3
+
+RAZA: Tiefling
+Bonificadores de Características:  +2Car/+1Int
+Idiomas: Común/Infernal
+Conjuros : Taumaturgia int/car/sab
+Represión Infernal Niv-3 Int/car/sab
+Oscuridad Niv-5 int/car/sab
+
+RAZA: Tiefling Asmodeus
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Taumaturgia int/car/sab
+Represión Infernal Niv-3 Int/car/sab
+Oscuridad Niv-5 int/car/sab
+
+RAZA: Tiefling Baalzebul
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Taumaturgia int/car/sab
+Rayo Debilitador Niv-3 Int/car/sab
+Corona de la Lectura Niv-5 int/car/sab
+
+RAZA: Tiefling Dispater
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Taumaturgia int/car/sab
+Disfrazarse Niv-3 Int/car/sab
+Detectar pensamientos Niv-5 int/car/sab
+
+RAZA: Tiefling Fierna
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Amistad int/car/sab
+Hechizar Persona Niv-3 Int/car/sab
+Sugestión Niv-5 int/car/sab
+
+RAZA: Tiefling Glasya
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Ilusion Menor int/car/sab
+Disfrazarse Niv-3 Int/car/sab
+Invisibilidad Niv-5 int/car/sab
+
+RAZA: Tiefling Levintus 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Rayo de escarcha int/car/sab
+Armadura de Agathys Niv-3 Int/car/sab
+Oscuridad Niv-5 int/car/sab
+
+RAZA: Tiefling Mammon
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Mano de mago int/car/sab
+Disco flotante de Tenser Niv-3 Int/car/sab
+Cerradura Niv-5 int/car/sab
+
+RAZA: Tiefling Mefistofeles
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Mano de mago int/car/sab
+Manos Ardientes Niv-3 Int/car/sab
+Hoja de Fuego Niv-5 int/car/sab
+
+RAZA: Tiefling Variante
+Bonificadores de Características:  +2Des/+1Int
+Idiomas: Común/Infernal
+Conjuros : Dotes adicional 
+
+RAZA: Tiefling Zariel 
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Infernal
+Conjuros : Taumaturgia int/car/sab 
+Castigo Abrasador Niv-3 Int/car/sab
+Castigo Marcador Niv-5 int/car/sab
+
+RAZA: Tortoga
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Extras: CA 17 sin contar Destreza y no puede usar armadura
+
+RAZA: Triton
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Nube de Oscurocimiento int/car/sab 
+Rafaga de Viento Niv-3 Int/car/sab
+Caminar sobre el agua Niv-5 int/car/sab
+
+RAZA: Vástago Oseo
+Bonificadores de Características:  +2/+1
+Idiomas: Común/Habla Profunda
+Conjuros : Sirviente Invisible
+
+RAZA: Vedalken
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Competencias Habilidades:  +1 escoger: Arc/His/Inter/Inve/JueM/Med
+Competencia Herramientas: Escoger: entre todos
+
+RAZA: Yuan-ti
+Bonificadores de Características:  +2/+1
+Idiomas: Común/+1
+Conjuros : Rociada Venenosa int/car/sab 
+Encantar animal Int/car/sab
+Sugestión Niv-3 int/car/sab
+
+
+=== TRASFONDOS ===
+
+TRASFONDO: Acolito
+Idiomas:  +2/
+Competencia Habilidades: Perspicacia/Religion
+Equipo añadido: Simbolo Sagrado
+
+TRASFONDO: Agente de una faccion (Con Arcanos)
+Idiomas:  +2/
+Competencia Habilidades: Arcanos/Perspicacia
+
+TRASFONDO: Agente de una faccion (Con Engañar)
+Idiomas:  +2/
+Competencia Habilidades: Engañar/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Historia)
+Idiomas:  +2/
+Competencia Habilidades: Historiar/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Interpretacion)
+Idiomas:  +2/
+Competencia Habilidades: Interpretacion/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Intimidar)
+Idiomas:  +2/
+Competencia Habilidades: Intimidar/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Investigacion)
+Idiomas:  +2/
+Competencia Habilidades: Investigacion/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Medicina)
+Idiomas:  +2/
+Competencia Habilidades: Medicina/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Naturalesa)
+Idiomas:  +2/
+Competencia Habilidades: Naturaleza/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Percepcion)
+Idiomas:  +2/
+Competencia Habilidades: Percepcion/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Persuacion)
+Idiomas:  +2/
+Competencia Habilidades: Persuacion/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Religion)
+Idiomas:  +2/
+Competencia Habilidades: Religion/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Supervivencia)
+Idiomas:  +2/
+Competencia Habilidades: Supervivencia/Perpicacia
+
+TRASFONDO: Agente de una faccion (Con Trato con Animales)
+Idiomas:  +2/
+Competencia Habilidades: Trato con animales/Perpicacia
+
+TRASFONDO: Artesano de Clan
+Idiomas:  +1/
+Competencia Habilidades: Perpicacia/Historia
+Competencia Herramientas: H. Artesano
+Equipo añadido: H. Artesano
+
+TRASFONDO: Artesano Gremial
+Idiomas:  +1/
+Competencia Habilidades: Perpicacia/Persuacion
+Competencia Herramientas: H. Artesano
+Equipo añadido: H. Artesano
+
+TRASFONDO: Artista
+Competencia Habilidades: Acrobacias/Interpretacion
+Competencia Herramientas: kit de Disfraz/Intrumento
+Equipo añadido: Instrumento 
+
+TRASFONDO: Atormentado
+Idiomas:  +2/
+Competencia Habilidades:  +2 a Elegir: Arca/Inv/Rel/Super
+Equipo añadido: Equipo de cazador de monstruso
+Horror Trinket
+
+TRASFONDO: Caballero de la Orden (Con Arcanos)
+Idiomas:  +1/
+Competencia Habilidades: Arcanos/Persuacion
+Competencia Herramientas: Instrumento o Set de juego
+
+TRASFONDO: Caballero de la Orden (Con Historia)
+Idiomas:  +1/
+Competencia Habilidades: Historia/Persuacion
+Competencia Herramientas: Instrumento o Set de juego
+
+TRASFONDO: Caballero de la Orden (Con Naturalesa)
+Idiomas:  +1/
+Competencia Habilidades: Naturaleza/Persuacion
+Competencia Herramientas: Instrumento o Set de juego
+
+TRASFONDO: Caballero de la Orden (Con Religion)
+Idiomas:  +1/
+Competencia Habilidades: Religion/Persuacion
+Competencia Herramientas: Instrumento o Set de juego
+
+TRASFONDO: Caza Recompensas urbano (Con Engañar y Perspicacia)
+Competencia Habilidades: Engañar/Perpicacia
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Caza Recompensas urbano (Con Engañar y Persuacion)
+Competencia Habilidades: Engañar/Persuacion
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Caza Recompensas urbano (Con Engañar y Sigilo)
+Competencia Habilidades: Engañar/Sigilo
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Caza Recompensas urbano (Con Perspicacia y Persuacion)
+Competencia Habilidades: Perpicacia/Persuacion
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Caza Recompensas urbano (Con Perspicacia y Sigilo)
+Competencia Habilidades: Perpicacia/Sigilo
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Caza Recompensas urbano (Con Persuacion y Sigilo)
+Competencia Habilidades: Persuacion/Sigilo
+Competencia Herramientas: H. Ladron/Set de Juego
+
+TRASFONDO: Charlatan
+Competencia Habilidades: Engañar/Juego de Manos
+Competencia Herramientas: Kit de Disfraz/Kit de Falsificacion
+Equipo añadido: Kit de Disfraz
+Dado Cargado o Mazo de cartas marcadas
+
+TRASFONDO: Cortesano
+Idiomas:  +2/
+Competencia Habilidades: Perpicacis/Persuacion
+
+TRASFONDO: Criminal
+Competencia Habilidades: Engaño/Sigilo
+Competencia Herramientas: Set de Juego/H. Ladron
+Equipo añadido: Palanqueta
+
+TRASFONDO: Ermitaño
+Idiomas:  +1/
+Competencia Habilidades: Medicina/Religion
+Competencia Herramientas: Kit de Herborista
+Equipo añadido: Kit de Herborista
+
+TRASFONDO: Erudito
+Idiomas:  +2/
+Competencia Habilidades: Arcanos/Historia
+Equipo añadido: Tinta negra y pluma
+
+TRASFONDO: Erudito Enclaustado (Con Arcanos)
+Idiomas:  +2/
+Competencia Habilidades: Arcanos/Historia
+Equipo añadido: Tinta negra y pluma
+
+TRASFONDO: Erudito Enclaustado (Con Naturaleza)
+Idiomas:  +2/
+Competencia Habilidades: Naturaleza/Historia
+Equipo añadido: Tinta negra y pluma
+
+TRASFONDO: Erudito Enclaustado (Con Religion)
+Idiomas:  +2/
+Competencia Habilidades: Religion/Historia
+Equipo añadido: Tinta negra y pluma
+
+TRASFONDO: Forastero Errante
+Idiomas:  +1/
+Competencia Habilidades: Perpicacia/Percepcion
+Competencia Herramientas: Instrumento o Set de Juegos
+Equipo añadido: Instrumento o Set de Juegos
+
+TRASFONDO: Guardia de la Ciudad
+Idiomas:  +2/
+Competencia Habilidades: Atletismo/Perpicacia
+
+TRASFONDO: Guardia de la Ciudad (Variante Investigador)
+Idiomas:  +2/
+Competencia Habilidades: Investigacion/Perpicacia
+
+TRASFONDO: Heredero (Con Arcanos)
+Idiomas:  +1/
+Competencia Habilidades: Arcanos/Supervivencia
+Competencia Herramientas: Instrumento o Set de Juegos
+Equipo añadido: Instrumento o Set de Juegos
+
+TRASFONDO: Heredero (Con Historia)
+Idiomas:  +1/
+Competencia Habilidades: Historia/Supervivencia
+Competencia Herramientas: Instrumento o Set de Juegos
+Equipo añadido: Instrumento o Set de Juegos
+
+TRASFONDO: Heredero (Con Religion)
+Idiomas:  +1/
+Competencia Habilidades: Religion/Supervivencia
+Competencia Herramientas: Instrumento o Set de Juegos
+Equipo añadido: Instrumento o Set de Juegos
+
+TRASFONDO: Heroe de Pueblo
+Competencia Habilidades: Trato con animales/Supervivencia
+Competencia Herramientas: H. Artesano/Vehiculos (Terrestres)
+Equipo añadido: H. Artesano
+
+TRASFONDO: Huerfano
+Competencia Habilidades: Juego de Manos/Sigilo
+Competencia Herramientas: Kit de Disfraz/H. Ladron
+Equipo añadido: Rata
+
+TRASFONDO: Investigador
+Competencia Habilidades:  +2 a Elegir: Perspi/Inv/Percep
+Competencia Herramientas: Kit de Disfraz/H. Ladron
+Equipo añadido: Lupa
+Horror Trinket
+
+TRASFONDO: Marinero
+Competencia Habilidades: Atletismo/Percepcion
+Competencia Herramientas: H. Navegacion/Vehiculo (Acuatico)
+Equipo añadido: Garrote
+Cuerda de Ceda
+
+TRASFONDO: Mercenario Veterano
+Competencia Habilidades: Atletismo/Persuacion
+Competencia Herramientas: Set de Juego/Vehiculo (Terrestre)
+Equipo añadido: Set de Juego
+
+TRASFONDO: Miembro de la Tribu Uthgardt
+Idiomas:  +1/
+Competencia Habilidades: Atletismo/Supervivencia
+Competencia Herramientas: Instrumento o H. Artesano
+Equipo añadido: Trampa de Caza
+
+TRASFONDO: Noble
+Idiomas:  +1/
+Competencia Habilidades: Historia/Persuacion
+Competencia Herramientas: Set de Juego
+
+TRASFONDO: Noble Waterdeep
+Idiomas:  +1/
+Competencia Habilidades: Historia/Persuacion
+Competencia Herramientas: Set de Juego o Instrumento
+
+TRASFONDO: Oriundo de la Luna
+Competencia Habilidades: Atletismo/Supervivencia
+Competencia Herramientas: H. Navegante/Vehiculo Espacial
+
+TRASFONDO: Salvaje
+Idiomas:  +1/
+Competencia Habilidades: Atletismo/Supervivencia
+Competencia Herramientas: Instrumento
+Equipo añadido: Baston
+Trampa de Caza
+
+TRASFONDO: Soldado
+Competencia Habilidades: Atletismo/Intimidacion
+Competencia Herramientas: Set de Juego/Vehiculo (Terrestre)
+Equipo añadido: Daga
+Dados o Naipes
+
+TRASFONDO: Vagabundo Astral
+Idiomas:  +2/
+Competencia Habilidades: Perspicacia/Religion
+
+-------------------
+IDIOMAS A ELEGUIR:
+Todas las clases pueden eleguir cualquier idioma de estos segun la cantidad de +1 o +2 idiomas que sumen (por raza y transfondo)
+
+# 🌎 __Idiomas disponibles__
+Aquí tienes la lista de idiomas disponibles. 
+- Los idiomas estándar son los más hablados en el mundo donde trascurren la mayoría de aventuras de la Academia de héroes (Los reinos olvidados/el continente de Faerum/el planeta Toril).
+- Las lenguas exóticas son menos comunes o más los más particulares para determinadas criaturas, **puedes elegirlos sin problema igualmente**.
+- No se permite que crees tu propio idioma, tiene que estar en la lista.
+## Idiomas estándar
+> - Común
+> - Enano
+> - Elfico 
+> - Gigante
+> - Gnómico
+> - Goblin
+> - Mediano
+> - Orco
+> - Aquano
+> - Satiro
+> - Lengua de señas (global)
+
+## Lenguas exóticas
+> - Abisal
+> - Celestial
+> - Draconiano
+> - Habla profunda
+> - Infernal
+> - Primordial
+> - Silvano
+> - Infra común
+> - Git
+> - Troglodita
+Tambien puedes usar cualquiera mencionado en https://discord.com/channels/916864237345832980/1413533487658569861 .

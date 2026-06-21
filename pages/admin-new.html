@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - La Cripta</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/admin/admin-access-new.js"></script>
+    <script src="../js/core/content-discovery.js"></script>
+</head>
+<body class="font-body text-white-warm min-h-screen">
+    <div class="premium-bg"></div>
+
+    <!-- Header -->
+    <header class="admin-header bg-bg-panel border-b border-violet-primary/30 p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <h1 class="font-title text-2xl text-violet-primary">⚙️ Panel Admin</h1>
+            <div class="flex gap-4">
+                <button onclick="regenerateIndices()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                    🔄 Regenerar Índices
+                </button>
+                <button onclick="adminLogout()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+                    🚪 Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex h-[calc(100vh-80px)]">
+        <!-- Sidebar -->
+        <aside class="w-80 bg-bg-deep border-r border-violet-primary/20 p-4 overflow-y-auto">
+            <div id="categoryNav" class="space-y-4">
+                <!-- Categorías se cargarán aquí -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 bg-bg-deep p-6 overflow-y-auto">
+            <div id="editorContainer" class="hidden">
+                <!-- Editor se mostrará aquí -->
+            </div>
+            <div id="welcomeContainer" class="text-center py-20">
+                <h2 class="font-title text-3xl text-violet-primary mb-4">Bienvenido al Panel Admin</h2>
+                <p class="text-silver-soft mb-8">Selecciona una categoría del sidebar para comenzar a editar contenido</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                    <div class="card p-4 text-center">
+                        <div class="text-3xl mb-2">📁</div>
+                        <h3 class="font-semibold text-violet-primary">Basado en Carpetas</h3>
+                        <p class="text-sm text-silver-soft">Contenido detectado automáticamente</p>
+                    </div>
+                    <div class="card p-4 text-center">
+                        <div class="text-3xl mb-2">✏️</div>
+                        <h3 class="font-semibold text-violet-primary">Editor Visual</h3>
+                        <p class="text-sm text-silver-soft">Edita metadata y contenido</p>
+                    </div>
+                    <div class="card p-4 text-center">
+                        <div class="text-3xl mb-2">🚀</div>
+                        <h3 class="font-semibold text-violet-primary">Sin Registro</h3>
+                        <p class="text-sm text-silver-soft">Añade carpetas, aparece automáticamente</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Editor Modal -->
+    <div id="editorModal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-bg-card border border-violet-primary/30 rounded-xl max-w-6xl w-full max-h-[95vh] overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-violet-primary/20 bg-gradient-to-r from-bg-panel to-bg-card">
+                <h2 id="editorTitle" class="font-title text-2xl text-violet-primary">Editar Contenido</h2>
+                <button onclick="closeEditorModal()" class="text-silver-soft hover:text-white text-4xl leading-none">&times;</button>
+            </div>
+            
+            <div class="flex h-[calc(95vh-140px)]">
+                <!-- Metadata Panel -->
+                <div class="w-1/3 p-4 border-r border-violet-primary/20 bg-bg-deep overflow-y-auto">
+                    <h3 class="font-semibold text-violet-primary mb-4">📋 Metadata</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">ID</label>
+                            <input type="text" id="editId" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Título</label>
+                            <input type="text" id="editTitle" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Descripción</label>
+                            <textarea id="editDescription" rows="3" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Orden</label>
+                            <input type="number" id="editOrder" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Tags (separados por coma)</label>
+                            <input type="text" id="editTags" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded" placeholder="tag1, tag2, tag3">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Thumbnail URL</label>
+                            <input type="text" id="editThumbnail" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-silver-soft mb-2">Publicado</label>
+                            <select id="editPublished" class="w-full bg-bg-card border border-violet-primary/20 text-white p-2 rounded">
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Panel -->
+                <div class="w-2/3 p-4 bg-bg-deep overflow-y-auto">
+                    <h3 class="font-semibold text-violet-primary mb-4">📄 Contenido HTML</h3>
+                    <textarea id="editContent" rows="30" class="w-full bg-bg-card border border-violet-primary/20 text-white p-3 rounded font-mono text-sm"></textarea>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-violet-primary/20 bg-bg-panel flex justify-between items-center">
+                <button onclick="previewContent()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors">
+                    👁️ Preview
+                </button>
+                <div class="flex gap-3">
+                    <button onclick="closeEditorModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors">
+                        Cancelar
+                    </button>
+                    <button onclick="saveContent()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors">
+                        💾 Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-bg-card border border-violet-primary/30 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-violet-primary/20">
+                <h2 class="font-title text-2xl text-violet-primary">👁️ Preview</h2>
+                <button onclick="closePreviewModal()" class="text-silver-soft hover:text-white text-4xl leading-none">&times;</button>
+            </div>
+            <div id="previewContent" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)] bg-white">
+                <!-- Preview se mostrará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCategory = null;
+        let currentItem = null;
+        let currentIndices = {};
+
+        // Categorías disponibles
+        const categories = [
+            { id: 'aventuras', name: 'Aventuras', icon: '⚔️' },
+            { id: 'ciudades', name: 'Ciudades', icon: '🏰' },
+            { id: 'minijuegos', name: 'Minijuegos', icon: '🎮' },
+            { id: 'facciones', name: 'Facciones', icon: '⚜️' },
+            { id: 'razas', name: 'Razas', icon: '👥' },
+            { id: 'guias', name: 'Guías', icon: '📜' }
+        ];
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!isAdminAuthenticated()) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            await loadCategories();
+        });
+
+        // Cargar categorías en el sidebar
+        async function loadCategories() {
+            const nav = document.getElementById('categoryNav');
+            nav.innerHTML = '';
+
+            for (const cat of categories) {
+                const index = await contentDiscovery.discoverCategory(cat.id);
+                currentIndices[cat.id] = index;
+
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'section-group';
+                categoryDiv.innerHTML = `
+                    <h3 class="font-title text-lg text-violet-primary mb-3 flex items-center gap-2 cursor-pointer hover:text-violet-soft" onclick="toggleCategory('${cat.id}')">
+                        <span>${cat.icon}</span> ${cat.name}
+                        <span class="text-sm text-silver-soft">(${index.items?.length || 0})</span>
+                    </h3>
+                    <div id="items-${cat.id}" class="space-y-2 hidden">
+                        ${renderItems(cat.id, index.items || [])}
+                    </div>
+                `;
+                nav.appendChild(categoryDiv);
+            }
+        }
+
+        // Renderizar items de una categoría
+        function renderItems(categoryId, items) {
+            if (!items || items.length === 0) {
+                return '<p class="text-sm text-silver-muted italic">No hay items</p>';
+            }
+
+            return items.map(item => `
+                <div class="bg-bg-card border border-violet-primary/20 rounded-lg p-3 hover:border-violet-primary transition-colors cursor-pointer" onclick="openEditor('${categoryId}', '${item.id}')">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-sm text-white">${item.title || item.id}</h4>
+                            <p class="text-xs text-silver-soft mt-1">${item.description?.substring(0, 50) || ''}...</p>
+                        </div>
+                        <span class="text-xs ${item.published ? 'text-green-400' : 'text-red-400'}">
+                            ${item.published ? '✓' : '✗'}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle categoría
+        function toggleCategory(categoryId) {
+            const itemsDiv = document.getElementById(`items-${categoryId}`);
+            itemsDiv.classList.toggle('hidden');
+        }
+
+        // Abrir editor
+        async function openEditor(categoryId, itemId) {
+            currentCategory = categoryId;
+            currentItem = itemId;
+
+            const metadata = await contentDiscovery.loadItemMetadata(categoryId, itemId);
+            const content = await contentDiscovery.loadItemContent(categoryId, itemId);
+
+            // Llenar formulario
+            document.getElementById('editId').value = metadata.id;
+            document.getElementById('editTitle').value = metadata.title;
+            document.getElementById('editDescription').value = metadata.description;
+            document.getElementById('editOrder').value = metadata.order || 0;
+            document.getElementById('editTags').value = (metadata.tags || []).join(', ');
+            document.getElementById('editThumbnail').value = metadata.thumbnail || '';
+            document.getElementById('editPublished').value = metadata.published ? 'true' : 'false';
+            document.getElementById('editContent').value = content;
+
+            document.getElementById('editorTitle').textContent = `Editar: ${metadata.title}`;
+            document.getElementById('editorModal').classList.remove('hidden');
+        }
+
+        // Cerrar editor modal
+        function closeEditorModal() {
+            document.getElementById('editorModal').classList.add('hidden');
+            currentCategory = null;
+            currentItem = null;
+        }
+
+        // Guardar contenido
+        async function saveContent() {
+            if (!currentCategory || !currentItem) return;
+
+            const metadata = {
+                id: currentItem,
+                title: document.getElementById('editTitle').value,
+                description: document.getElementById('editDescription').value,
+                category: currentCategory,
+                order: parseInt(document.getElementById('editOrder').value) || 0,
+                updated: new Date().toISOString(),
+                published: document.getElementById('editPublished').value === 'true',
+                tags: document.getElementById('editTags').value.split(',').map(t => t.trim()).filter(t => t),
+                thumbnail: document.getElementById('editThumbnail').value,
+                content: {
+                    type: 'html',
+                    file: 'index.html'
+                }
+            };
+
+            const content = document.getElementById('editContent').value;
+
+            // En una implementación real, esto enviaría a un backend
+            // Por ahora, simulamos el guardado
+            console.log('Guardando metadata:', metadata);
+            console.log('Guardando contenido:', content.substring(0, 100) + '...');
+
+            alert('✅ Contenido guardado (simulado - requiere backend para guardar archivos)');
+            closeEditorModal();
+            await loadCategories();
+        }
+
+        // Preview contenido
+        function previewContent() {
+            const content = document.getElementById('editContent').value;
+            document.getElementById('previewContent').innerHTML = content;
+            document.getElementById('previewModal').classList.remove('hidden');
+        }
+
+        // Cerrar preview modal
+        function closePreviewModal() {
+            document.getElementById('previewModal').classList.add('hidden');
+        }
+
+        // Regenerar índices
+        async function regenerateIndices() {
+            contentDiscovery.clearCache();
+            await loadCategories();
+            alert('✅ Índices regenerados');
+        }
+    </script>
+</body>
+</html>

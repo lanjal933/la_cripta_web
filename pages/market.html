@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market - La Cripta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep': '#050408',
+                        'bg-violet': '#0A0812',
+                        'bg-panel': '#0F0D18',
+                        'bg-card': '#151322',
+                        'bg-hover': '#1C1928',
+                        'violet-primary': '#7B5CE8',
+                        'violet-soft': '#9B7FF0',
+                        'violet-bright': '#B89DFF',
+                        'violet-deep': '#5B3CD8',
+                        'violet-glow': '#8B6CF0',
+                        'arcane-blue': '#4A7DE8',
+                        'silver-soft': '#B8BECB',
+                        'silver-muted': '#989EAB',
+                        'white-warm': '#F0F1F3',
+                    },
+                    fontFamily: {
+                        'title': ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+                        'body': ['"Inter"', '"Manrope"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body text-white-warm min-h-screen">
+    <div class="premium-bg"></div>
+    <div id="flashOverlay" class="flash-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-violet-deep/30 backdrop-blur-md border-b border-violet-primary/35 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors tracking-wider">✦ LA CRIPTA</a>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mapa.html" class="nav-link text-sm uppercase tracking-wider">Mapa</a>
+                    <a href="facciones.html" class="nav-link text-sm uppercase tracking-wider">Facciones</a>
+                    <a href="ciudades.html" class="nav-link text-sm uppercase tracking-wider">Ciudades</a>
+                    <a href="lore.html" class="nav-link text-sm uppercase tracking-wider">Lore</a>
+                    <a href="aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
+                    <a href="market.html" class="nav-link text-sm uppercase tracking-wider active">Market</a>
+                    <a href="guide.html" class="nav-link text-sm uppercase tracking-wider">Guía</a>
+                    <a href="creacion-personaje.html" class="nav-link text-sm uppercase tracking-wider">Creación</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 px-4 max-w-7xl mx-auto">
+        <!-- Main Cards -->
+        <div id="mainCards" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-bg-card/90 border border-violet-primary/20 rounded-xl p-8 text-center cursor-pointer hover:border-violet-primary/50 transition-all duration-300 hover:transform hover:-translate-y-1 card" onclick="showSection('catalogo')">
+                <span class="text-6xl mb-4 block">📚</span>
+                <h2 class="font-title text-2xl text-violet-primary mb-2">Catálogo</h2>
+                <p class="text-silver-soft">Explora todos los items, servicios y productos disponibles en La Cripta</p>
+            </div>
+            <div class="bg-bg-card/90 border border-violet-primary/20 rounded-xl p-8 text-center cursor-pointer hover:border-violet-primary/50 transition-all duration-300 hover:transform hover:-translate-y-1 card" onclick="showSection('tienda-fantasma')">
+                <span class="text-6xl mb-4 block">👻</span>
+                <h2 class="font-title text-2xl text-violet-primary mb-2">Tienda Fantasma</h2>
+                <p class="text-silver-soft">Ofertas especiales que rotan cada 7 días. ¡No te las pierdas!</p>
+            </div>
+        </div>
+
+        <!-- Catalogo Section -->
+        <div class="market-section" id="catalogo-section" style="display: none;">
+            <div class="mb-6">
+                <h2 class="font-title text-3xl text-violet-primary mb-2">📚 Catálogo</h2>
+                <p class="text-silver-soft">Explora todos los items y servicios disponibles</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mb-6" id="categoryTabs">
+                <button class="category-tab active" onclick="filterCategory('all', this)">
+                    <span class="category-tab-icon">📦</span>
+                    Todos
+                </button>
+                <button class="category-tab" onclick="filterCategory('servicios', this)">
+                    <span class="category-tab-icon">🏰</span>
+                    Servicios
+                </button>
+                <button class="category-tab" onclick="filterCategory('armas', this)">
+                    <span class="category-tab-icon">⚔️</span>
+                    Armas
+                </button>
+                <button class="category-tab" onclick="filterCategory('armaduras', this)">
+                    <span class="category-tab-icon">🛡️</span>
+                    Armaduras
+                </button>
+                <button class="category-tab" onclick="filterCategory('objetos', this)">
+                    <span class="category-tab-icon">🎒</span>
+                    Objetos
+                </button>
+                <button class="category-tab" onclick="filterCategory('baratijas', this)">
+                    <span class="category-tab-icon">✨</span>
+                    Baratijas
+                </button>
+                <button class="category-tab" onclick="filterCategory('monturas', this)">
+                    <span class="category-tab-icon">🐎</span>
+                    Monturas
+                </button>
+            </div>
+
+            <div class="bg-bg-card/90 border border-violet-primary/20 rounded-xl p-6 overflow-hidden">
+                <div class="flex gap-5 overflow-x-auto pb-4" id="catalogCarousel">
+                    <!-- Servicios -->
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Portales</div>
+                        <div class="carousel-item-price">40 BLINES</div>
+                        <div class="carousel-item-description">Viaja entre ciudades de forma segura</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Servicios de viaje</div>
+                        <div class="carousel-item-price">35 BLINES</div>
+                        <div class="carousel-item-description">Transporte a cualquier lugar del continente</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Entrenamiento de Combate</div>
+                        <div class="carousel-item-price">55 BLINES</div>
+                        <div class="carousel-item-description">12 horas de entrenamiento intensivo</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Hospital</div>
+                        <div class="carousel-item-price">40 BLINES</div>
+                        <div class="carousel-item-description">Curación profesional y tratamiento</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Coliseos</div>
+                        <div class="carousel-item-price">30 BLINES</div>
+                        <div class="carousel-item-description">Participa en combates por premios</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Publicación de Venta</div>
+                        <div class="carousel-item-price">30 BLINES</div>
+                        <div class="carousel-item-description">Publica productos para venta</div>
+                    </div>
+                    <div class="carousel-item" data-category="servicios">
+                        <div class="carousel-item-image">🏰</div>
+                        <div class="carousel-item-name">Publicación del diario</div>
+                        <div class="carousel-item-price">40 BLINES</div>
+                        <div class="carousel-item-description">Espacio en el diario semanal</div>
+                    </div>
+                    <!-- Armas -->
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Garrote</div>
+                        <div class="carousel-item-price">5 BLINES</div>
+                        <div class="carousel-item-description">Arma simple contundente</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Daga</div>
+                        <div class="carousel-item-price">10 BLINES</div>
+                        <div class="carousel-item-description">Corta y fácil de ocultar</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Gran Garrote</div>
+                        <div class="carousel-item-price">15 BLINES</div>
+                        <div class="carousel-item-description">Versión más grande del garrote</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Hacha de Mano</div>
+                        <div class="carousel-item-price">20 BLINES</div>
+                        <div class="carousel-item-description">Hacha ligera para combate cercano</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Jabalina</div>
+                        <div class="carousel-item-price">15 BLINES</div>
+                        <div class="carousel-item-description">Arma arrojadiza</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Martillo Ligero</div>
+                        <div class="carousel-item-price">20 BLINES</div>
+                        <div class="carousel-item-description">Martillo de guerra ligero</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Lanza</div>
+                        <div class="carousel-item-price">20 BLINES</div>
+                        <div class="carousel-item-description">Arma básica de asta</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Maza</div>
+                        <div class="carousel-item-price">30 BLINES</div>
+                        <div class="carousel-item-description">Arma contundente</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Bastón</div>
+                        <div class="carousel-item-price">5 BLINES</div>
+                        <div class="carousel-item-description">Bastón simple</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Hoz</div>
+                        <div class="carousel-item-price">20 BLINES</div>
+                        <div class="carousel-item-description">Hoz de combate</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Ballesta Ligera</div>
+                        <div class="carousel-item-price">50 BLINES</div>
+                        <div class="carousel-item-description">Ballesta de mano ligera</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Dardo</div>
+                        <div class="carousel-item-price">5 BLINES</div>
+                        <div class="carousel-item-description">Proyectil pequeño</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Arco Corto</div>
+                        <div class="carousel-item-price">55 BLINES</div>
+                        <div class="carousel-item-description">Arco de corto alcance</div>
+                    </div>
+                    <div class="carousel-item" data-category="armas">
+                        <div class="carousel-item-image">⚔️</div>
+                        <div class="carousel-item-subcategory">Armas Simples</div>
+                        <div class="carousel-item-name">Honda</div>
+                        <div class="carousel-item-price">15 BLINES</div>
+                        <div class="carousel-item-description">Arma de proyectiles simple</div>
+                    </div>
+                    <!-- Armaduras -->
+                    <div class="carousel-item" data-category="armaduras">
+                        <div class="carousel-item-image">🛡️</div>
+                        <div class="carousel-item-subcategory">Armaduras Ligeras</div>
+                        <div class="carousel-item-name">Acolchada</div>
+                        <div class="carousel-item-price">25 BLINES</div>
+                        <div class="carousel-item-description">Armadura acolchada básica</div>
+                    </div>
+                    <div class="carousel-item" data-category="armaduras">
+                        <div class="carousel-item-image">🛡️</div>
+                        <div class="carousel-item-subcategory">Armaduras Ligeras</div>
+                        <div class="carousel-item-name">Cuero</div>
+                        <div class="carousel-item-price">40 BLINES</div>
+                        <div class="carousel-item-description">Armadura de cuero</div>
+                    </div>
+                    <div class="carousel-item" data-category="armaduras">
+                        <div class="carousel-item-image">🛡️</div>
+                        <div class="carousel-item-subcategory">Armaduras Ligeras</div>
+                        <div class="carousel-item-name">Cuero Reforzado</div>
+                        <div class="carousel-item-price">75 BLINES</div>
+                        <div class="carousel-item-description">Cuero con refuerzos</div>
+                    </div>
+                    <div class="carousel-item" data-category="armaduras">
+                        <div class="carousel-item-image">🛡️</div>
+                        <div class="carousel-item-subcategory">Armaduras Ligeras</div>
+                        <div class="carousel-item-name">Abrigo del Explorador</div>
+                        <div class="carousel-item-price">90 BLINES</div>
+                        <div class="carousel-item-description">Abrigo para exploradores</div>
+                    </div>
+                    <div class="carousel-item" data-category="armaduras">
+                        <div class="carousel-item-image">🛡️</div>
+                        <div class="carousel-item-subcategory">Armaduras Ligeras</div>
+                        <div class="carousel-item-name">Vestimenta Sombría</div>
+                        <div class="carousel-item-price">120 BLINES</div>
+                        <div class="carousel-item-description">Ropa para sigilo</div>
+                    </div>
+                    <!-- Objetos -->
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Mochila de Viaje</div>
+                        <div class="carousel-item-price">15 BLINES</div>
+                        <div class="carousel-item-description">Mochila para viajes</div>
+                    </div>
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Bolsa de Componentes</div>
+                        <div class="carousel-item-price">25 BLINES</div>
+                        <div class="carousel-item-description">Bolsa para componentes mágicos</div>
+                    </div>
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Cuerda de Cáñamo (15m)</div>
+                        <div class="carousel-item-price">10 BLINES</div>
+                        <div class="carousel-item-description">Cuerda resistente</div>
+                    </div>
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Cuerda de Seda (15m)</div>
+                        <div class="carousel-item-price">35 BLINES</div>
+                        <div class="carousel-item-description">Cuerda de seda fina</div>
+                    </div>
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Antorcha</div>
+                        <div class="carousel-item-price">2 BLINES</div>
+                        <div class="carousel-item-description">Fuente de luz</div>
+                    </div>
+                    <div class="carousel-item" data-category="objetos">
+                        <div class="carousel-item-image">🎒</div>
+                        <div class="carousel-item-subcategory">Aventurería Básica</div>
+                        <div class="carousel-item-name">Farol de Aceite</div>
+                        <div class="carousel-item-price">18 BLINES</div>
+                        <div class="carousel-item-description">Farol portátil</div>
+                    </div>
+                    <!-- Baratijas -->
+                    <div class="carousel-item" data-category="baratijas">
+                        <div class="carousel-item-image">✨</div>
+                        <div class="carousel-item-subcategory">Baratijas Arcanas</div>
+                        <div class="carousel-item-name">Piedra Luminosa</div>
+                        <div class="carousel-item-price">15 BLINES</div>
+                        <div class="carousel-item-description">Emite luz constante</div>
+                    </div>
+                    <div class="carousel-item" data-category="baratijas">
+                        <div class="carousel-item-image">✨</div>
+                        <div class="carousel-item-subcategory">Baratijas Arcanas</div>
+                        <div class="carousel-item-name">Moneda Cambiante</div>
+                        <div class="carousel-item-price">25 BLINES</div>
+                        <div class="carousel-item-description">Cambia de valor aleatoriamente</div>
+                    </div>
+                    <div class="carousel-item" data-category="baratijas">
+                        <div class="carousel-item-image">✨</div>
+                        <div class="carousel-item-subcategory">Baratijas Arcanas</div>
+                        <div class="carousel-item-name">Brújula Caprichosa</div>
+                        <div class="carousel-item-price">40 BLINES</div>
+                        <div class="carousel-item-description">Apunta a lo que deseas</div>
+                    </div>
+                    <div class="carousel-item" data-category="baratijas">
+                        <div class="carousel-item-image">✨</div>
+                        <div class="carousel-item-subcategory">Baratijas Arcanas</div>
+                        <div class="carousel-item-name">Cristal Susurrante</div>
+                        <div class="carousel-item-price">55 BLINES</div>
+                        <div class="carousel-item-description">Susurra secretos</div>
+                    </div>
+                    <!-- Monturas -->
+                    <div class="carousel-item" data-category="monturas">
+                        <div class="carousel-item-image">🐎</div>
+                        <div class="carousel-item-subcategory">Monturas Comunes</div>
+                        <div class="carousel-item-name">Caballo de Trabajo</div>
+                        <div class="carousel-item-price">90 BLINES</div>
+                        <div class="carousel-item-description">Caballo para trabajo</div>
+                    </div>
+                    <div class="carousel-item" data-category="monturas">
+                        <div class="carousel-item-image">🐎</div>
+                        <div class="carousel-item-subcategory">Monturas Comunes</div>
+                        <div class="carousel-item-name">Caballo de Montura</div>
+                        <div class="carousel-item-price">150 BLINES</div>
+                        <div class="carousel-item-description">Caballo para montar</div>
+                    </div>
+                    <div class="carousel-item" data-category="monturas">
+                        <div class="carousel-item-image">🐎</div>
+                        <div class="carousel-item-subcategory">Monturas Comunes</div>
+                        <div class="carousel-item-name">Poni Resistente</div>
+                        <div class="carousel-item-price">75 BLINES</div>
+                        <div class="carousel-item-description">Poni resistente</div>
+                    </div>
+                    <div class="carousel-item" data-category="monturas">
+                        <div class="carousel-item-image">🐎</div>
+                        <div class="carousel-item-subcategory">Monturas Comunes</div>
+                        <div class="carousel-item-name">Mula de Carga</div>
+                        <div class="carousel-item-price">55 BLINES</div>
+                        <div class="carousel-item-description">Mula para carga</div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 mt-4">
+                    <button onclick="scrollCarousel('catalogCarousel', -1)" class="bg-violet-primary hover:bg-violet-deep text-white px-6 py-3 rounded-lg transition-colors">← Anterior</button>
+                    <button onclick="scrollCarousel('catalogCarousel', 1)" class="bg-violet-primary hover:bg-violet-deep text-white px-6 py-3 rounded-lg transition-colors">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tienda Fantasma Section -->
+        <div class="market-section" id="tienda-fantasma-section" style="display: none;">
+            <div class="relative bg-cover bg-center bg-fixed rounded-xl p-8 min-h-[70vh] overflow-hidden mb-8" style="background-image: url('../images/tienda_fantasma_pc.jpg');">
+                <div class="absolute inset-0 bg-bg-deep/90 rounded-xl"></div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/3">
+                        <div class="bg-bg-panel/90 border border-violet-primary/30 rounded-xl p-6">
+                            <h3 class="font-title text-xl text-violet-primary mb-4">👻 Vendedor Fantasma</h3>
+                            <div class="mb-4">
+                                <img src="../images/vendedor_fantasma.png" alt="Vendedor Fantasma" class="w-full rounded-lg border border-violet-primary/30">
+                            </div>
+                            <div class="bg-bg-card rounded-lg p-4 mb-4">
+                                <p class="text-silver-soft text-sm mb-2">Ofertas especiales disponibles por tiempo limitado</p>
+                                <div class="bg-violet-primary/20 border border-violet-primary/40 rounded-lg p-3">
+                                    <h4 class="text-violet-primary text-sm mb-1">Próxima rotación</h4>
+                                    <div class="text-white-warm font-title text-2xl" id="ghostCountdown">--:--:--:--</div>
+                                    <p class="text-silver-soft text-xs mt-1">Lunes a las 12:00 PM</p>
+                                </div>
+                            </div>
+                            <a href="https://discord.gg/la-cripta" target="_blank" class="block bg-[#5865F2] hover:bg-[#4752C4] text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300">
+                                Únete al Discord
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="bg-bg-panel/90 border border-violet-primary/30 rounded-xl p-6">
+                            <h3 class="font-title text-xl text-violet-primary mb-4">🎁 Ofertas de la Semana</h3>
+                            <div class="relative">
+                                <div class="overflow-hidden rounded-lg" id="ghostCarousel">
+                                    <div class="flex transition-transform duration-500" id="ghostCarouselTrack">
+                                        <!-- Ghost items will be loaded here -->
+                                    </div>
+                                </div>
+                                <button onclick="prevGhostItem()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-violet-primary hover:bg-violet-deep text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                    ←
+                                </button>
+                                <button onclick="nextGhostItem()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-violet-primary hover:bg-violet-deep text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                    →
+                                </button>
+                            </div>
+                            <div class="mt-4 flex justify-center gap-2" id="ghostCarouselDots">
+                                <!-- Dots will be generated here -->
+                            </div>
+                            <div class="mt-6 text-center">
+                                <a href="https://discord.com/channels/1467738240567083133/1514009126542377050" target="_blank" class="inline-block bg-gradient-to-r from-violet-primary to-violet-deep hover:from-violet-soft hover:to-violet-primary text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                                    🛒 Adquirir Item
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Redemption -->
+            <div class="bg-bg-panel/90 border border-violet-primary/20 rounded-xl p-6">
+                <h3 class="font-title text-xl text-violet-primary mb-4">🎁 Canjear Código</h3>
+                <p class="text-silver-soft mb-4">Ingresa un código especial para obtener recompensas exclusivas</p>
+                <div class="flex gap-3 mb-4">
+                    <input type="text" id="ghostCodeInput" class="flex-1 bg-bg-card border border-violet-primary/30 text-white-warm p-3 rounded-lg uppercase tracking-widest focus:border-violet-primary focus:outline-none" placeholder="CÓDIGO">
+                    <button onclick="redeemCode()" class="bg-gradient-to-r from-violet-primary to-violet-deep hover:from-violet-soft hover:to-violet-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                        Canjear
+                    </button>
+                </div>
+                <div id="codeResult" class="hidden rounded-lg p-4">
+                    <h4 id="codeResultTitle"></h4>
+                    <p id="codeResultMessage"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Market script loaded');
+        
+        // Simple market functionality
+        let currentCategory = 'all';
+
+        function showSection(sectionId) {
+            console.log('Showing section:', sectionId);
+            
+            // Hide all sections using inline styles
+            document.querySelectorAll('.market-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Hide main cards
+            const mainCards = document.getElementById('mainCards');
+            if (mainCards) {
+                mainCards.style.display = 'none';
+            }
+            
+            // Show selected section
+            const section = document.getElementById(`${sectionId}-section`);
+            if (section) {
+                section.style.display = 'block';
+                console.log('Section found and activated');
+                
+                // Load ghost items if showing tienda fantasma
+                if (sectionId === 'tienda-fantasma') {
+                    loadGhostItems();
+                    startGhostCountdown();
+                }
+            } else {
+                console.log('Section not found:', sectionId);
+            }
+        }
+
+        function showMainCards() {
+            console.log('Showing main cards');
+            
+            // Hide all sections
+            document.querySelectorAll('.market-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show main cards
+            const mainCards = document.getElementById('mainCards');
+            if (mainCards) {
+                mainCards.style.display = 'grid';
+            }
+        }
+
+        function filterCategory(categoryId, tabElement) {
+            console.log('Filtering by category:', categoryId);
+            currentCategory = categoryId;
+            
+            // Update tab styles
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            if (tabElement) {
+                tabElement.classList.add('active');
+            }
+            
+            // Filter carousel items
+            const items = document.querySelectorAll('.carousel-item');
+            items.forEach(item => {
+                if (categoryId === 'all' || item.dataset.category === categoryId) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function scrollCarousel(carouselId, direction) {
+            const carousel = document.getElementById(carouselId);
+            if (carousel) {
+                const scrollAmount = 300;
+                carousel.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Ghost Shop Carousel
+        let ghostItems = [];
+        let currentGhostIndex = 0;
+        
+        function loadGhostItems() {
+            // Generate 7 random ghost items
+            const allItems = [
+                { name: 'Espada Sombría', price: '150 BLINES', icon: '⚔️', description: 'Una espada imbuida con energía oscura' },
+                { name: 'Escudo Fantasmal', price: '120 BLINES', icon: '🛡️', description: 'Escudo que protege de ataques etéreos' },
+                { name: 'Poción de Invisibilidad', price: '80 BLINES', icon: '🧪', description: 'Te hace invisible por 1 hora' },
+                { name: 'Amuleto de Protección', price: '200 BLINES', icon: '🔮', description: 'Protege contra maldiciones' },
+                { name: 'Botas de Velocidad', price: '100 BLINES', icon: '👢', description: 'Aumenta tu velocidad de movimiento' },
+                { name: 'Guantes de Fuerza', price: '90 BLINES', icon: '🧤', description: 'Aumenta tu fuerza física' },
+                { name: 'Capa de las Sombras', price: '180 BLINES', icon: '🧥', description: 'Te funde con las sombras' },
+                { name: 'Anillo de Teletransporte', price: '250 BLINES', icon: '💍', description: 'Teletransporte a corta distancia' },
+                { name: 'Casco de Visión', price: '110 BLINES', icon: '⛑️', description: 'Permite ver en la oscuridad' },
+                { name: 'Cuerda Mágica', price: '60 BLINES', icon: '🪢', description: 'Cuerda que se extiende y contrae' },
+                { name: 'Llave Maestra', price: '75 BLINES', icon: '🔑', description: 'Abre cualquier cerradura' },
+                { name: 'Mapa del Tesoro', price: '95 BLINES', icon: '🗺️', description: 'Muestra la ubicación de tesoros' },
+                { name: 'Flechas de Fuego', price: '50 BLINES', icon: '🏹', description: 'Flechas que prenden fuego al impacto' },
+                { name: 'Pergamino de Hechizo', price: '130 BLINES', icon: '📜', description: 'Contiene un hechizo aleatorio' },
+                { name: 'Gema de Poder', price: '300 BLINES', icon: '💎', description: 'Aumenta el poder mágico' }
+            ];
+            
+            // Shuffle and pick 7 random items
+            const shuffled = [...allItems].sort(() => 0.5 - Math.random());
+            ghostItems = shuffled.slice(0, 7);
+            
+            // Render items
+            const track = document.getElementById('ghostCarouselTrack');
+            const dots = document.getElementById('ghostCarouselDots');
+            
+            if (track && dots) {
+                track.innerHTML = ghostItems.map((item, index) => `
+                    <div class="min-w-full p-6 bg-bg-card rounded-lg border border-violet-primary/30">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">${item.icon}</div>
+                            <h4 class="font-title text-2xl text-violet-primary mb-2">${item.name}</h4>
+                            <p class="text-violet-bright text-xl font-bold mb-3">${item.price}</p>
+                            <p class="text-silver-soft text-sm">${item.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Generate dots
+                dots.innerHTML = ghostItems.map((_, index) => `
+                    <button onclick="goToGhostItem(${index})" class="w-3 h-3 rounded-full transition-colors ${index === 0 ? 'bg-violet-primary' : 'bg-violet-primary/30 hover:bg-violet-primary/50'}"></button>
+                `).join('');
+                
+                currentGhostIndex = 0;
+                updateGhostCarousel();
+            }
+        }
+        
+        function updateGhostCarousel() {
+            const track = document.getElementById('ghostCarouselTrack');
+            const dots = document.getElementById('ghostCarouselDots');
+            
+            if (track) {
+                track.style.transform = `translateX(-${currentGhostIndex * 100}%)`;
+            }
+            
+            if (dots) {
+                dots.querySelectorAll('button').forEach((dot, index) => {
+                    dot.className = `w-3 h-3 rounded-full transition-colors ${index === currentGhostIndex ? 'bg-violet-primary' : 'bg-violet-primary/30 hover:bg-violet-primary/50'}`;
+                });
+            }
+        }
+        
+        function nextGhostItem() {
+            currentGhostIndex = (currentGhostIndex + 1) % ghostItems.length;
+            updateGhostCarousel();
+        }
+        
+        function prevGhostItem() {
+            currentGhostIndex = (currentGhostIndex - 1 + ghostItems.length) % ghostItems.length;
+            updateGhostCarousel();
+        }
+        
+        function goToGhostItem(index) {
+            currentGhostIndex = index;
+            updateGhostCarousel();
+        }
+        
+        // Ghost Shop Countdown
+        let ghostCountdownInterval;
+        
+        function startGhostCountdown() {
+            if (ghostCountdownInterval) {
+                clearInterval(ghostCountdownInterval);
+            }
+            
+            updateGhostCountdown();
+            ghostCountdownInterval = setInterval(updateGhostCountdown, 1000);
+        }
+        
+        function updateGhostCountdown() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            
+            // Calculate time until next Monday at 12:00 PM
+            let targetTime = new Date(now);
+            targetTime.setDate(targetTime.getDate() + ((1 + 7 - day) % 7 || 7));
+            targetTime.setHours(12, 0, 0, 0);
+            
+            // If today is Monday and it's before 12:00 PM, use today
+            if (day === 1 && hour < 12) {
+                targetTime = new Date(now);
+                targetTime.setHours(12, 0, 0, 0);
+            }
+            
+            const diff = targetTime - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            const display = document.getElementById('ghostCountdown');
+            if (display) {
+                display.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+        
+        // Test that functions are available
+        console.log('showSection function available:', typeof showSection);
+        console.log('filterCategory function available:', typeof filterCategory);
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-brand-logo">✦ LA CRIPTA</div>
+                <p class="footer-brand-tagline">Tu portal al mundo de D&D en español</p>
+            </div>
+            <div class="footer-info">
+                <p class="year">2025</p>
+                <p class="creator">Creado por Roko</p>
+                <p class="copyright">© La Cripta</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">Inicio</a>
+                <a href="aventuras.html" class="footer-link">Juegos</a>
+                <a href="mapa.html" class="footer-link">Mapa</a>
+                <a href="lore.html" class="footer-link">Lore</a>
+                <a href="guide.html" class="footer-link">Guía</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://discord.gg/la-cripta" target="_blank" class="footer-button discord">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    Discord
+                </a>
+                <a href="https://www.instagram.com/la_cripta_comunidad_dnd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-button instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Instagram
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-bottom-text">Diseñado con <span style="color: var(--crimson-soft);">♥</span> para la comunidad de D&D en español. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

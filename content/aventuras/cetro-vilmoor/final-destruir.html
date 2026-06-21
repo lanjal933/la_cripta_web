@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final: Destruir - El Cetro de Vilmoor</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f0a 0%, #1a2e1a 50%, #163e16 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #c0c0c0;
+            min-height: 100vh;
+        }
+        
+        .adventure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .adventure-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 40px 30px;
+            background: linear-gradient(180deg, #0d1a0d 0%, #1a2e1a 100%);
+            border: 2px solid #2d442d;
+            border-radius: 8px;
+            color: #8b8b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .ending-title {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: #4a6a4a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .ending-subtitle {
+            font-size: 1.2em;
+            color: #6a8a6a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border: 1px solid #2d442d;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #5a7a5a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3d5c3d;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .narrative-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #9aba9a;
+        }
+        
+        .ending-positive {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #152015 100%);
+            border-left: 3px solid #3a8a3a;
+            border-radius: 4px;
+            color: #8aba8a;
+        }
+        
+        .ending-negative {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #1a0f0f 0%, #201515 100%);
+            border-left: 3px solid #8a3a3a;
+            border-radius: 4px;
+            color: #ba8a8a;
+        }
+        
+        .ending-neutral {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #0f1a0f 0%, #1a2e1a 100%);
+            border-left: 3px solid #4a6a4a;
+            border-radius: 4px;
+            color: #8a8aba;
+        }
+        
+        .choice-container {
+            margin: 25px 0;
+        }
+        
+        .choice {
+            margin: 12px 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #1a2e1a 0%, #254025 100%);
+            border: 1px solid #3d5c3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #8aaa8a;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice:hover:not(.disabled) {
+            background: linear-gradient(180deg, #254025 0%, #305030 100%);
+            border-color: #5a7a5a;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(90, 122, 90, 0.3);
+        }
+        
+        .choice.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .choice.selected {
+            background: linear-gradient(180deg, #305030 0%, #3d6a3d 100%);
+            border-color: #4a8a4a;
+            box-shadow: 0 2px 10px rgba(74, 138, 74, 0.5);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #6a8a6a;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .back-link:hover {
+            color: #8aaa8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="adventure-container">
+        <a href="escenario-16.html" class="back-link">← Volver a la Cámara del Cetro</a>
+        
+        <div class="adventure-header">
+            <h1 class="ending-title">Final: Destruir el Cetro</h1>
+            <p class="ending-subtitle">Habéis decidido destruir el Cetro de Vilmoor</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📖 Consecuencias</h2>
+            <div class="narrative-text">
+                <p>Recitáis el contraconjuro que aprendisteis en la Sala del Ritual: "Poder sin propósito es destrucción. Conocimiento sin sabiduría es caos. Retornad al vacío de donde viniste."</p>
+                
+                <p>El Cetro de Vilmoor resiste al principio, su luz brillando con intensidad desesperada. Pero vuestra voluntad es fuerte, y el contraconjuro es antiguo y poderoso. Poco a poco, el cetro comienza a romperse.</p>
+                
+                <p>Primero, el orbe se agrieta. Luego, la vara se fractura. Finalmente, con un sonido como cristal rompiéndose, el cetro se deshace en fragmentos de luz que se disipan en el aire.</p>
+                
+                <p>El poder del artefacto se libera, pero no de forma destructiva. En lugar, se expande como una onda de energía suave que recorre la torre, el patio, las ruinas, y finalmente el mundo entero. Es un último regalo del cetro: una bendición de protección y conocimiento.</p>
+            </div>
+            
+            <div class="ending-positive">
+                <strong>Consecuencias Positivas:</strong>
+                <p>• El cetro ya no es una amenaza para el mundo</p>
+                <p>• La energía liberada protege y bendice el mundo</p>
+                <p>• Vilmoor finalmente encuentra paz</p>
+                <p>• Sois recordados como héroes que salvaron al mundo</p>
+            </div>
+            
+            <div class="ending-negative">
+                <strong>Consecuencias Negativas:</strong>
+                <p>• El conocimiento del cetro se pierde para siempre</p>
+                <p>• Algunos lamentan la pérdida de tal poder</p>
+                <p>• Las ruinas de Vilmoor colapsan completamente</p>
+                <p>• Nunca sabréis qué podríais haber logrado con el cetro</p>
+            </div>
+            
+            <div class="ending-neutral">
+                <strong>Consecuencias Neutras:</strong>
+                <p>• La torre de Vilmoor se convierte en un monumento</p>
+                <p>• Vuestra decisión es debatida por historiadores</p>
+                <p>• El mundo continúa sin el cetro, pero diferente</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📜 Epílogo</h2>
+            <div class="narrative-text">
+                <p>Las ruinas de Vilmoor se convierten en un monumento a vuestra decisión. Gente de todo el mundo viene a visitar el lugar donde el Cetro de Vilmoor fue destruido, a rendir homenaje a los héroes que salvaron al mundo de su influencia.</p>
+                
+                <p>Vosotros, sin embargo, no buscáis la gloria. Sabéis que la decisión correcta no siempre es la fácil, y que el verdadero heroísmo está en hacer lo correcto incluso cuando significa renunciar al poder.</p>
+                
+                <p>A veces, en vuestros sueños, escucháis el eco del cetro: un susurro de gratitud, un último agradecimiento de Vilmoor, quien finalmente encuentra la paz que buscaba durante siglos.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⚡ Opciones</h2>
+            <div class="choice-container">
+                <div class="choice" onclick="selectChoice('escenario-20.html')">
+                    <strong>➡️ Continuar al Final</strong>
+                </div>
+                <div class="choice" onclick="selectChoice('index.html')">
+                    <strong>🔄 Jugar de nuevo</strong>
+                </div>
+                <div class="choice" onclick="selectChoice('../../../pages/aventuras.html')">
+                    <strong>📚 Explorar otras aventuras</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectChoice(url) {
+            // Lock all choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(c => {
+                c.classList.add('disabled');
+                if (c.getAttribute('onclick').includes(url)) {
+                    c.classList.add('selected');
+                }
+            });
+            
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

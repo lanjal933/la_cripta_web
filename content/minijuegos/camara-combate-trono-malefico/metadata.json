@@ -1,0 +1,24 @@
+{
+  "id": "camara-combate-trono-malefico",
+  "title": "Cámara de Combate: El Trono Malefico",
+  "description": "Un minijuego de combate táctico inspirado en D&D 5e donde un Cazador de Sangre Tortoga nivel 7 enfrenta a Thir la Vampira en su trono gótico, con invocaciones de criaturas de la noche.",
+  "category": "minijuegos",
+  "order": 3,
+  "created": "2026-06-14T00:00:00Z",
+  "updated": "2026-06-14T00:00:00Z",
+  "published": true,
+  "tags": ["combate", "tactico", "dnd", "vampiro", "gothic", "fantasia", "invocaciones"],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "juego",
+    "difficulty": "Difícil",
+    "genre": "Combate Táctico",
+    "players": "1",
+    "duration": "25-45 minutos"
+  }
+}

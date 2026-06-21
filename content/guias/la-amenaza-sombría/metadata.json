@@ -1,0 +1,27 @@
+{
+  "id": "la-amenaza-sombría",
+  "title": "La Amenaza Sombría",
+  "description": "Una amenaza misteriosa acecha Expencior. Los Antiguos cayeron defendiendo a los humanos durante las guerras subsiguientes. Hoy se consideran extintos, aunque su legado permanece.",
+  "category": "guias",
+  "order": 3,
+  "created": "2026-06-16T00:00:00Z",
+  "updated": "2026-06-16T00:00:00Z",
+  "published": true,
+  "tags": [
+    "lore",
+    "amenaza",
+    "antiguos",
+    "sombras"
+  ],
+  "thumbnail": "",
+  "author": "Admin",
+  "content": {
+    "type": "html",
+    "file": "index.html"
+  },
+  "metadata": {
+    "type": "lore",
+    "periodo": "Post-Guerra",
+    "evento": "Caída de los Antiguos y amenaza misteriosa"
+  }
+}

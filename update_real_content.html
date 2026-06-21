@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Contenido Real</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #09070f;
+            color: #f8fafc;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container {
+            background: #13101c;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #8b5cf6;
+        }
+        h1 {
+            color: #8b5cf6;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #7c3aed;
+        }
+        .success {
+            color: #10b981;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .info {
+            color: #6b7280;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actualizar Contenido Real de Admin</h1>
+        <p>Este script actualizará el contenido de ciudades y lore en localStorage con el contenido real en formato HTML/CSS.</p>
+        <p class="info">Haz clic en el botón para ejecutar la actualización.</p>
+        <button onclick="updateContent()">Actualizar Contenido</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Contenido para ciudades (4 ciudades)
+        const citiesContent = [
+            {
+                name: "Mordicuis",
+                content: `<div class="space-y-6">
+    <div class="border-b border-neon-violet/30 pb-4 mb-4">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">🌆 Mordicuis</h3>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">📋 Información General</h4>
+            <div class="space-y-2 text-gray-300">
+                <p><span class="text-neon-violet">🏛️ Sistema de Gobierno:</span> Presidencialismo</p>
+                <p><span class="text-neon-violet">💰 Producción Económica:</span> Refinamiento de Productos y Gran centro de comercios</p>
+                <p><span class="text-neon-violet">⚡ Religión:</span> Rezan a <strong>Bane</strong>; el señor Oscuro <a href="https://forgottenrealms.fandom.com/wiki/Bane" target="_blank" class="text-neon-violet hover:underline">(Reinos Olvidados)</a></p>
+                <p><span class="text-neon-violet">⚔️ Militar:</span> Militarmente subdesarrollados, se preocupan más que nada por la protección interna de la ciudad</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">🏘️ Población</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-green-400 font-semibold mb-2">👥 Población y Demografía:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li>60% Humanos</li>
+                        <li>20% Yuan-ti</li>
+                        <li>10% Kenku</li>
+                        <li>10% Otras</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">💎 Clases Sociales:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li><strong>Rico:</strong> 12.000 < ... - Blines</li>
+                        <li><strong>Media Alta:</strong> 7.000 < 11.999 - Blines</li>
+                        <li><strong>Media:</strong> 4.000 < 6.999 - Blines</li>
+                        <li><strong>Media Baja:</strong> 800 < 3.999 - Blines</li>
+                        <li><strong>Pobre:</strong> 0 < 799 - Blines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">⚖️ Leyes y Sanciones</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-400 font-semibold">⚖️ Sanciones Comunes</p>
+                <div class="space-y-2 text-sm">
+                    <p><span class="text-red-600 font-semibold">Grave:</span> <em>70 < ... meses de cárcel</em></p>
+                    <p><span class="text-yellow-500 font-semibold">Moderado:</span> <em>Confinamiento en Cárcel 8 a 42 meses</em></p>
+                    <p><span class="text-green-400 font-semibold">Leve:</span> <em>Cárcel 1 a 7 meses o multa alta</em></p>
+                </div>
+                <p class="text-yellow-500 italic text-sm">"Reglas estrictas, Ciudad Tranquila"</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">👥 Personajes Importantes</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-neon-violet font-semibold">👤 Presidente:</p>
+                    <p class="text-sm ml-4">Gear Riverlon</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H) Humano</li>
+                        <li>Edad: 53 años</li>
+                        <li>Neutral</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-neon-violet font-semibold">⛪ Jefe del Clero:</p>
+                    <p class="text-sm ml-4">Gerbo Wild 5to</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H) Gnomo de los Bosques</li>
+                        <li>Edad: 32 años</li>
+                        <li>Legal Bueno</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "Fuerte Norte",
+                content: `<div class="space-y-6">
+    <div class="border-b border-neon-violet/30 pb-4 mb-4">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">🏔️ Fuerte Norte</h3>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">📋 Información General</h4>
+            <div class="space-y-2 text-gray-300">
+                <p><span class="text-neon-violet">🏛️ Sistema de Gobierno:</span> Oligarquía; selección democrática</p>
+                <p><span class="text-neon-violet">💰 Producción Económica:</span> Mármol, roca, minerales plateados. Se compran más barato en esta región</p>
+                <p><span class="text-neon-violet">⚡ Religión:</span> Rezan a Kord, dios de la fuerza <a href="https://dungeonsdragons.fandom.com/wiki/Kord#Description" target="_blank" class="text-neon-violet hover:underline">(Panteón de Greyhawk)</a></p>
+                <p><span class="text-neon-violet">⚔️ Militar:</span> Militarmente avanzados, no buscan conflictos y no suelen tener demasiada protección más allá de sus fronteras</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">🏘️ Población</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-green-400 font-semibold mb-2">👥 Población y Demografía:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li>50% Elfos</li>
+                        <li>30% Draconidos</li>
+                        <li>15% Humanos</li>
+                        <li>5% Otras</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">💎 Clases Sociales:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li><strong>Rico:</strong> 10.000 < ... - Blines</li>
+                        <li><strong>Media Alta:</strong> 5.000 < 9.999 - Blines</li>
+                        <li><strong>Media:</strong> 2.000 < 4.999 - Blines</li>
+                        <li><strong>Media Baja:</strong> 100 < 1.999 - Blines</li>
+                        <li><strong>Pobre:</strong> 0 < 99 - Blines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">⚖️ Leyes y Sanciones</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-400 font-semibold">⚖️ Sanciones Comunes</p>
+                <div class="space-y-2 text-sm">
+                    <p><span class="text-red-600 font-semibold">Grave:</span> <em>Tortura o Muerte</em></p>
+                    <p><span class="text-yellow-500 font-semibold">Moderado:</span> <em>Confinamiento en Cárcel 8 a 42 meses</em></p>
+                    <p><span class="text-green-400 font-semibold">Leve:</span> <em>Cárcel 1 a 7 meses + abucheo en público</em></p>
+                </div>
+                <p class="text-yellow-500 italic text-sm">"Para que hay multas, si se puede hacer sufrir a los maliantes"</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">👥 Personajes Importantes</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-neon-violet font-semibold">👑 Líder:</p>
+                    <p class="text-sm ml-4">Kaälamidor Fëanor; <em>destructor de los escudos</em></p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H) Alto Elfo</li>
+                        <li>Edad: 238 años</li>
+                        <li>Legal /Neutral</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-neon-violet font-semibold">⚔️ Comandante de Batalla:</p>
+                    <p class="text-sm ml-4">Thromedór Celebrimos</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H?) Alto Elfo</li>
+                        <li>Edad: 412 años</li>
+                        <li>Legal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "Avarus",
+                content: `<div class="space-y-6">
+    <div class="border-b border-neon-violet/30 pb-4 mb-4">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">💎 Avarus</h3>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">📋 Información General</h4>
+            <div class="space-y-2 text-gray-300">
+                <p><span class="text-neon-violet">🏛️ Sistema de Gobierno:</span> Plutocracia; Se gana poder comprando acciones de la ciudad</p>
+                <p><span class="text-neon-violet">💰 Producción Económica:</span> Producción de Joyas y extracciones de Minerales preciosos. Se compran más barato en esta región</p>
+                <p><span class="text-neon-violet">⚡ Religión:</span> Rezan a Abbathor, dios de la Codicia <a href="https://dungeonsdragons.fandom.com/wiki/Abbathor" target="_blank" class="text-neon-violet hover:underline">(Faits and Paiteon)</a></p>
+                <p><span class="text-neon-violet">⚔️ Militar:</span> Militarmente Avanzados, fuera y dentro de fronteras</p>
+                <div class="mt-3 p-3 bg-yellow-500/10 rounded border border-yellow-500/30">
+                    <p class="text-yellow-400 font-semibold text-sm">📊 Información Militar:</p>
+                    <ul class="list-disc list-inside text-xs ml-4 mt-2 space-y-1">
+                        <li>6.700 Soldados</li>
+                        <li>23.000 blines en armamento</li>
+                        <li>Estado: <em>Sin Guerra Actualmente</em></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">🏘️ Población</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-green-400 font-semibold mb-2">👥 Población y Demografía:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li>50% Enanos</li>
+                        <li>40% Draconidos</li>
+                        <li>10% Otras</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">💎 Clases Sociales:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li><strong>Rico:</strong> 9.500 < ... - Blines</li>
+                        <li><strong>Media Alta:</strong> 4.500 < 9.499 - Blines</li>
+                        <li><strong>Media:</strong> 2.500 < 4.499 - Blines</li>
+                        <li><strong>Media Baja:</strong> 500 < 2.499 - Blines</li>
+                        <li><strong>Pobre:</strong> 0 < 499 - Blines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">⚖️ Leyes y Sanciones</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-400 font-semibold">⚖️ Sanciones Comunes</p>
+                <div class="space-y-2 text-sm">
+                    <p><span class="text-red-600 font-semibold">Grave:</span> <em>Tortura o Muerte</em></p>
+                    <p><span class="text-yellow-500 font-semibold">Moderado:</span> <em>Tomado como Esclavo</em></p>
+                    <p><span class="text-green-400 font-semibold">Leve:</span> <em>Multa o humillación pública</em></p>
+                </div>
+                <p class="text-yellow-500 italic text-sm">"Los maliantes pagarán lo suficiente"</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">👥 Personajes Importantes</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-neon-violet font-semibold">👑 Líder:</p>
+                    <p class="text-sm ml-4 italic">(No especificado en la información proporcionada)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "Reino Esmeralda",
+                content: `<div class="space-y-6">
+    <div class="border-b border-neon-violet/30 pb-4 mb-4">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">🌲 Reino Esmeralda</h3>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">📋 Información General</h4>
+            <div class="space-y-2 text-gray-300">
+                <p><span class="text-neon-violet">🏛️ Sistema de Gobierno:</span> Consejo de Tortogas ancianas; teocracia natural</p>
+                <p><span class="text-neon-violet">💰 Producción Económica:</span> Hongos, resinas, madera viva, medicina natural y minerales orgánicos. Se compran más barato en esta región</p>
+                <p><span class="text-neon-violet">⚡ Religión:</span> Sylvara, Madre del Bosque Eterno <a href="https://forgottenrealms.fandom.com/wiki/Sylvanus" target="_blank" class="text-neon-violet hover:underline">(Reinos Olvidados)</a></p>
+                <p><span class="text-neon-violet">⚔️ Militar:</span> Defensa del bosque. Druidas, emboscadas y criaturas aliadas.</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">🏘️ Población</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-green-400 font-semibold mb-2">👥 Población y Demografía:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li>20% Pueblos animales</li>
+                        <li>15% Loxodones</li>
+                        <li>15% Semielfos</li>
+                        <li>5% Tortogas</li>
+                        <li>5% Otros</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">💎 Clases Sociales:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm ml-4">
+                        <li><strong>Rico:</strong> 10.000 < 14.000 - Blines</li>
+                        <li><strong>Media Alta:</strong> 4.000 < 9.999 - Blines</li>
+                        <li><strong>Media:</strong> 1.800 < 3.999 - Blines</li>
+                        <li><strong>Media Baja:</strong> 500 < 1.799 - Blines</li>
+                        <li><strong>Pobre:</strong> 0 < 499 - Blines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">⚖️ Leyes y Sanciones</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-400 font-semibold">⚖️ Sanciones Comunes</p>
+                <div class="space-y-2 text-sm">
+                    <p><span class="text-red-600 font-semibold">Grave:</span> <em>Exilio / sello del bosque</em></p>
+                    <p><span class="text-yellow-500 font-semibold">Moderado:</span> <em>Trabajo de restauración</em></p>
+                    <p><span class="text-green-400 font-semibold">Leve:</span> <em>Servicio comunitario</em></p>
+                </div>
+                <p class="text-yellow-500 italic text-sm">"El bosque nunca olvida."</p>
+            </div>
+        </div>
+
+        <div class="bg-dark-umbra/50 p-4 rounded-lg border border-neon-violet/20">
+            <h4 class="text-lg font-semibold text-neon-violet mb-3">👥 Personajes Importantes</h4>
+            <div class="space-y-3 text-gray-300">
+                <div>
+                    <p class="text-neon-violet font-semibold">👑 Rey:</p>
+                    <p class="text-sm ml-4">Elsêm Roŵŵ; Coroza de Abeto</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H) Tortoga</li>
+                        <li>Edad: 94</li>
+                        <li>Neutral</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-neon-violet font-semibold">🛡️ Heraldo Guardiana:</p>
+                    <p class="text-sm ml-4">Sälam Roŵŵ</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(H) Tortoga</li>
+                        <li>Edad: 42</li>
+                        <li>Legal</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-neon-violet font-semibold">🤝 Embajador:</p>
+                    <p class="text-sm ml-4">Maläla Moush</p>
+                    <ul class="list-disc list-inside text-xs ml-6 mt-1 space-y-1">
+                        <li>(M) Semielfo</li>
+                        <li>Edad: 48</li>
+                        <li>Legal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+            }
+        ];
+
+        // Contenido para lore (5 secciones)
+        const loreContent = [
+            {
+                name: "La Conquista",
+                content: `<div class="space-y-6">
+    <div class="border-l-4 border-neon-violet pl-4 mb-6">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">⚔️ La Conquista</h3>
+        <p class="text-gray-400 italic text-sm">*Las razas vinieron en masa al continente*</p>
+    </div>
+    
+    <div class="space-y-6">
+        <div class="bg-orange-500/10 p-4 rounded-lg border border-orange-500/30">
+            <h4 class="text-lg font-semibold text-orange-400 mb-3">🌊 La Invasión Aliada</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-orange-400">Comenzaron una masacre… los Orcos no pudieron contener tantos soldados.</p>
+                <p class="text-orange-400">Pero aún así, todo cambió de repente… ¿paz?, no entendemos qué pasó pero simplemente todo… se calmó.</p>
+                <p class="text-red-600 font-semibold">Las razas del continente antiguo se unieron en una fuerza sin precedentes.</p>
+                <p class="text-red-600 font-semibold">Humanos, Tiglings, Medianos, Avens, Arakocras, Pueblos Animales, Enanos y otros.</p>
+                <p class="text-gray-300 mt-3">Todos marcharon juntos hacia Expencior con un propósito común.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Las Fuerzas de Invasión</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>👥 Cientos de miles</strong> de soldados disciplinados</li>
+                        <li><strong>🌍 Diferentes razas</strong> unidas por un propósito común</li>
+                        <li><strong>⚔️ Equipo de guerra</strong> preparado para la conquista total</li>
+                        <li><strong>💪 Determinación absoluta</strong> de venganza y justicia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">💀 La Masacre</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-800 font-semibold italic">Los Orcos no pudieron contener tantos soldados.</p>
+                <p class="text-red-800 font-semibold italic">Fue una masacre sin precedentes en la historia del continente.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Ciudades Caídas</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li>🏰 Fortalezas destruidas hasta los cimientos</li>
+                        <li>👥 Poblaciones masacradas sin piedad</li>
+                        <li>🛡️ Defensas colapsadas ante el embate</li>
+                        <li>😔 Moral orca desmoronada completamente</li>
+                    </ul>
+                </div>
+                
+                <p class="text-red-900 font-semibold mt-3">Pero aún así, todo cambió de repente.</p>
+            </div>
+        </div>
+
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">🕊️ El Misterio de la Paz</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-neon-violet font-semibold text-xl">¿Paz?</p>
+                <p class="text-neon-violet font-semibold text-xl">No entendemos qué pasó pero simplemente todo… se calmó.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### El Evento Inexplicable</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li>⚡ Sin previo aviso ni preparación</li>
+                        <li>❓ Sin explicación aparente o lógica</li>
+                        <li>🎭 Sin razón conocida o comprensible</li>
+                        <li>🌀 Sin causa evidente o justificable</li>
+                    </ul>
+                </div>
+                
+                <p class="text-yellow-400 mt-3">Nadie sabe qué provocó el cese repentino de las hostilidades.</p>
+                <p class="text-yellow-400">Teorías principales: intervención divina, pacto secreto, evento mágico, fenómeno natural.</p>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">🔥 Las Consecuencias</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-500 font-semibold">Pero el fuego siempre deja cenizas.</p>
+                <p class="text-red-500 font-semibold">Los Orcos se creyeron extintos algún tiempo.</p>
+                <p class="text-red-500 font-semibold">Los Elfos perdieron sus votos naturales.</p>
+                <p class="text-red-500 font-semibold">En fin, nada volvió a ser igual.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Transformaciones de las Razas</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>👹 Orcos:</strong> Retirados a las sombras, creyéndose extintos. Población diezmada pero no eliminada. Cultura transformada por el trauma.</p>
+                        <p><strong>🧝 Elfos:</strong> Sin votos naturales, conexión debilitada. Arrogancia reemplazada por cautela. Sociedad dividida por la culpa.</p>
+                        <p><strong>👤 Humanos:</strong> Arrogantes y expansionistas tras la victoria. Sociedad transformada por el poder conquistador. Economía floreciente con nuevas tierras.</p>
+                        <p><strong>🔮 Antiguos:</strong> Desaparecidos casi por completo. Su legado perdido en el tiempo. Solo recuerdos vagos de su existencia.</p>
+                        <p><strong>🐢 Tortogas:</strong> Cautelosos y desconfiados tras la guerra. Alianzas rotas y confianza quebrantada. Sociedad aislada y protectora.</p>
+                    </div>
+                </div>
+                
+                <p class="text-purple-700 font-semibold mt-3">Las cicatrices de la guerra permanecen en la tierra y en las almas.</p>
+                <p class="text-purple-700 font-semibold">La paz actual es frágil, como una llama que podría extinguirse en cualquier momento.</p>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "El Declive",
+                content: `<div class="space-y-6">
+    <div class="border-l-4 border-neon-violet pl-4 mb-6">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">📉 El Declive</h3>
+        <p class="text-gray-400 italic text-sm">*Relato de boca en boca de tribus de razas originales*</p>
+    </div>
+    
+    <div class="space-y-6">
+        <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">⚔️ La Batalla de Costa Inicio</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-900 font-semibold">Los Orcos abrían ganado esa batalla…</p>
+                <p class="text-red-900 font-semibold">No fue sencillo pero ganaban en número y estrategia.</p>
+                <p class="text-red-900 font-semibold">Pero aún así, la expedición no sucumbió. Prevaleció.</p>
+                
+                <p class="text-red-700 font-semibold mt-3">La batalla más feroz de toda la guerra.</p>
+                <p class="text-red-700 font-semibold">Ambos bandos se dieron con todo, sin reservas.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Estrategia Orcal</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>👥 Superioridad numérica</strong> - Más guerreros en el campo</li>
+                        <li><strong>🎯 Tácticas superiores</strong> - Mejor coordinación y disciplina</li>
+                        <li><strong>⚔️ Experiencia en combate</strong> - Guerreros veteranos endurecidos</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Resistencia Humana</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🔮 Protección Antigua</strong> - Magia y defensa sobrenatural</li>
+                        <li><strong>💪 Determinación absoluta</strong> - Luchar hasta el final</li>
+                        <li><strong>🤝 Apoyo Tortoga</strong> - Guerreros leales hasta la muerte</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">🌟 Los Valdirium</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-600 font-semibold">Los Valdirium, sabiendo que probablemente morirán en algún momento por las heridas, tomaron una decisión trascendental.</p>
+                
+                <p class="text-yellow-500 font-semibold mt-3">Los Valdirium no eran guerreros ordinarios.</p>
+                <p class="text-yellow-500 font-semibold">Eran los últimos de una orden antigua de protectores, con poderes y conocimientos olvidados.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### El Sacrificio Final</p>
+                    <p class="text-yellow-400 font-semibold">Les otorgaron un objeto muy valioso: Las Perlas de los Mares.</p>
+                    <p class="text-yellow-400 font-semibold">Con ellas, la humanidad escapó del continente vivos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/30">
+            <h4 class="text-lg font-semibold text-cyan-400 mb-3">🌊 Las Perlas de los Mares</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-cyan-400 font-semibold">Artefactos legendarios de poder incalculable.</p>
+                <p class="text-cyan-400 font-semibold">Capaces de controlar los mares y proteger a quienes las poseen.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Poderes de las Perlas</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🌊 Control de mareas</strong> - Navegación segura en cualquier condición</li>
+                        <li><strong>🛡️ Protección marina</strong> - Contra monstruos y peligros del mar</li>
+                        <li><strong>🧭 Guía infalible</strong> - Siempre lleva al destino correcto</li>
+                        <li><strong>🗣️ Comunicación</strong> - Con seres del mar y criaturas marinas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-sky-500/10 p-4 rounded-lg border border-sky-500/30">
+            <h4 class="text-lg font-semibold text-sky-400 mb-3">🚢 El Viaje de Regreso</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-sky-400 font-semibold">Bagaron algún tiempo por el mar… pero eventualmente volvieron al continente antiguo.</p>
+                <p class="text-sky-400 font-semibold">Con las Perlas, el viaje de regreso fue mucho más seguro que el de ida.</p>
+            </div>
+        </div>
+
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">📢 El Regreso de Vyrreal</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>Una vez llegaron, <strong>Vyrreal</strong> contó a todos lo que vivió:</p>
+                <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                    <li>La traición de los Orcos</li>
+                    <li>El sacrificio de los Valdirium</li>
+                    <li>El poder de las Perlas de los Mares</li>
+                    <li>La crueldad de la guerra</li>
+                </ul>
+                
+                <p class="text-neon-violet font-semibold mt-3">Cada raza de ese continente se enteró de la verdad.</p>
+                <p class="text-neon-violet font-semibold">Y así todas las razas se pusieron de acuerdo en conquistar Expencior.</p>
+                
+                <p class="text-pink-400 font-semibold mt-3">La venganza estaba por comenzar.</p>
+                <p class="text-pink-400 font-semibold">Esta vez, serían ellos los atacantes.</p>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "La Amenaza Sombría",
+                content: `<div class="space-y-6">
+    <div class="border-l-4 border-neon-violet pl-4 mb-6">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">🌑 La Amenaza Sombría</h3>
+        <p class="text-gray-400 italic text-sm">*Texto de libros caros*</p>
+    </div>
+    
+    <div class="space-y-6">
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">💬 Las Negociaciones</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>Los Orcos más desarrollados mentalmente hablaron con los <strong>Tortogas</strong> y con los <strong>Antiguos</strong>.</p>
+                
+                <p class="text-purple-700 font-semibold mt-3">Aunque los Tortogas aceptaron el trato de los Orcos, que consistía en eliminar la expedición humana, los Antiguos eligieron protegerlos.</p>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">📜 El Trato de los Orcos</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-600 font-semibold">El trato era simple y brutal: eliminar la expedición humana para proteger el continente.</p>
+                <p class="text-red-600 font-semibold">Los Tortogas, pragmáticos, aceptaron el trato.</p>
+                <p class="text-red-600 font-semibold">Los Antiguos, idealistas, se negaron rotundamente.</p>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">⚔️ La Guerra Comienza</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-500 font-semibold">Así, se alzó una batalla que cambiaría el destino del continente.</p>
+                <p class="text-red-500 font-semibold">Antiguos contra Orcos y Elfos, mientras los demás permanecían neutrales.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Los Combatientes</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>🛡️ Fuerzas de Protección:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>🔮 Los Antiguos</strong> - Con poderes misteriosos y desconocidos</li>
+                            <li><strong>🐢 Tortogas</strong> - Guerreros resistentes y leales</li>
+                            <li><strong>👤 Expedición Humana</strong> - Refugiados bajo protección</li>
+                        </ul>
+                        
+                        <p class="mt-2"><strong>⚔️ Fuerzas de Eliminación:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>👹 Orcos</strong> - Estrategas superiores y numerosos</li>
+                            <li><strong>🧝 Elfos</strong> - Arqueros precisos y magos poderosos</li>
+                        </ul>
+                        
+                        <p class="mt-2"><strong>👁️ Observadores:</strong></p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>🐉 Draconicos</strong> - Neutrales pero vigilantes</li>
+                            <li><strong>🌟 Otras razas</strong> - Esperando el resultado del conflicto</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <h4 class="text-lg font-semibold text-pink-400 mb-3">💀 La Guerra Feroz</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-pink-700 font-semibold">Hubo una guerra… feroz y devastadora.</p>
+                <p class="text-pink-700 font-semibold">Se cree que duró entre 6 a 7 años de conflicto continuo.</p>
+                
+                <p class="text-red-800 font-semibold mt-3">Varios cayeron en ambos bandos.</p>
+                <p class="text-red-800 font-semibold">Pero la expedición humana, aún prevalecía en pie.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">**Costos de la Guerra:**</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🔮 Antiguos:</strong> Muchos caídos defendiendo a los humanos</li>
+                        <li><strong>🐢 Tortogas:</strong> Pérdidas significativas pero honor intacto</li>
+                        <li><strong>👹 Orcos:</strong> Bajas moderadas pero moral alta</li>
+                        <li><strong>🧝 Elfos:</strong> Bajas leves pero estrategia fallida</li>
+                        <li><strong>👤 Humanos:</strong> Supervivientes gracias a la protección</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">🏴 La Batalla de Costa Inicio</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-red-900 font-semibold">Pero todo sucumbiría en la batalla de Costa Inicio.</p>
+                <p class="text-red-900 font-semibold">Allí se encontraba el grupo humano y los Orcos hicieron una batalla feroz.</p>
+                <p class="text-red-900 font-semibold">No se sabe quién ganó la batalla realmente.</p>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "Tensión en Expencior",
+                content: `<div class="space-y-6">
+    <div class="border-l-4 border-neon-violet pl-4 mb-6">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">⚔️ Tensión en Expencior</h3>
+        <p class="text-gray-400 italic text-sm">*Texto de libros oficiales*</p>
+    </div>
+    
+    <div class="space-y-6">
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">🌍 La Llegada de la Nueva Raza</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>Tras la llegada de la expedición humana, no todo el continente estuvo de acuerdo con su presencia.</p>
+                
+                <p class="text-red-500 font-semibold mt-3">Los Orcos, más desarrollados mentalmente en aquel entonces, tenían la misión sagrada de proteger el continente de amenazas externas.</p>
+                <p class="text-red-500 font-semibold">Y para ellos, los humanos representaban una amenaza potencial.</p>
+            </div>
+        </div>
+
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">🛡️ La Protección de los Antiguos</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-purple-400 font-semibold">La raza sin identificar, a la cual se le nombró "Los Antiguos", junto a los Tortogas, decidieron proteger y ocultar a la expedición de Vyrreal.</p>
+                <p class="text-purple-400 font-semibold">Pero esta protección no duraría mucho tiempo.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### La Conspiración</p>
+                    <p class="text-red-700 font-semibold">Se cree que por una conspiración de los Elfos, los Orcos se enteraron de la embarcación humana.</p>
+                    <p class="text-red-700 font-semibold">Por el bien del continente, avisaron inmediatamente a los Orcos.</p>
+                    
+                    <p class="text-red-900 font-semibold mt-3">Se cree que no terminó bien.</p>
+                    <p class="text-red-900 font-semibold">La tensión crecía como una olla a presión a punto de explotar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <h4 class="text-lg font-semibold text-pink-400 mb-3">⚖️ Los Bandos Formados</h4>
+            <div class="space-y-3 text-gray-300">
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-green-400 font-semibold text-sm mb-2">### 🤝 Protectoras</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🔮 Los Antiguos</strong> - Raza misteriosa hoy extinta</li>
+                        <li><strong>🐢 Tortogas</strong> - Aliados leales de los Antiguos</li>
+                        <li><strong>👤 Expedición Humana</strong> - Los recién llegados buscando refugio</li>
+                    </ul>
+                    
+                    <p class="text-red-400 font-semibold text-sm mb-2 mt-3">### ⚔️ Opositores</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>👹 Orcos</strong> - Guardianes del continente</li>
+                        <li><strong>🧝 Elfos</strong> - Conspiradores que revelaron el secreto</li>
+                    </ul>
+                    
+                    <p class="text-gray-400 font-semibold text-sm mb-2 mt-3">### 👁️ Neutrales</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🐉 Draconicos</strong> - Observadores silenciosos</li>
+                        <li><strong>🌟 Otras razas</strong> - Esperando ver qué pasaría</li>
+                    </ul>
+                </div>
+                
+                <p class="text-pink-500 font-semibold mt-3">El destino del continente pendía de un hilo.</p>
+                <p class="text-pink-500 font-semibold">La guerra era inevitable.</p>
+            </div>
+        </div>
+    </div>
+</div>`
+            },
+            {
+                name: "El Inicio de un Nuevo Mundo",
+                content: `<div class="space-y-6">
+    <div class="border-l-4 border-neon-violet pl-4 mb-6">
+        <h3 class="text-2xl font-bold text-neon-violet mb-2">🌌 El Inicio de un Nuevo Mundo</h3>
+        <p class="text-gray-400 italic text-sm">*Texto de libros oficiales*</p>
+    </div>
+    
+    <div class="space-y-6">
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="text-lg font-semibold text-purple-400 mb-3">📜 La Llegada al Continente</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>La llegada al continente se remonta hace <strong>12,250 años</strong>. En aquel entonces, diversas razas convivían en un microcontinente que actualmente se encuentra perdido.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Razas del Microcontinente</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li>✦ Humanos</li>
+                        <li>✦ Tiglings</li>
+                        <li>✦ Medianos</li>
+                        <li>✦ Avens</li>
+                        <li>✦ Arakocras</li>
+                        <li>✦ Pueblos Animales (varios)</li>
+                        <li>✦ Enanos</li>
+                        <li>✦ Otros</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <h4 class="text-lg font-semibold text-red-400 mb-3">🏴 El Microcontinente Perdido</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>Este lugar era <strong>caótico</strong>, caracterizado por:</p>
+                <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                    <li><strong>Guerras constantes</strong> entre las diferentes razas</li>
+                    <li><strong>Anarquía dominante</strong> en todas las regiones</li>
+                    <li><strong>Falta de organización</strong> y estructura social</li>
+                </ul>
+                
+                <p class="text-yellow-500 font-semibold mt-3">No fue sino hasta que un hombre de apellido <strong>Vyrreal</strong> decidió salir de este continente, buscando algo mejor para su gente.</p>
+            </div>
+        </div>
+
+        <div class="bg-yellow-500/10 p-4 rounded-lg border border-yellow-500/30">
+            <h4 class="text-lg font-semibold text-yellow-400 mb-3">⚓ La Expedición de Vyrreal</h4>
+            <div class="space-y-3 text-gray-300">
+                <p class="text-yellow-500 font-semibold">Vyrreal viajó con una pequeña expedición, pero enfrentaba un gran desafío:</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Los Obstáculos</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li><strong>🌊 Mareas caóticas</strong> que hacían la navegación imposible</li>
+                        <li><strong>🦑 Monstruos marinos</strong> que acechaban en las aguas profundas</li>
+                        <li><strong>👻 Leyendas costeras</strong> que atormentaban a cualquiera que intentaba salir</li>
+                        <li><strong>🌀 Corrientes impredecibles</strong> que arrastraban a los navegantes</li>
+                    </ul>
+                </div>
+                
+                <p class="text-red-600 font-semibold mt-3">A pesar de todo, Vyrreal se embarcó. Ante todo pronóstico, la expedición sobrevivió perfectamente y logró escapar del continente.</p>
+            </div>
+        </div>
+
+        <div class="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/30">
+            <h4 class="text-lg font-semibold text-cyan-400 mb-3">🗺️ El Viaje por los Mares</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>Así estuvieron algunos meses:</p>
+                <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                    <li><strong>🎣 Pescando</strong> en los abundantes mares inexplorados del mundo</li>
+                    <li><strong>🏕️ Sobreviviendo</strong> con recursos limitados pero suficientes</li>
+                    <li><strong>🧭 Navegando</strong> hacia lo desconocido con esperanza</li>
+                </ul>
+                
+                <p class="text-cyan-400 font-semibold mt-3">A los 3 meses aproximadamente, vieron tierra... mucha tierra.</p>
+                <p class="text-cyan-400 font-semibold">Habían descubierto lo que hoy es nuestro continente de Expencior.</p>
+            </div>
+        </div>
+
+        <div class="bg-teal-500/10 p-4 rounded-lg border border-teal-500/30">
+            <h4 class="text-lg font-semibold text-teal-400 mb-3">🏝️ El Desembarco</h4>
+            <div class="space-y-3 text-gray-300">
+                <p>La expedición logró desembarcar en la zona y allí se encontraron con <strong>más razas</strong>, distintas a las que conocían. Pero hubo una en particular: una raza extinta, de nombre sin identificar.</p>
+                
+                <p class="text-teal-400 font-semibold mt-3">Estos misteriosos seres acogieron a la expedición humana con hospitalidad.</p>
+                <p class="text-teal-400 font-semibold">Sin embargo, parecía que no todas las nuevas razas originales del continente estaban de acuerdo con esta presencia.</p>
+                
+                <div class="mt-4 p-3 bg-dark-umbra/50 rounded">
+                    <p class="text-neon-violet font-semibold text-sm mb-2">### Razas de Expencior</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 ml-4">
+                        <li>🐢 Tortogas</li>
+                        <li>👹 Orcos</li>
+                        <li>🧝 Elfos</li>
+                        <li>🐉 Draconicos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+            }
+        ];
+
+        // Función para codificar contenido
+        function enc(d) {
+            return btoa(unescape(encodeURIComponent(d)));
+        }
+
+        // Función para decodificar contenido (para verificar)
+        function dec(d) {
+            try {
+                return decodeURIComponent(escape(atob(d)));
+            } catch (e) {
+                return d;
+            }
+        }
+
+        // Actualizar localStorage con el nuevo contenido
+        function updateContent() {
+            // Actualizar ciudades
+            citiesContent.forEach((city, index) => {
+                localStorage.setItem(`admin_city${index}_name`, city.name);
+                localStorage.setItem(`admin_city${index}`, enc(city.content));
+            });
+            
+            // Asegurar que el contador esté en 4
+            localStorage.setItem('admin_city_counter', '4');
+            
+            // Actualizar lore
+            loreContent.forEach((era, index) => {
+                localStorage.setItem(`admin_lore${index}_name`, era.name);
+                localStorage.setItem(`admin_lore${index}`, enc(era.content));
+            });
+            
+            // Asegurar que el contador esté en 5
+            localStorage.setItem('admin_lore_counter', '5');
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <div class="success">
+                    <h2>¡Contenido actualizado exitosamente!</h2>
+                    <p><strong>Ciudades:</strong> ${citiesContent.map(c => c.name).join(', ')}</p>
+                    <p><strong>Eras de Lore:</strong> ${loreContent.map(l => l.name).join(', ')}</p>
+                    <p class="info">Ahora puedes cerrar esta página y visitar ciudades.html o lore.html para ver el nuevo contenido.</p>
+                </div>
+            `;
+            
+            console.log('Contenido actualizado exitosamente');
+            console.log('Ciudades:', citiesContent.map(c => c.name));
+            console.log('Eras de Lore:', loreContent.map(l => l.name));
+            
+            // Verificar que el contenido se guardó correctamente
+            console.log('Verificación de contenido guardado:');
+            citiesContent.forEach((city, index) => {
+                const saved = localStorage.getItem(`admin_city${index}`);
+                const decoded = dec(saved);
+                console.log(`Ciudad ${index} - Longitud guardada: ${saved.length}, Longitud decodificada: ${decoded.length}`);
+            });
+        }
+    </script>
+</body>
+</html>

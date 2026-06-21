@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOMBRAS DISONANTES - La Cripta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="combat-styles.css">
+    <script src="../../../js/admin/admin-access-new.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep': '#050408',
+                        'bg-violet': '#0A0812',
+                        'bg-panel': '#0F0D18',
+                        'bg-card': '#151322',
+                        'bg-hover': '#1C1928',
+                        'violet-primary': '#7B5CE8',
+                        'violet-soft': '#9B7FF0',
+                        'violet-bright': '#B89DFF',
+                        'violet-deep': '#5B3CD8',
+                        'violet-glow': '#8B6CF0',
+                        'arcane-blue': '#4A7DE8',
+                        'silver-soft': '#B8BECB',
+                        'silver-muted': '#989EAB',
+                        'white-warm': '#F0F1F3',
+                        'shadow-dark': '#1a1a2e',
+                        'shadow-darker': '#0f0f1a',
+                        'blood-red': '#8B0000',
+                        'blood-dim': '#4a0000',
+                    },
+                    fontFamily: {
+                        'title': ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+                        'body': ['"Inter"', '"Manrope"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f1a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5B3CD8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7B5CE8;
+        }
+
+        /* Fog effect */
+        .fog-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(123, 92, 232, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(74, 125, 232, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 0, 0, 0.05) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        /* Shadow pulse animation */
+        @keyframes shadowPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(123, 92, 232, 0.3), 0 0 40px rgba(139, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(123, 92, 232, 0.5), 0 0 60px rgba(139, 0, 0, 0.3);
+            }
+        }
+
+        .shadow-pulse {
+            animation: shadowPulse 3s ease-in-out infinite;
+        }
+
+        /* HP bar animation */
+        @keyframes hpDecrease {
+            from {
+                width: var(--hp-width);
+            }
+            to {
+                width: var(--target-width);
+            }
+        }
+
+        .hp-bar-animated {
+            transition: width 0.5s ease-out;
+        }
+
+        /* Combat log entry animation */
+        @keyframes logEntry {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .log-entry {
+            animation: logEntry 0.3s ease-out;
+        }
+
+        /* Button hover effects */
+        .combat-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .combat-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(123, 92, 232, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .combat-btn:hover::before {
+            left: 100%;
+        }
+
+        .combat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(123, 92, 232, 0.4);
+        }
+
+        .combat-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Dice roll animation */
+        @keyframes diceRoll {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+            75% {
+                transform: rotate(270deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .dice-rolling {
+            animation: diceRoll 0.5s ease-out;
+        }
+
+        /* Phase transition effect */
+        @keyframes phaseTransition {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .phase-transition {
+            animation: phaseTransition 1s ease-out;
+        }
+
+        /* Echo summon animation */
+        @keyframes echoSummon {
+            0% {
+                opacity: 0;
+                transform: scale(0) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .echo-summon {
+            animation: echoSummon 0.5s ease-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .combat-grid {
+                grid-template-columns: 1fr;
+            }
+            .action-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="font-body text-white-warm min-h-screen bg-deep">
+    <div class="fog-effect"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-violet-deep/30 backdrop-blur-md border-b border-violet-primary/35 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="../aventuras.html" class="font-title text-2xl text-violet-primary hover:text-violet-soft transition-colors tracking-wider">✦ LA CRIPTA</a>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="../index.html" class="nav-link text-sm uppercase tracking-wider">Inicio</a>
+                    <a href="../aventuras.html" class="nav-link text-sm uppercase tracking-wider">Juegos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-4 relative">
+        <div class="absolute inset-0 -z-10" style="background: linear-gradient(to bottom, rgba(5, 4, 8, 0.95), rgba(15, 13, 24, 0.92), rgba(5, 4, 8, 0.95));"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <!-- Introduction Screen -->
+            <div id="introScreen" class="min-h-[80vh] flex items-center justify-center">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="mb-8">
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-violet-primary to-blood-red shadow-pulse flex items-center justify-center">
+                            <span class="text-6xl">🌑</span>
+                        </div>
+                        <h1 class="font-title text-5xl md:text-6xl text-violet-primary mb-4">SOMBRAS DISONANTES</h1>
+                        <p class="text-xl text-silver-soft mb-2">Cámara de Combate Individual</p>
+                        <div class="flex items-center justify-center gap-4 mb-6">
+                            <span class="bg-blood-dim/50 border border-blood-red/30 text-silver-soft text-sm px-3 py-1 rounded">Dificultad: Difícil</span>
+                            <span class="bg-violet-deep/50 border border-violet-primary/30 text-silver-soft text-sm px-3 py-1 rounded">Nivel 7</span>
+                            <span class="bg-arcane-blue/30 border border-arcane-blue/30 text-silver-soft text-sm px-3 py-1 rounded">15-20 min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-8 mb-8 backdrop-blur-sm">
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            Te encuentras en una cámara ritual antigua, rodeado de velas que arden con llamas violetas.
+                        </p>
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            En el centro de la habitación, una forma oscura se agita. Es un <span class="text-violet-bright font-semibold">Fragmento de Sombra</span>, un trozo de alma rota atrapado entre planos.
+                        </p>
+                        <p class="text-silver-soft leading-relaxed text-lg">
+                            Puedes sentir el sufrimiento de un alma prisionera, clamando por liberación. Solo derrotando a esta entidad oscura podrás liberarla.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-bg-panel/50 border border-violet-primary/10 rounded-xl p-6 mb-8">
+                        <h3 class="font-title text-xl text-violet-primary mb-4">Recompensas</h3>
+                        <ul class="text-silver-soft text-left space-y-2">
+                            <li>✦ Experiencia de combate táctico</li>
+                            <li>✦ Narrativa de liberación</li>
+                            <li>✦ Desafío estratégico</li>
+                        </ul>
+                    </div>
+                    
+                    <button id="startCombatBtn" class="combat-btn bg-gradient-to-r from-violet-primary to-blood-red hover:from-violet-soft hover:to-blood-red text-white font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 shadow-lg">
+                        ⚔ Comenzar Combate
+                    </button>
+                </div>
+            </div>
+
+            <!-- Combat Screen -->
+            <div id="combatScreen" class="hidden">
+                <!-- Combat Header -->
+                <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-6 mb-6 backdrop-blur-sm">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="text-4xl">⚔</div>
+                            <div>
+                                <h2 class="font-title text-2xl text-violet-primary">SOMBRAS DISONANTES</h2>
+                                <p class="text-silver-soft text-sm">Ronda <span id="roundCounter" class="text-violet-bright font-semibold">1</span> - Fase: <span id="currentPhase" class="text-blood-red font-semibold">Forma Estable</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div id="turnIndicator" class="bg-violet-deep/50 border border-violet-primary/30 px-4 py-2 rounded-lg">
+                                <span class="text-silver-soft text-sm">Turno: </span>
+                                <span id="currentTurn" class="text-violet-bright font-semibold">Jugador</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combat Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    
+                    <!-- Player Panel -->
+                    <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-6 backdrop-blur-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-violet-primary to-arcane-blue rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🛡️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-title text-xl text-violet-primary">Guerrero Arcano</h3>
+                                <p class="text-silver-soft text-sm">Nivel 7</p>
+                            </div>
+                        </div>
+                        
+                        <!-- HP Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-silver-soft">Puntos de Vida</span>
+                                <span class="text-violet-bright"><span id="playerHP">65</span>/65</span>
+                            </div>
+                            <div class="w-full bg-bg-panel rounded-full h-3">
+                                <div id="playerHPBar" class="hp-bar-animated bg-gradient-to-r from-violet-primary to-arcane-blue h-3 rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">CA</p>
+                                <p class="text-lg text-violet-bright font-semibold">16</p>
+                            </div>
+                            <div class="bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">FUE</p>
+                                <p class="text-lg text-violet-bright font-semibold">+3</p>
+                            </div>
+                            <div class="bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">DES</p>
+                                <p class="text-lg text-violet-bright font-semibold">+2</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Resources -->
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2">
+                                <span class="text-sm text-silver-soft">Segundo Aliento</span>
+                                <span id="secondWindCounter" class="text-violet-bright font-semibold">1/1</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2">
+                                <span class="text-sm text-silver-soft">Acción Adicional</span>
+                                <span id="actionSurgeCounter" class="text-violet-bright font-semibold">1/1</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Spell Slots -->
+                        <div class="mt-4">
+                            <p class="text-sm text-silver-soft mb-2">Espacios de Conjuro</p>
+                            <div class="flex gap-2">
+                                <div class="flex-1 bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                    <p class="text-xs text-silver-muted">Nv 1</p>
+                                    <p id="spellSlots1" class="text-violet-bright font-semibold">4</p>
+                                </div>
+                                <div class="flex-1 bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                    <p class="text-xs text-silver-muted">Nv 2</p>
+                                    <p id="spellSlots2" class="text-violet-bright font-semibold">3</p>
+                                </div>
+                                <div class="flex-1 bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                    <p class="text-xs text-silver-muted">Nv 3</p>
+                                    <p id="spellSlots3" class="text-violet-bright font-semibold">2</p>
+                                </div>
+                                <div class="flex-1 bg-bg-panel/50 border border-violet-primary/10 rounded-lg p-2 text-center">
+                                    <p class="text-xs text-silver-muted">Nv 4</p>
+                                    <p id="spellSlots4" class="text-violet-bright font-semibold">1</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Active Conditions -->
+                        <div id="playerConditions" class="mt-4">
+                            <p class="text-sm text-silver-soft mb-2">Estados Activos</p>
+                            <div id="playerConditionsList" class="flex flex-wrap gap-2">
+                                <span class="text-silver-muted text-sm italic">Ninguno</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enemy Panel -->
+                    <div class="bg-bg-card/85 border border-blood-red/30 rounded-xl p-6 backdrop-blur-sm shadow-pulse">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blood-red to-violet-deep rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">👤</span>
+                            </div>
+                            <div>
+                                <h3 class="font-title text-xl text-blood-red">Fragmento de Sombra</h3>
+                                <p class="text-silver-soft text-sm">Alma Rota Atrapada</p>
+                            </div>
+                        </div>
+                        
+                        <!-- HP Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-silver-soft">Puntos de Vida</span>
+                                <span class="text-blood-red"><span id="enemyHP">120</span>/120</span>
+                            </div>
+                            <div class="w-full bg-bg-panel rounded-full h-3">
+                                <div id="enemyHPBar" class="hp-bar-animated bg-gradient-to-r from-blood-red to-violet-deep h-3 rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="bg-bg-panel/50 border border-blood-red/20 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">CA</p>
+                                <p class="text-lg text-blood-red font-semibold">15</p>
+                            </div>
+                            <div class="bg-bg-panel/50 border border-blood-red/20 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">FUE</p>
+                                <p class="text-lg text-blood-red font-semibold">+2</p>
+                            </div>
+                            <div class="bg-bg-panel/50 border border-blood-red/20 rounded-lg p-2 text-center">
+                                <p class="text-xs text-silver-muted">DES</p>
+                                <p class="text-lg text-blood-red font-semibold">+4</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Shadow Echoes -->
+                        <div id="echoSection" class="mt-4 hidden">
+                            <p class="text-sm text-silver-soft mb-2">Ecos Sombríos</p>
+                            <div id="echoList" class="space-y-2">
+                                <!-- Echoes will be added here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Active Conditions -->
+                        <div id="enemyConditions" class="mt-4">
+                            <p class="text-sm text-silver-soft mb-2">Estados Activos</p>
+                            <div id="enemyConditionsList" class="flex flex-wrap gap-2">
+                                <span class="text-silver-muted text-sm italic">Ninguno</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Combat Log -->
+                    <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-6 backdrop-blur-sm">
+                        <h3 class="font-title text-xl text-violet-primary mb-4">📜 Registro de Combate</h3>
+                        <div id="combatLog" class="h-96 overflow-y-auto space-y-2 custom-scrollbar">
+                            <div class="log-entry text-silver-soft text-sm p-2 bg-bg-panel/30 rounded">
+                                <span class="text-violet-bright">[Inicio]</span> El combate comienza...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Panel -->
+                <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-6 backdrop-blur-sm">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        
+                        <!-- Actions -->
+                        <div>
+                            <h3 class="font-title text-xl text-violet-primary mb-4">⚔ Acciones</h3>
+                            <div class="action-grid grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <button id="meleeAttackBtn" class="combat-btn bg-violet-deep/50 border border-violet-primary/30 hover:bg-violet-primary/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🗡️ Ataque Melee
+                                </button>
+                                <button id="rangedAttackBtn" class="combat-btn bg-violet-deep/50 border border-violet-primary/30 hover:bg-violet-primary/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🏹 Ataque Rango
+                                </button>
+                                <button id="dodgeBtn" class="combat-btn bg-violet-deep/50 border border-violet-primary/30 hover:bg-violet-primary/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🛡️ Esquivar
+                                </button>
+                                <button id="retreatBtn" class="combat-btn bg-violet-deep/50 border border-violet-primary/30 hover:bg-violet-primary/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🏃 Retirada
+                                </button>
+                                <button id="prepareActionBtn" class="combat-btn bg-violet-deep/50 border border-violet-primary/30 hover:bg-violet-primary/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    ⏳ Preparar
+                                </button>
+                                <button id="secondWindBtn" class="combat-btn bg-blood-dim/50 border border-blood-red/30 hover:bg-blood-red/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    💨 Segundo Aliento
+                                </button>
+                                <button id="actionSurgeBtn" class="combat-btn bg-arcane-blue/30 border border-arcane-blue/30 hover:bg-arcane-blue/50 text-white py-3 px-4 rounded-lg text-sm">
+                                    ⚡ Acción Adicional
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Spells -->
+                        <div>
+                            <h3 class="font-title text-xl text-violet-primary mb-4">✨ Conjuros</h3>
+                            <div class="action-grid grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <button id="magicMissileBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🔮 Proyectil Mágico
+                                </button>
+                                <button id="shieldBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🛡️ Escudo
+                                </button>
+                                <button id="absorbElementsBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🌊 Absorber Elementos
+                                </button>
+                                <button id="frostRayBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    ❄️ Rayo de Escarcha
+                                </button>
+                                <button id="fireBoltBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    🔥 Descarga de Fuego
+                                </button>
+                                <button id="shockingGraspBtn" class="combat-btn bg-violet-deep/50 border border-arcane-blue/30 hover:bg-arcane-blue/30 text-white py-3 px-4 rounded-lg text-sm">
+                                    ⚡ Toque Electrizante
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dice Roller -->
+                    <div class="mt-6 border-t border-violet-primary/20 pt-6">
+                        <h3 class="font-title text-xl text-violet-primary mb-4">🎲 Tirar Dados</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d4">d4</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d6">d6</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d8">d8</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d10">d10</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d12">d12</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d20">d20</button>
+                            <button class="dice-btn combat-btn bg-bg-panel/50 border border-violet-primary/20 hover:bg-violet-primary/20 text-white py-2 px-4 rounded-lg" data-dice="d100">d100</button>
+                        </div>
+                        <div id="diceResult" class="mt-4 text-center">
+                            <span class="text-silver-muted text-sm">Tira un dado para ver el resultado</span>
+                        </div>
+                    </div>
+                    
+                    <!-- End Turn Button -->
+                    <div class="mt-6 flex justify-end">
+                        <button id="endTurnBtn" class="combat-btn bg-gradient-to-r from-blood-red to-violet-deep hover:from-blood-red hover:to-violet-primary text-white font-bold py-3 px-8 rounded-lg text-lg">
+                            Finalizar Turno ➔
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Victory Screen -->
+            <div id="victoryScreen" class="hidden min-h-[80vh] flex items-center justify-center">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="mb-8">
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-violet-primary to-arcane-blue shadow-pulse flex items-center justify-center">
+                            <span class="text-6xl">✨</span>
+                        </div>
+                        <h1 class="font-title text-5xl md:text-6xl text-violet-primary mb-4">LIBERACIÓN</h1>
+                    </div>
+                    
+                    <div class="bg-bg-card/85 border border-violet-primary/20 rounded-xl p-8 mb-8 backdrop-blur-sm">
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            Con un último golpe, el Fragmento de Sombra se disuelve en humo negro.
+                        </p>
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            Ante ti, una figura etérea emerge de las cenizas. El alma atrapada brilla con luz suave, liberada finalmente de su prisión oscura.
+                        </p>
+                        <p class="text-violet-bright leading-relaxed text-lg italic">
+                            "Gracias, aventurero," susurra la figura antes de desvanecerse en la luz.
+                        </p>
+                        <p class="text-silver-soft leading-relaxed text-lg mt-4">
+                            La cámara ritual se ilumina. Has completado la prueba.
+                        </p>
+                    </div>
+                    
+                    <button id="victoryRestartBtn" class="combat-btn bg-gradient-to-r from-violet-primary to-arcane-blue hover:from-violet-soft hover:to-violet-primary text-white font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 shadow-lg">
+                        ↻ Volver al Inicio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Defeat Screen -->
+            <div id="defeatScreen" class="hidden min-h-[80vh] flex items-center justify-center">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="mb-8">
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blood-red to-violet-deep shadow-pulse flex items-center justify-center">
+                            <span class="text-6xl">💀</span>
+                        </div>
+                        <h1 class="font-title text-5xl md:text-6xl text-blood-red mb-4">CONSUMIDO</h1>
+                    </div>
+                    
+                    <div class="bg-bg-card/85 border border-blood-red/30 rounded-xl p-8 mb-8 backdrop-blur-sm">
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            Tu visión se oscurece mientras las sombras te envuelven.
+                        </p>
+                        <p class="text-silver-soft leading-relaxed text-lg mb-4">
+                            El Fragmento de Sombra se alimenta de tu esencia, añadiéndola a su colección de almas perdidas.
+                        </p>
+                        <p class="text-blood-red leading-relaxed text-lg italic">
+                            El alma atrapada permanece prisionera, esperando quizás a otro héroe que tenga más fortuna...
+                        </p>
+                    </div>
+                    
+                    <button id="defeatRestartBtn" class="combat-btn bg-gradient-to-r from-blood-red to-violet-deep hover:from-blood-red hover:to-violet-primary text-white font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 shadow-lg">
+                        ↻ Intentar de Nuevo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="combat-data.js"></script>
+    <script src="combat-engine.js"></script>
+    <script src="combat-ui.js"></script>
+    <script src="registration.js"></script>
+</body>
+</html>

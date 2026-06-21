@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Evento - Panel Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/admin/admin-access-new.js"></script>
+    <style>
+        .event-creator-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 24px;
+            background: #181622;
+            border: 1px solid rgba(139, 108, 255, 0.2);
+            border-radius: 20px;
+        }
+
+        .event-creator-header {
+            margin-bottom: 24px;
+        }
+
+        .event-creator-header h2 {
+            color: #8B6CFF;
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-family: 'Cinzel', 'Cormorant Garamond', serif;
+        }
+
+        .event-creator-header p {
+            color: #BFC5D2;
+            margin: 0;
+            font-size: 14px;
+            font-family: 'Inter', 'Manrope', sans-serif;
+        }
+
+        .event-textarea {
+            width: 100%;
+            min-height: 200px;
+            background: #12101A;
+            border: 1px solid rgba(139, 108, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            color: #F4F5F7;
+            font-size: 16px;
+            font-family: 'Inter', 'Manrope', sans-serif;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .event-textarea:focus {
+            border-color: #8B6CFF;
+        }
+
+        .event-textarea::placeholder {
+            color: #BFC5D2;
+        }
+
+        .syntax-help {
+            margin-top: 12px;
+            padding: 12px;
+            background: #12101A;
+            border: 1px solid rgba(139, 108, 255, 0.1);
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .syntax-help h4 {
+            color: #8B6CFF;
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-family: 'Cinzel', 'Cormorant Garamond', serif;
+        }
+
+        .syntax-help ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #BFC5D2;
+        }
+
+        .syntax-help li {
+            margin-bottom: 4px;
+        }
+
+        .syntax-help code {
+            background: #0D0B14;
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: #8B6CFF;
+            font-family: monospace;
+        }
+
+        .preview-section {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(139, 108, 255, 0.1);
+        }
+
+        .preview-section h3 {
+            color: #8B6CFF;
+            margin: 0 0 16px 0;
+            font-size: 18px;
+            font-family: 'Cinzel', 'Cormorant Garamond', serif;
+        }
+
+        .create-button {
+            margin-top: 24px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B6CFF 0%, #6B4CE8 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', 'Manrope', sans-serif;
+        }
+
+        .create-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 108, 255, 0.3);
+        }
+
+        .create-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body style="background: #080710; color: #F4F5F7; font-family: 'Inter', 'Manrope', sans-serif;">
+    <div class="premium-bg"></div>
+    <div class="event-creator-container">
+        <div class="event-creator-header">
+            <h2>Crear Nuevo Evento</h2>
+            <p>Escribe tu evento usando sintaxis estilo Discord. El sistema lo parseará automáticamente.</p>
+        </div>
+
+        <textarea 
+            id="eventInput" 
+            class="event-textarea"
+            placeholder="Escribe tu evento aquí..."
+        ></textarea>
+
+        <div class="syntax-help">
+            <h4>Sintaxis Markdown Disponible:</h4>
+            <ul>
+                <li><code>> Título</code> - Título del evento (header)</li>
+                <li><code>- Fecha: YYYY-MM-DD</code> - Fecha del evento</li>
+                <li><code>- Hora: HH:MM</code> - Hora del evento</li>
+                <li><code>- Tipo: evento</code> - Tipo (evento, reunion, anuncio, recordatorio, tarea)</li>
+                <li><code>- Descripción: texto</code> - Descripción del evento</li>
+                <li><code>- Ubicación: texto</code> - Ubicación del evento</li>
+                <li><code>- Prioridad: alta</code> - Prioridad (alta, media, baja)</li>
+                <li><code>`etiqueta`</code> - Datos técnicos o etiquetas</li>
+            </ul>
+        </div>
+
+        <div class="preview-section">
+            <h3>Preview en Tiempo Real</h3>
+            <div id="eventPreview">
+                <p style="color: #BFC5D2;">Escribe para ver el preview...</p>
+            </div>
+        </div>
+
+        <button id="createEventBtn" class="create-button">Crear Evento</button>
+    </div>
+
+    <script src="../js/core/event-parser.js"></script>
+    <script>
+        // Inicializar el sistema de eventos
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventSystem = new EventSystem();
+            eventSystem.init('eventInput', 'eventPreview', 'createEventBtn');
+        });
+    </script>
+</body>
+</html>
